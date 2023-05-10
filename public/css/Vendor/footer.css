@@ -1,0 +1,112 @@
+/* ===== Google Font Import - Poppins ===== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  /* ===== Colors ===== */
+  --primary-color: #0e4bf1;
+  --panel-color: #fff;
+  --text-color: #000;
+  --black-light-color: #707070;
+  --border-color: #e6e5e5;
+  --toggle-color: #ddd;
+  --box1-color: #4da3ff;
+  --box2-color: #ffe6ac;
+  --box3-color: #e7d1fc;
+  --title-icon-color: #fff;
+
+  /* ====== Transition ====== */
+  --tran-05: all 0.5s ease;
+  --tran-03: all 0.3s ease;
+  --tran-03: all 0.2s ease;
+}
+
+/* Footer */
+.vendorPage footer {
+  width: calc(100% - 250px);
+  left: 250px;
+}
+footer {
+  position: relative;
+  transition: var(--tran-05);
+}
+nav.close ~ footer {
+  left: 73px;
+  width: calc(100% - 73px);
+}
+.text-success {
+  color: var(--primary-color) !important;
+}
+#tempaltemo_footer a {
+  color: white;
+}
+#tempaltemo_footer a:hover {
+  color: var(--primary-color);
+}
+#tempaltemo_footer ul.footer-link-list li {
+  padding-top: 10px;
+}
+#tempaltemo_footer ul.footer-icons li {
+  width: 2.6em;
+  height: 2.6em;
+  line-height: 2.6em;
+}
+#tempaltemo_footer ul.footer-icons li:hover {
+  background-color: #cfd6e1;
+  transition: 0.5s;
+}
+#tempaltemo_footer ul.footer-icons li:hover i {
+  color: #212934;
+  transition: 0.5s;
+}
+#tempaltemo_footer .border-light {
+  border-color: #2d343f !important;
+}
+.fab {
+  font-family: "Font Awesome 5 Brands";
+}
+#sr-only {
+  color: var(--primary-color);
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+.input-group > .form-control,
+.input-group > .form-floating,
+.input-group > .form-select {
+  color: white;
+}
+
+/* Footer Responsive */
+@media (max-width: 1000px) {
+  .vendorPage footer {
+    left: 73px;
+    width: calc(100% - 73px);
+  }
+  nav.close ~ footer {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+}
+@media (max-width: 400px) {
+  .vendorPage footer {
+    left: 0;
+    width: 100%;
+  }
+  nav.close ~ footer {
+    left: 73px;
+    width: calc(100% - 73px);
+  }
+}

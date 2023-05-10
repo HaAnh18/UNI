@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="/css/vendor/sidebar.css" />
+
+<nav>
+  <div class="logo-name">
+    <div class="logo-image">
+      <!-- <img src="data:<%= vendor.photo.contentType %>;base64,<%= vendor.photo.data.toString('base64') %>" alt="User Photo"> </div> -->
+
+    <!-- <span class="logo_name"><%= vendor.name%></span> -->
+  </div>
+
+  <div class="menu-items">
+    <ul class="nav-links">
+      <li>
+        <a href="/vendor">
+          <i class="uil uil-estate"></i>
+          <span class="link-name">Dahsboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="/vendor/products">
+          <i class="uil uil-box"></i>
+          <span class="link-name">Products</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="uil uil-truck-loading"></i>
+          <span class="link-name">Orders</span>
+          <i class="uil uil-angle-right arrow"></i>
+        </a>
+        <ul class="sub-menu">
+          <li>
+            <a href="#">
+              <span class="link-name">Pending </span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="link-name">Active</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="link-name">Cancelled</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class="uil uil-chart"></i>
+          <span class="link-name">Analytics</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="uil uil-comments"></i>
+          <span class="link-name">Comment</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="uil uil-share"></i>
+          <span class="link-name">Share</span>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="logout-mode">
+      <li>
+        <a href="/vendor/login">
+          <i class="uil uil-signout"></i>
+          <span class="link-name">Logout</span>
+        </a>
+      </li>
+
+      <li class="mode">
+        <a href="#">
+          <i class="uil uil-moon"></i>
+          <span class="link-name">Dark Mode</span>
+        </a>
+
+        <div class="mode-toggle">
+          <span class="switch"></span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
