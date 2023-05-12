@@ -1,0 +1,49 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Vu Loc
+ID: S3891483
+Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css-javascript/
+-->
+
+<%- include('../vendor-partials/head.ejs') %>
+<link rel="stylesheet" href="/css/vendor/login.css"/>
+
+<body>
+    <div class="container box">
+        <div class="forms">
+            <div class="form login">
+                <span class="title">Login</span>
+                <form action="#">
+                    <div class="input-field">
+                        <input name="username" type="text" placeholder="Enter your username" required>
+                        <i class="uil uil-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input name="password" type="password" class="password" placeholder="Enter your password" required>
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+                    <div class="input-field button">
+                        <button type="submit" class="text">Login</button>
+                    </div>
+                </form>
+                <div class="login-signup">
+                    <span class="text">Not a member?
+                        <a href="/vendor/signup" class="text signup-link">Signup Now</a>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        
+ 
+  <script src="/js/vendor/login.js"></script>
+
+
+
+
+</body>
+</html>

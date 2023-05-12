@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - UNI Store</title>
+  
+  	<link rel="stylesheet" type="text/css" href="/css/customer/login/css-login/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="/css/customer/login/css-login/bootstrap-icons.css">
+  	<link rel="stylesheet" type="text/css" href="/css/customer/login/css-login/login-custom.css">
+	
+	
+  </head>
+
+  <body>
+
+	
+
+    <main class="text-white">
+    	<h1 class="h2 text-center pt-3 pb-2"> UNI Store</h1>
+  		<div class="content row mx-auto" >
+  			<div class="img-container p-0 col-md-6 bg-warning" >
+  				<img src="/images/customer/login/08.jpg" >
+  			</div>
+  			<div class="form-container col-md-6 " >
+  				
+  				<!--extra button to switch between signin & signup-->
+  				<!--<div onclick="show_login()" class="login-button button-selected">Login</div>
+  				<div onclick="show_signup()" class="signup-button">Signup</div>-->
+
+  				<div class="">
+  					
+					<!--Login section-->
+  					<form class="js-login-form pt-4 p-4" >
+  						
+  						<h2 class="fx-animate-1">Login</h2>
+  						<h5 class="fx-animate-3">Please enter your details</h5>
+
+						<!--Username-->
+  						<div class="input-group mb-4 fx-animate-1" >
+						  <input type="text" class="form-control p-3" placeholder="username" id="contact-l-username" name="login-username" onkeyup="validateLUsername()" required>
+						  <span class="input-group-text" id="basic-addon2"><i class="bi bi-envelope"></i></span>
+						  <!--error message-->
+						  <span id="l-username-error"></span>
+						</div>
+
+						<!--Password-->
+						<div class="input-group mb-4 fx-animate-2">
+						  <input type="password" class="form-control p-3" placeholder="Password" id="contact-l-password" name="login-password" onkeyup="validateLPassword()" required> 
+						  <span class="input-group-text" id="basic-addon2"><i class="bi bi-key"></i></span>
+						  <!--error message-->
+						  <span id="l-password-error"></span>
+						</div>
+						
+						<div class="mb-4 fx-animate-3">
+							<button class="btn btn-lg btn-outline-warning" type="submit" onclick="return validateLForm()">Login</button>
+						</div>
+						<div class="mb-4 fx-animate-5">
+							<a class="text-warning" href="#">Forgot password?</a> or <a onclick="show_signup()" class="text-warning" href="#">Signup</a>
+						</div>
+
+						<!--Follow us-->
+						<hr>
+						<div>
+							Follow us:
+							<div class="d-flex">
+								<div class="me-2 fx-animate-4"><a href=""><i class="h3 text-white bi bi-facebook"></i></a></div>
+								<div class="me-2 fx-animate-5"><a href=""><i class="h3 text-white bi bi-twitter"></i></a></div>
+								<div class="me-2 fx-animate-6"><a href=""><i class="h3 text-white bi bi-instagram"></i></a></div>
+							</div>
+
+						</div>
+
+						<!--take me back button-->
+						<br>
+						<div>
+						
+							<div class="d-flex">
+								<div class="me-2 fx-animate-4"><a href="/customer/index"><i class="h3 text-white bi bi-arrow-left"></i></a></div>
+							</div>
+
+						</div>
+
+  					</form>
+
+					<!--Signup section-->
+					<form class="js-signup-form hide pt-4 p-4" >
+  						
+						<h2 class="fx-animate-1">Signup</h2>
+						<h5 class="fx-animate-3">Create an account</h5>
+						
+					  <!--Full name-->
+						<div class="input-group mb-3 fx-animate-1" >
+						<input type="text" class="form-control p-2" placeholder="Full Name" id="contact-name" name="signup-full-name" onkeyup="validateName()" required>
+						<span class="input-group-text" id="basic-addon2"><i class="bi bi-person"></i></span>
+						<!--error message-->
+						<span id="name-error"></span>
+					  </div>
+
+					  <!--Username-->
+					  <div class="input-group mb-3 fx-animate-1" >
+						  <input type="text" class="form-control p-2" placeholder="username" id="contact-s-username" name="login-username" onkeyup="validateSUsername()" required>
+						  <span class="input-group-text" id="basic-addon2"><i class="bi bi-envelope"></i></span>
+						  <!--error message-->
+						  <span id="s-username-error"></span>
+						</div>
+
+					  <!--Phone number-->
+					  <!--<div class="input-group mb-3 fx-animate-2">
+						  <input type="text" class="form-control p-2" placeholder="Phone number" id="contact-phone" onkeyup="validatePhone()">
+						  <span class="input-group-text" id="basic-addon2"><i class="bi bi-phone"></i></span>-->
+						  <!--error message-->
+						  <!--<span id="phone-error"></span>
+						</div>-->
+					  
+					  <!--Email-->
+					  <!--<div class="input-group mb-3 fx-animate-4" >
+						<input type="text" class="form-control p-2" placeholder="Email" id="contact-s-emai" onkeyup="validateSEmail()">
+						<span class="input-group-text" id="basic-addon2"><i class="bi bi-envelope"></i></span>-->
+						<!--error message-->
+						<!--<span id="s-email-error"></span>
+					  </div>-->
+
+					  <!--Password-->
+					  <div class="input-group mb-3 fx-animate-5">
+						<input type="password" class="form-control p-2" placeholder="Password" id="contact-s-password" name="signup-password" onkeyup="validateSPassword()" required>
+						<span class="input-group-text" id="basic-addon2"><i class="bi bi-key"></i></span>
+						<!--error message-->
+						<span id="s-password-error"></span>
+					  </div>
+
+					  
+					  <div class="mb-3 fx-animate-3">
+						  <button class="btn btn-lg btn-outline-warning" type="submit" onclick="return validateSForm()">Create account</button>
+					  </div>
+					  <div class="mb-3 fx-animate-5">
+						  <a class="text-warning" href="#">Forgot password?</a> or <a onclick="show_login()" class="text-warning" href="#">Login</a>
+					  </div>
+
+					  <!--Follow us-->
+					  <hr>
+					  <div>
+						  Follow us:
+						  <div class="d-flex">
+							  <div class="me-2 fx-animate-4"><a href=""><i class="h3 text-white bi bi-facebook"></i></a></div>
+							  <div class="me-2 fx-animate-5"><a href=""><i class="h3 text-white bi bi-twitter"></i></a></div>
+							  <div class="me-2 fx-animate-6"><a href=""><i class="h3 text-white bi bi-instagram"></i></a></div>
+						  </div>
+
+					  </div>
+
+					  <!--take me back button-->
+					  <br>
+					  <div>
+					  
+						  <div class="d-flex">
+							  <div class="me-2 fx-animate-4"><a href="/customer/index"><i class="h3 text-white bi bi-arrow-left"></i></a></div>
+						  </div>
+
+					  </div>
+
+				</form>
+  					
+  				</div>
+  			</div>
+  		</div>
+    	
+    </main>
+
+  </body>
+
+<!--custom js file-->
+<script src="/js/customer/login/js-login/login.js"></script>  
+<!--icon-->
+<script src="https://kit.fontawesome.com/c4254e24a8.js"></script>
+
+
+</html>

@@ -1,0 +1,80 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Vu Loc
+ID: S3891483
+Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css-javascript/
+-->
+
+<%- include('../vendor-partials/head.ejs') %>
+<link rel="stylesheet" href="/css/vendor/login.css"/>
+
+<body>
+    <div class="container box">
+        <div class="forms signUp">
+            <!-- Registration Form -->
+            <div class="form signup">
+                <span class="title">Registration</span>
+                <form action="#">
+                    <div class="input-field">
+                        <input name="username" type="text" placeholder="Enter your username" required>
+                        <i class="uil uil-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input name="password" type="password" class="password" placeholder="Enter your password" required>
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+                    <div class="input-field">
+                        <input name="name" type="text" placeholder="Enter your business name" required>
+                        <i class="uil uil-house-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input name="address" type="text" placeholder="Enter your business address" required>
+                        <i class="uil uil-building"></i>
+                    </div>
+
+                    <div class="input-field button">
+                        <button type="button" class="text next">Next</button>
+                    </div>
+                </form>
+                <div class="login-signup">
+                    <span class="text">Already a member?
+                        <a href="/vendor/login" class="text login-link">Login Now</a>
+                    </span>
+                </div>
+            </div>
+            <!-- Profile Picture input -->
+            <div class="form image">
+                <span class="title">Registration</span>
+                <div class="upload-img">
+                    <div class="profile-image-container visual">
+                        <label for="upload-file"></label>
+                        <img src="/images/vendor/vendorLogin.png" alt="Profile Image" id="profile-image">
+                        
+                        <input type="file" id="upload-file" accept="jpeg, jpg, png" onchange="readURL(this);">
+                    </div>
+                    <div class="input-field button">
+                        <button type="button" class="text back">Back</button>
+                    </div>
+                    <div class="input-field button">
+                        <button type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        
+ 
+  <script src="/js/vendor/login.js"></script>
+
+
+
+
+</body>
+
+
+
+</html>

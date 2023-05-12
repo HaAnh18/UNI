@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>UNI Store - multi vendor marketplace</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="/images/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">  
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/css/customer/animate/animate.min.css" rel="stylesheet">
+    <link href="/css/customer/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/css/customer/main/css/style.css" rel="stylesheet">
+</head>
+
+
+
+    <!--header-->
+    <%- include('../customer-partials/header/header-user.ejs') %>
+
+
+<body>
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="#">Home</a>
+                    <a class="breadcrumb-item text-dark" href="#">User</a>
+                    <span class="breadcrumb-item active">User's Profile</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <div class="container-xl px-4 mt-4">
+        <!-- Account page navigation-->
+        <nav class="nav nav-borders">
+            <a class="nav-link active ms-0" href="/customer/profile" >Profile</a>
+            <a class="nav-link" href="/customer/orderhistory" >Billing</a>
+            <a class="nav-link" href="/customer/changepassword">Security</a>
+        </nav>
+        <hr class="mt-0 mb-4">
+        <div class="row">
+            <div class="col-xl-4">
+                <!-- Profile picture card-->
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header">Profile Picture</div>
+                    <div class="card-body text-center">
+                        <!-- Profile picture image-->
+                        <img class="img-account-profile rounded-circle mb-2" src="/images/customer/user's-profile/user.png" alt="">
+                        <!-- Profile picture help block-->
+                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                        <!-- Profile picture upload button-->
+                        <button class="btn btn-primary" type="button">Upload new image</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <!-- Account details card-->
+                <div class="card mb-4">
+                    <div class="card-header">Account Details</div>
+                    <div class="card-body">
+                        <form>
+                            <!--username-->
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username123">
+                            </div>
+                            <!-- Form Row-->
+                            <div class="row gx-3 mb-3">
+                                <!--first name-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputFirstName">First name</label>
+                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="John">
+                                </div>
+                                <!-- last name-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLastName">Last name</label>
+                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Doe">
+                                </div>
+                            </div>
+                            <!-- Form Row        -->
+                            <div class="row gx-3 mb-3">
+                                <!-- organization name-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputOrgName">Gender</label>
+                                    <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your gender" value="male">
+                                </div>
+                                <!-- location-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLocation">Location</label>
+                                    <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA">
+                                </div>
+                            </div>
+                            <!-- email address-->
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="johndoe@gmail.com">
+                            </div>
+                            <!-- Form Row-->
+                            <div class="row gx-3 mb-3">
+                                <!-- phone number-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputPhone">Phone number</label>
+                                    <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="123-456-7890">
+                                </div>
+                                <!-- birthday-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputBirthday">Birthday (mm/dd/yyyy)</label>
+                                    <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                                </div>
+                            </div>
+                            <!-- Save changes button-->
+                            <button class="btn btn-primary" type="button">Save changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+    <!--footer-->
+    <%- include('../customer-partials/footer/footer.ejs') %>
+
+
+    <!-- Bottom-to-Top button -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/customer/easing/easing.min.js"></script>
+    <script src="/js/customer/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="/js/customer/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/js/customer/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/customer/main/js/main.js"></script>
+</body>
+
+</html>
