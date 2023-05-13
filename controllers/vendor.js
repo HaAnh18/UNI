@@ -2,22 +2,26 @@ exports.showDashboard = async (req, res) => {
   res.render("vendor/vendor");
 };
 
-exports.showProduct = async (req,res) => {
+exports.showProduct = async (req, res) => {
   res.render("vendor/products");
 };
 
-exports.getSignin = async (req,res) => {
+exports.getSignin = async (req, res) => {
   res.render("vendor/signin");
-}
+};
 
-exports.getSignup = async (req,res) => {
+exports.getSignup = async (req, res) => {
   res.render("vendor/signup");
-}
+};
 
-exports.getAddProduct = async (req,res) => {
+exports.getAddProduct = async (req, res) => {
   res.render("vendor/add-product");
-}
+};
 
-exports.vendorProfile = async (req,res) => {
+exports.vendorProfile = async (req, res) => {
   res.render("vendor/profile");
-}
+};
+
+exports.termService = async (req, res) => {
+  res.render("vendor/termService");
+};

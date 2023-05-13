@@ -11,6 +11,7 @@
   --primary-color: #0e4bf1;
   --panel-color: #f2f2f2;
   --text-color: #000;
+  --white-text: #f2f2f2;
   --black-light-color: #707070;
   --border-color: #e6e5e5;
   --toggle-color: #ddd;
@@ -98,8 +99,8 @@ ody.dark {
 .events .item ul li span.category {
   font-size: 14px;
   text-transform: uppercase;
-  color: #7a6ad8;
-  background-color: #fff;
+  color: var(--text-color);
+  background-color: var(--panel-color);
   padding: 8px 20px;
   border-radius: 25px;
   font-weight: 500;
@@ -121,7 +122,7 @@ ody.dark {
 
 .events .item ul li h6 {
   font-size: 20px;
-  color: #7a6ad8;
+  color: var(--white-text);
   font-weight: 600;
 }
 
