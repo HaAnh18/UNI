@@ -1,3 +1,12 @@
+/* RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Vu Loc
+ID: S3891483
+Acknowledgement: https://www.web-leb.com/code/25 
+*/
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
 
 * {
@@ -99,6 +108,16 @@ ody.dark {
   line-height: 1.5rem;
   font-size: 0.875rem;
   color: rgb(255 255 255);
+  padding: 0.5rem 0.875rem;
+  background-color: rgb(255 255 255 / 0.05);
+  border: 1px solid rgba(253, 253, 253, 0.363);
+  border-radius: 0.375rem;
+  flex: 1 1 auto;
+}
+.container select {
+  outline: none;
+  line-height: 1.5rem;
+  font-size: 0.875rem;
   padding: 0.5rem 0.875rem;
   background-color: rgb(255 255 255 / 0.05);
   border: 1px solid rgba(253, 253, 253, 0.363);
