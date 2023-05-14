@@ -8,31 +8,31 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
 -->
 
 <%- include('../vendor-partials/head.ejs') %>
-<link rel="stylesheet" href="/css/vendor/login.css"/>
+<link rel="stylesheet" href="/css/vendor/signup.css"/>
 
 <body>
-    <div class="container box">
-        <div class="forms signUp">
+    <div class="container">
+        <div class="forms">
             <form>
                 <!-- Registration Form -->
                 <div class="form signup">
                     <span class="title">Registration</span>
               
                         <div class="input-field">
-                            <input name="username" type="text" placeholder="Enter your username" required>
+                            <input name="username" type="text" placeholder="Enter username" required>
                             <i class="uil uil-user"></i>
                         </div>
                         <div class="input-field">
-                            <input name="password" type="password" class="password" placeholder="Enter your password" required>
+                            <input name="password" type="password" class="password" placeholder="Enter password" required>
                             <i class="uil uil-lock icon"></i>
                             <i class="uil uil-eye-slash showHidePw"></i>
                         </div>
                         <div class="input-field">
-                            <input name="businessName" type="text" placeholder="Enter your business name" required>
+                            <input name="businessName" type="text" placeholder="Enter business name" required>
                             <i class="uil uil-house-user"></i>
                         </div>
                         <div class="input-field">
-                            <input name="businessAddress" type="text" placeholder="Enter your business address" required>
+                            <input name="businessAddress" type="text" placeholder="Enter business address" required>
                             <i class="uil uil-building"></i>
                         </div>
 
@@ -57,13 +57,14 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                             
                             <input name="vendorPicture" type="file" id="upload-file" accept="jpeg, jpg, png" onchange="readURL(this);">
                         </div>
-                        <div class="input-field button">
-                            <button type="button" class="text back">Back</button>
-                        </div>
-                        <div class="input-field button">
-                            <button type="submit">Submit</button>
-                        </div>
                     </div>
+                    <div class="input-field button">
+                        <button type="button" class="text back">Back</button>
+                    </div>
+                    <div class="input-field button">
+                        <button type="submit">Submit</button>
+                    </div>
+                    
                 </div>
             </form>
         </div>

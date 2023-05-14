@@ -28,6 +28,9 @@ Acknowledgement: https://www.web-leb.com/code/25
   --box3-color: #b471f1;
   --title-icon-color: #fff;
 
+  /* linear background */
+  --linear-box: linear-gradient(to right, #d4cacd, #bfcad6);
+
   /* ====== Transition ====== */
   --tran-05: all 0.5s ease;
   --tran-03: all 0.3s ease;
@@ -61,12 +64,15 @@ ody.dark {
 .container {
   padding-top: 50px;
 }
+footer .container {
+  padding-top: 0;
+}
 
 /* Background Card */
 .card {
   background: #000046;
   background: -webkit-linear-gradient(to right, #1cb5e0, #000046);
-  background: linear-gradient(to right, #1cb5e0, #000046);
+  background: var(--linear-box);
   border-radius: 24px 24px 24px 24px;
   padding: 48px 48px 48px 308px;
   min-width: 640px;
@@ -86,7 +92,7 @@ ody.dark {
   outline: none;
   line-height: 1.5rem;
   font-size: 16px;
-  color: rgb(255 255 255);
+  color: var(--text-color);
   padding: 0.5rem 0.875rem;
   background-color: rgb(255 255 255 / 0.05);
   border: 1px solid rgba(253, 253, 253, 0.363);

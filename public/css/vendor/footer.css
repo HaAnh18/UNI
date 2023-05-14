@@ -29,11 +29,11 @@ nav.close ~ footer {
   width: calc(100% - 73px);
 }
 .text-success {
-  color: #0e4bf1 !important;
+  color: #ca93a0 !important;
 }
 #tempaltemo_footer {
-  background: -webkit-linear-gradient(to right, #1cb5e0, #000046) !important;
-  background: linear-gradient(to right, #1cb5e0, #000046) !important;
+  background: -webkit-linear-gradient(to bottom, #be3455, #000046) !important;
+  background: linear-gradient(to bottom, #be3455, #000046) !important;
 }
 #tempaltemo_footer a {
   color: #f2f2f2;
@@ -79,6 +79,20 @@ nav.close ~ footer {
 /* Footer Responsive */
 @media (max-width: 1000px) {
   .vendorPage footer {
+    left: 73px;
+    width: calc(100% - 73px);
+  }
+  nav.close ~ footer {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+}
+@media (max-width: 700px) {
+  .vendorPage footer {
+    left: 0;
+    width: calc(100%);
+  }
+  nav.close ~ footer {
     left: 73px;
     width: calc(100% - 73px);
   }

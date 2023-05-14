@@ -25,3 +25,15 @@ exports.vendorProfile = async (req, res) => {
 exports.termService = async (req, res) => {
   res.render("vendor/termService");
 };
+
+exports.pendingOrder = async (req, res) => {
+  res.render("vendor/pendingOrder");
+};
+
+exports.activeOrder = async (req, res) => {
+  res.render("vendor/activeOrder");
+};
+
+exports.cancelledOrder = async (req, res) => {
+  res.render("vendor/cancelledOrder");
+};

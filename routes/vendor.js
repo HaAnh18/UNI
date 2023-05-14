@@ -16,4 +16,10 @@ router.get("/profile", vendor.vendorProfile);
 
 router.get("/termService", vendor.termService);
 
+router.get("/pendingOrder", vendor.pendingOrder);
+
+router.get("/activeOrder", vendor.activeOrder);
+
+router.get("/cancelledOrder", vendor.cancelledOrder);
+
 module.exports = router;
