@@ -34,19 +34,19 @@ Acknowledgement: https://www.web-leb.com/code/25
                         <form class="row g-3">
                             <div class="col-md-6">
                                 <label for="inputName" class="form-label">Product name</label>
-                                <input type="text" class="form-control" required>
+                                <input name="productName" type="text" class="form-control" required>
                             </div>
 
                             <div class="col-12">
                                 <label for="inputDescription" class="form-label">Description</label>
-                                <textarea type="text" maxlenght="500" class="form-control" cols="30"
+                                <textarea name="productDescribtion" type="text" maxlenght="500" class="form-control" cols="30"
                                 rows="10" required> </textarea>
                             </div>
 
 
                             <div class="col-md-4">
                                 <label for="inputCategory" class="form-label">Category</label>
-                                <select class="form-select" required> 
+                                <select name="productCategory" class="form-select" required> 
                                     <option selected disabled> Select Category</option>
                                     <option>Cloth</option>
                                     <option>Book</option>
@@ -55,7 +55,7 @@ Acknowledgement: https://www.web-leb.com/code/25
                             </div>
                             <div class="col-md-2">
                             <label for="inputPrice" class="form-label">Price</label>
-                            <input type="number" class="form-control" required>
+                            <input name="productPrice" type="number" class="form-control" required>
                             </div>
                             <div class="d-grid d-md-flex justify-content-md-start">
                                 <button class="btn btn-primary btn-lg" type="submit">Add your product!</button>
@@ -65,7 +65,7 @@ Acknowledgement: https://www.web-leb.com/code/25
                             <label for="upload-file"></label>
                             <img src="/images/vendor/vendorLogin.png" alt="Profile Image" id="profile-image">
                             
-                            <input type="file" id="upload-file" accept="jpeg, jpg, png" onchange="readURL(this);">
+                            <input name="productPicture" type="file" id="upload-file" accept="jpeg, jpg, png" onchange="readURL(this);">
                         </div>
                     </section> 
                 </div>
