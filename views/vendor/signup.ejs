@@ -16,7 +16,7 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
             <!-- Registration Form -->
             <div class="form signup">
                 <span class="title">Registration</span>
-                <form action="#">
+                <form>
                     <div class="input-field">
                         <input name="username" type="text" placeholder="Enter your username" required>
                         <i class="uil uil-user"></i>
@@ -47,21 +47,23 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
             </div>
             <!-- Profile Picture input -->
             <div class="form image">
-                <span class="title">Registration</span>
-                <div class="upload-img">
-                    <div class="profile-image-container visual">
-                        <label for="upload-file"></label>
-                        <img src="/images/vendor/vendorLogin.png" alt="Profile Image" id="profile-image">
-                        
-                        <input name="vendorPicture" type="file" id="upload-file" accept="jpeg, jpg, png" onchange="readURL(this);">
+                <form>
+                    <span class="title">Registration</span>
+                    <div class="upload-img">
+                        <div class="profile-image-container visual">
+                            <label for="upload-file"></label>
+                            <img src="/images/vendor/vendorLogin.png" alt="Profile Image" id="profile-image">
+                            
+                            <input name="vendorPicture" type="file" id="upload-file" accept="jpeg, jpg, png" onchange="readURL(this);">
+                        </div>
+                        <div class="input-field button">
+                            <button type="button" class="text back">Back</button>
+                        </div>
+                        <div class="input-field button">
+                            <button type="submit">Submit</button>
+                        </div>
                     </div>
-                    <div class="input-field button">
-                        <button type="button" class="text back">Back</button>
-                    </div>
-                    <div class="input-field button">
-                        <button type="submit">Submit</button>
-                    </div>
-                </div>
+                </form>
             </div>
 
         </div>
