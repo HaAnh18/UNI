@@ -6,8 +6,8 @@ exports.showProduct = async (req, res) => {
   res.render("vendor/products");
 };
 
-exports.getSignin = async (req, res) => {
-  res.render("vendor/signin");
+exports.getLogin = async (req, res) => {
+  res.render("vendor/login");
 };
 
 exports.getSignup = async (req, res) => {

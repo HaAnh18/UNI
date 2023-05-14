@@ -43,13 +43,6 @@ body {
   background: linear-gradient(to right, #0083b0, #00b4db);
 }
 
-/* .container .profile-image-container {
-  display: none;
-}
-.container.change .profile-image-container {
-  display: flex;
-} */
-
 /* Give credit for ChatGPT */
 .profile-image-container {
   position: relative;
@@ -132,6 +125,7 @@ body {
   transition: margin-left 0.18s ease, opacity 0.15s ease;
 }
 .container.change .image {
+  margin-top: -74%;
   margin-right: 50%;
   height: 600px;
   opacity: 1;
@@ -139,6 +133,10 @@ body {
 }
 .signUp .signup {
   height: 600px;
+}
+.signUp form {
+  height: 600px;
+  width: 200%;
 }
 .container .form .title {
   position: relative;

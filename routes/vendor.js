@@ -6,7 +6,7 @@ router.get("/", vendor.showDashboard);
 
 router.get("/products", vendor.showProduct);
 
-router.get("/signin", vendor.getSignin);
+router.get("/login", vendor.getLogin);
 
 router.get("/signup", vendor.getSignup);
 
