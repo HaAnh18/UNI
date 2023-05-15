@@ -1,0 +1,71 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Vu Loc
+ID: S3891483
+Acknowledgement: https://www.web-leb.com/code/25 
+-->
+<%- include('../vendor-partials/head.ejs') %>
+<link rel="stylesheet" href="/css/vendor/addProduct.css"/>
+<body class="vendorPage">
+    <%- include('../vendor-partials/vendor-sidebar.ejs') %>
+
+    <section class="section dashboard" id="events">
+        
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+        
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+        </div> 
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                    <h2>Profile</h2>
+                    </div>
+                </div>
+                <div class="container">
+                    <section class="card">
+                        <form class="row g-3">
+                            <div class="col-md-6">
+                              <label for="inputUsername" class="form-label">Username</label>
+                              <input disabled name="username" type="text" class="form-control" value="current username">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="inputPassword4" class="form-label">Password</label>
+                              <input name="password" type="password" class="form-control" id="inputPassword4" value="current password">
+                            </div>
+                            <div class="col-12">
+                              <label for="inputBusinessName" class="form-label">Business Name</label>
+                              <input name="businessName" type="text" class="form-control" id="inputBusinessName" value="Current Business name">
+                            </div>
+                            <div class="col-12">
+                              <label for="inputAddress" class="form-label">Business address</label>
+                              <input name="businessAddress" type="text" class="form-control" id="inputAddress" value="Current Business address">
+                            </div>
+                            <div class="col-12">
+                              <button type="submit" class="btn btn-primary">submit</button>
+                            </div>
+                         
+                          <div class="profile-image-container visual">
+                              <label for="upload-file"></label>
+                              <img src="/images/vendor/vendorLogin.png" alt="Profile Image" id="profile-image">
+                              
+                              <input name="profilePicture" type="file" id="upload-file" accept="jpeg, jpg, png" onchange="readURL(this);">
+                          </div> 
+                        </form>
+                    </section> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="/JS/vendor/script.js"></script>
+    <script src="/JS/vendor/login.js"></script>
+</body>
+<%- include('../vendor-partials/vendor-footer.ejs') %>
+</html>

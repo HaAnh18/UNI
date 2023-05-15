@@ -1,0 +1,97 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Vu Loc
+ID: S3891483
+Acknowledgement: [1] https://github.com/codingmarket07/Terms-and-Condition-Section-Tabs-In-HTML-CSS-and-Javascript.git
+                 [2] https://zyro.com/tools/terms-and-conditions-generator
+-->
+
+<%- include('../vendor-partials/head.ejs') %>
+<link rel="stylesheet" href="/css/vendor/termService.css" />
+
+<div class="wrapper flex_align_justify">
+    <div class="tc_wrap">
+        <div class="tabs_list">
+          <ul>
+            <li data-tc="tab_item_1" class="active">Terms and Conditions</li>
+            <li data-tc="tab_item_2">Cookies</li>
+            <li data-tc="tab_item_3">License</li>
+            <li data-tc="tab_item_4">Hyperlinking to our Content</li>
+            <li data-tc="tab_item_5">Content Liability</li>
+            <li data-tc="tab_item_6">Reservation of Rights</li>
+            <li data-tc="tab_item_7">Removal of links from our website</li>
+            <li data-tc="tab_item_8">Disclaimer</li>
+          </ul>
+        </div>
+        <div class="tabs_content">
+           <div class="tab_head">
+             <h2>Terms and Conditions</h2>
+           </div>
+           <div class="tab_body">
+             <div class="tab_item tab_item_1">
+                 <h3>Welcome to our website!</h3>
+                 <p>These terms and conditions outline the rules and regulations for the use of InsaneGroup's Website, located at https://github.com/HaAnh18/UNI.git.</p>
+               <p>By accessing this website, we assume you accept these terms and conditions. Do not continue to use InsaneGroup if you do not agree to take all of the terms and conditions stated on this page.</p>
+             </div>
+             <div class="tab_item tab_item_2" style="display: none;">
+                 <h3>Cookies</h3>
+               <p>The website uses cookies to help personalize your online experience. By accessing InsaneGroup, you agreed to use the required cookies.</p>
+               <p>A cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you and can only be read by a web server in the domain that issued the cookie to you.</p>
+               <p>We may use cookies to collect, store, and track information for statistical or marketing purposes to operate our website. You have the ability to accept or decline optional Cookies. There are some required Cookies that are necessary for the operation of our website. These cookies do not require your consent as they always work. Please keep in mind that by accepting required Cookies, you also accept third-party Cookies, which might be used via third-party provided services if you use such services on our website, for example, a video display window provided by third parties and integrated into our website.</p>
+             </div>
+             <div class="tab_item tab_item_3"  style="display: none;">
+                 <h3>License</h3>
+                <p>Unless otherwise stated, InsaneGroup and/or its licensors own the intellectual property rights for all material on InsaneGroup. All intellectual property rights are reserved. You may access this from InsaneGroup for your own personal use subjected to restrictions set in these terms and conditions.</p>
+               <p>InsaneGroup reserves the right to monitor all information and remove any information that can be considered inappropriate, offensive, or causes breach of these Terms and Conditions.</p>
+             </div>
+             <div class="tab_item tab_item_4"  style="display: none;">
+                 <h3>Hyperlinking to our Content</h3>
+               <p>The following organizations may link to our Website without prior written approval:</p>
+               <p>- Government agencies;</p>
+               <p>- Search engines;</p>
+               <p>- News organizations;</p>
+               <p>- Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses; and</p>
+               <p>- System-wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</p>
+               <p>These organizations may link to our home page, to publications, or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement, or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party's site.</p>
+             </div>
+             <div class="tab_item tab_item_5"  style="display: none;">
+                 <h3>Content Liability</h3>
+               <p>We shall not be held responsible for any content that appears on your Website. You agree to protect and defend us against all claims that are raised on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene, or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
+             </div>
+             <div class="tab_item tab_item_6"  style="display: none;">
+                <h3>Reservation of Rights</h3>
+              <p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
+            </div>
+            <div class="tab_item tab_item_7"  style="display: none;">
+                <h3>Removal of links from our website</h3>
+              <p>If you find any link on our Website that is offensive for any reason, you are free to contact and inform us at any moment. We will consider requests to remove links, but we are not obligated to or so or to respond to you directly.</p>
+              <p>We do not ensure that the information on this website is correct. We do not warrant its completeness or accuracy, nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.</p>
+            </div>
+            <div class="tab_item tab_item_8"  style="display: none;">
+                <h3>Disclaimer</h3>
+              <p>To the maximum extent permitted by applicable law, we exclude all representations, warranties, and conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>
+              <p>- limit or exclude our or your liability for death or personal injury;</p>
+              <p>- limit or exclude our or your liability for fraud or fraudulent misrepresentation;</p>
+              <p>- limit any of our or your liabilities in any way that is not permitted under applicable law; or</p>
+              <p>- exclude any of our or your liabilities that may not be excluded under applicable law.</p>
+              <p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort, and for breach of statutory duty.</p>
+              <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature. </p>  
+            </div>
+           </div>
+           <div class="tab_foot flex_align_justify">
+            <a href="#">
+                <button class="decline">Decline</button>
+              </a>
+             <a href="/vendor">
+                <button class="agree">Agree</button>
+              </a>
+           </div>
+        </div>
+    </div>
+ </div>
+ 
+ <script src="/JS/vendor/termService.js"></script>
+ 
+ </body>

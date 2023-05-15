@@ -1,0 +1,86 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Vu Loc
+ID: S3891483
+Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-javascript/ 
+-->
+
+<link rel="stylesheet" href="/css/vendor/sidebar.css" />
+
+<nav>
+  <div class="logo-name">
+    <a href="/vendor/profile">
+      <div class="logo-image">
+        <img src="/images/vendor/atlas3.png" alt="" />
+      </div>
+
+      <span class="logo_name">Vendor Name</span>
+    </a>
+  </div>
+
+  <div class="menu-items">
+    <ul class="nav-links">
+      <li>
+        <a href="/vendor">
+          <i class="bi bi-house-door"></i>
+          <span class="link-name">Dahsboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="/vendor/products">
+          <i class="bi bi-box-seam"></i>
+          <span class="link-name">Products</span>
+        </a>
+      </li>
+      <li class="dropdown">
+        <a href="#">
+          <i class="bi bi-truck"></i>
+          <span class="link-name">Orders</span>
+          <i class="bi bi-arrow-right-short arrow"></i>
+        </a>
+        <ul class="sub-menu">
+          <li>
+            <a href="/vendor/pendingOrder">
+              <i class="bi bi-clock-history"></i>
+              <span class="link-name">Pending </span>
+            </a>
+          </li>
+          <li>
+            <a href="/vendor/activeOrder">
+              <i class="bi bi-rocket-takeoff"></i>
+              <span class="link-name">Active</span>
+            </a>
+          </li>
+          <li>
+            <a href="/vendor/cancelledOrder">
+              <i class="bi bi-x-circle"></i>
+              <span class="link-name">Cancelled</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul class="logout-mode">
+      <li>
+        <a href="/vendor/login">
+          <i class="uil uil-signout"></i>
+          <span class="link-name">Logout</span>
+        </a>
+      </li>
+
+      <li class="mode">
+        <a href="#">
+          <i class="uil uil-moon"></i>
+          <span class="link-name">Dark Mode</span>
+        </a>
+
+        <div class="mode-toggle">
+          <span class="switch"></span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
