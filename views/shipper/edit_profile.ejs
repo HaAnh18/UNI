@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="shipper/css/edit/edit_profile.css">
+    
+</head>
+        <%- include('../partials/header.ejs') %>
+<body>
+    <form action="#"></form>
+    <div class="container rounded bg-white mt-5">
+        <div class="row">
+            <div class=" col-md-4 border-right d-flex flex-column align-items-center text-center p-3 py-5"><!---d-flex flex-column align-items-center text-center p-3 py-5---> <!---col-md-4 border-right d-flex justify-content-center--->
+                <img src="shipper/images/avatar.jpg" alt="Avatar" id="photo">
+                        <input name="Avatar"type="file" id="file">
+                        <label for="file" id="uploadbtn"><i class="fas fa-camera"></i></label>
+            </div>
+            <div class="col-md-8">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                            <h6><a href="/dashboard">Back to home</a></h6>
+                        </div>
+                        <h6 class="text-right">Edit Profile</h6>
+                    </div>
+                    <div class="row mt-2">
+                        <div name="Username" class="col-md-6"><input type="text" class="form-control" placeholder="Username"></div>
+                    </div>
+                    <!---Alert---->
+                    <div class="alert alert-danger" role="alert">
+                        A simple danger alert—check it out!
+                    </div>  
+                    <div class="row mt-3">
+                        <div name="Password" class="col-md-6"><input type="text" class="form-control" placeholder="Password"></div>
+                    </div>
+                    <!---Alert---->
+                    <div class="alert alert-danger" role="alert">
+                        A simple danger alert—check it out!
+                    </div>  
+                    <div class="row mt-3">
+                        <div name="Password Confirm" class="col-md-6"><input type="text" class="form-control" placeholder="Password Confirmation"></div>
+                    </div>
+                    <!---Alert---->
+                    <div class="alert alert-danger" role="alert">
+                        A simple danger alert—check it out!
+                    </div>  
+                    <div class="row mt-3">
+                        <div class="dropdown mb-3">
+                            <label for="Distribution Hub">Choose a distribution Hub:</label>
+                            <select id="hubs" name="hubs">
+                              <option value="Distribution Hub A">Distribution Hub A</option>
+                              <option value="Distribution Hub B">Distribution Hub B</option>
+                              <option value="Distribution Hub C">Distribution Hub C</option>
+                              <option value="Distribution Hub D">Distribution Hub D</option>
+                            </select>
+                          </div>
+                    </div>
+                    <!---Alert---->
+                    <div class="alert alert-danger" role="alert">
+                        A simple danger alert—check it out!
+                    </div>  
+                    <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+    <script src="shipper/js/dashboard/js_dashboard.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="public/shipper/js/edit/edit_profile.js"></script>
+    <script src="public/shipper/js/signup/bootstrap.bundle.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> 
+</html>
