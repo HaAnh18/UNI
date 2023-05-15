@@ -6,6 +6,8 @@ const path = require('path');
 const flash = require('connect-flash');
 const Product = require("../models/product");
 const Vendor = require("../models/vendor");
+const Shipper = require("../models/shipper");
+const Order = require("../models/order");
 
 const { popupfunction } = require("../public/js/popupfunction");
 
@@ -31,17 +33,7 @@ exports.handleFileUpload = (req, res, next) => {
 
 exports.signup = async (req, res, next) => {
 
-  const {username} = req.body;
-  const customerExist = await Customer.findOne({username});
-  const usernameExistinShipper = await Shipper.findOne({username: data.username});
-  const usernameExistinVendor = await Vendor.findOne({username: data.username});
-
-  if (customerExist || usernameExistinShipper || usernameExistinVendor) {
-    return res.status(400).json({
-      success: false,
-      message: "Username already exists"
-    })
-  }
+  
 
   try {
     // const customer = await Customer.create(req.body);
@@ -56,6 +48,17 @@ exports.signup = async (req, res, next) => {
       address: req.body.address,
       cart: []
     };
+
+    const customerExist = await Customer.findOne({username: data.username});
+    const usernameExistinShipper = await Shipper.findOne({username: data.username});
+    const usernameExistinVendor = await Vendor.findOne({username: data.username});
+
+  if (customerExist || usernameExistinShipper || usernameExistinVendor) {
+    return res.status(400).json({
+      success: false,
+      message: "Username already exists"
+    })
+  }
   
     Customer.create(data);
 
@@ -122,7 +125,6 @@ exports.signin = async (req, res, next) => {
 
     // console.log(req.user);
     generateToken(customer, 200, res);
-    // res.redirect('/api/customer/products')
     // res.json(req.cookie)
     // res.redirect('/profile');
 
@@ -146,7 +148,7 @@ const generateToken = async (customer, statusCode, res) => {
   .status(statusCode)
   .cookie('token', token, options)
   // .json({success: true, token})
-  .redirect('/api/customer/products')
+  .redirect('/api/customer/homepage');
   // console.log(({success: true, token}))
 }
 
@@ -196,22 +198,23 @@ exports.customerProfile = async (req, res, next) => {
   // })
   // const base64Image = 'data:user.photo;base64'; // your base64 image data here
   // res.send(user.photo);
-  res.render('profile', { user: user.toObject({ getters: true }) });
+  res.render('customer/profile', { user: user.toObject({ getters: true }) });
 }
 
 exports.productProfile = async (req, res, next) => {
-  await Product.findById(req.params.id)
+  const product = await Product.findById(req.params.id)
   // console.log(product.vendorId);
-  .then((product) => {
-    res.render('product', {product: product})
-  })
-  .catch((error) => console.log(error.message));
+  const vendor = await Vendor.findById(product.vendorId);
+  // console.log(vendor.name);
+  res.render('customer/detail', {product: product, vendor: vendor});
+  
 };
 
 exports.productVendor = async (req, res, next) => {
   const product = await Product.find({vendorId: req.params.id})
   const vendor = await Vendor.findById(req.params.id)
-  res.render("profile-vendor", {vendor: vendor, product: product})
+  
+  res.render("customer/vendor-page", {vendor: vendor, products: product})
     // res.json(product);
 
 }
@@ -241,6 +244,7 @@ exports.addToCart = async (req, res, next) => {
 exports.showCart = async (req,res,next) => {
   try {
     const products = [];
+    var total = 0;
     const customer = await Customer.findById(req.user);
     // console.log(customer.cart.length);
     for (var i = 0; i<customer.cart.length; i++) {
@@ -255,32 +259,117 @@ exports.showCart = async (req,res,next) => {
       // product["quantity"] = customer.cart.quantity;
       Object.assign(product, {quantity: customer.cart[i].quantity});
       products.push(product);
+      total += product.quantity * product.price;
       // console.log(product.quantity);
       // console.log(product.quantity);
       // console.log(product.name);
 
       // console.log(`${names[index]} is at position ${index}`)
     }
-    // console.log(products);
-    // console.log("1" + products);
-    // const product = await Product.findById();
-    // res.json(customer.cart);
-    res.render('cart', {products: products});
+    // console.log(total);
+    res.render('customer/cart', {products: products, total: total});
     // console.log(customer.cart);
   } catch (error) {
     console.log(error.message);
   }
 }
 
+exports.showProduct = async (req,res) => {
+  const featureProducts = [];
+  Product.find()
+  .then(
+    (products) => {
+      if (products.length <= 8) {
+        res.render('customer/index', {products: products});
+      } else {
+        for (var i = 0; i< products.lenght; i++) {
+          featureProducts.push(products[i])
+        };
+        res.render('customer/index', {products: featureProducts});
+      }
+    }
+  )
+  .catch((error) => {console.log(error.message)});
+};
+
+exports.createOrder = async (req,res) => {
+    try {
+      const products = [];
+      var total = 0;
+      const customer = await Customer.findById(req.user);
+      // console.log(customer.cart.length);
+      for (var i = 0; i< customer.cart.length; i++) {
+        var product = await Product.findById(customer.cart[i].product);
+        Object.assign(product, {quantity: customer.cart[i].quantity});
+        products.push(product);
+        total += product.quantity * product.price;
+      };
+
+      let groupBy = (array, key) => {
+        return array.reduce((result, obj) => {
+           (result[obj[key]] = result[obj[key]] || []).push(obj);
+           return result;
+        }, {});
+     };
+
+     var splitOrder = groupBy(products, "vendorId");
+     var numberOfVendor = Object.keys(splitOrder).length;
+    
+    //  console.log(Object.values(splitOrder)[0]);
+     for (var n = 0; n<numberOfVendor; n++) {
+      var listOfItems = [];
+      //  var items = [Object.values(splitOrder)[n][n].id, Object.values(splitOrder)[n][n].quantity];
+      //  console.log(items);
+      for (var m = 0; m<Object.values(splitOrder)[n].length; m++) {
+        var items = { 
+          productId: Object.values(splitOrder)[n][m].id, 
+          quantity: Object.values(splitOrder)[n][m].quantity
+        };
+        // console.log(items);
+        // console.log('test');
+        listOfItems.push(items);
+      }
+
+      console.log(listOfItems);
+       var orderInfo = {
+         customer: customer.id,
+         vendor: Object.keys(splitOrder)[n],
+         total: total,
+         products: listOfItems,
+       }
+
+      //  orderInfo.products.push(Object.values(splitOrder)[n]);
+      // console.log(Object.values(splitOrder)[n]);
+      Order.create(orderInfo);
+
+
+      // console.log(orderInfo.products);
+
+      //  console.log(order.id);
+      //  order.products.push(Object.values(splitOrder)[n]);
+      //  await order.save();
+
+     }
+    //  console.log(splitOrder);
+
+      // console.log(eachVendor);
+      // console.log(total);
+      // res.render('customer/cart', {products: products, total: total});
+      // console.log(customer.cart);
+    } catch (error) {
+    console.log(error.message);
+  }
+}
+
 
 //frontend
-exports.getHomepage = (req,res) => {
-  res.render("customer/index");
-};
+// exports.getHomepage = (req,res) => {
+//   res.render("customer/index");
+// };
 
-exports.getCart = (req,res) => {
-  res.render("customer/cart");
-};
+// exports.getCart = (req,res) => {
+//   res.render("customer/cart");
+// };
 
 exports.getCheckout = (req,res) => {
   res.render("customer/checkout");
@@ -303,12 +392,18 @@ exports.getSignup = (req,res) => {
 };
 
 exports.getShop = (req,res) => {
-  res.render("customer/shop");
+  Product.find()
+  .then(
+    (products) => {
+        res.render('customer/shop', {products: products});
+    }
+  )
+  .catch((error) => {console.log(error.message)});
 };
 
-exports.customerProfile = (req,res) => {
-  res.render("customer/profile");
-};
+// exports.customerProfile = (req,res) => {
+//   res.render("customer/profile");
+// };
 
 exports.getOrderHistory = (req,res) => {
   res.render("customer/order");

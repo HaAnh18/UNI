@@ -55,16 +55,16 @@
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner bg-light">
                         <div class="carousel-item active">
-                            <img class="w-100 h-100" src="/img/user/main/product-1.jpg" alt="Image">
+                            <img class="w-100 h-100" src="data:<%= product.photo.contentType %>;base64,<%= product.photo.data.toString('base64') %>" alt="Image">
                         </div>
                         <div class="carousel-item">
-                            <img class="w-100 h-100" src="/img/user/main/product-1.jpg" alt="Image">
+                            <img class="w-100 h-100" src="data:<%= product.photo.contentType %>;base64,<%= product.photo.data.toString('base64') %>" alt="Image">
                         </div>
                         <div class="carousel-item">
-                            <img class="w-100 h-100" src="/img/user/main/product-1.jpg" alt="Image">
+                            <img class="w-100 h-100" src="data:<%= product.photo.contentType %>;base64,<%= product.photo.data.toString('base64') %>" alt="Image">
                         </div>
                         <div class="carousel-item">
-                            <img class="w-100 h-100" src="/img/user/main/product-1.jpg" alt="Image">
+                            <img class="w-100 h-100" src="data:<%= product.photo.contentType %>;base64,<%= product.photo.data.toString('base64') %>" alt="Image">
                         </div>
                     </div>
                     <!--Direction arrow-->
@@ -80,23 +80,11 @@
             <!--Product's Information-->
             <div class="col-lg-7 h-auto mb-30">
                 <div class="h-100 bg-light p-30">
-                    <h3>Product Name Goes Here</h3>
-                    <div class="d-flex mb-3">
-                        <!--Review Stars-->
-                        <div class="text-primary mr-2">
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star-half-alt"></small>
-                            <small class="far fa-star"></small>
-                        </div>
-                        <small class="pt-1">(99 Reviews)</small>
-                    </div>
+                    <h3><%= product.name %></h3>
+                   
 
-                    <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
-                    <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit
-                        clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no sea
-                        Nonumy</p>
+                    <h3 class="font-weight-semi-bold mb-4"><%= product.price %> AUD</h3>
+                    <p class="mb-4"><%= product.description %></p>
                     <!--Version (since not use anymore this will serve as space)-->
                     <div class="d-flex mb-3">
                         <!-- <strong class="text-dark mr-3">Version:</strong>
@@ -172,9 +160,9 @@
                         <!--vendor's Description-->
                         <div class="row align-items-center bg-light py-2">
                             <div class="col-6 col-sm-4 col-md-4 d-flex align-items-center">
-                                <img src="/img/user/user's-profile/user.png" alt="Vendor Image" class="rounded-circle me-2" width="100" height="100">
+                                <img src="data:<%= vendor.photo.contentType %>;base64,<%= vendor.photo.data.toString('base64') %>" alt="Vendor Image" class="rounded-circle me-2" width="100" height="100">
                                 <div>
-                                    <h5 class="m-0">Vendor Name</h5>
+                                    <h5 class="m-0"><%= vendor.name %></h5>
                                     <p class="m-0 text-muted">Online</p>
                                     <div class="text-primary mb-2">
                                         <i class="fas fa-star"></i>
@@ -200,7 +188,7 @@
                             </div>
         
                             <div class="col-6 col-sm-4 col-md-4 d-flex align-items-center justify-content-end">   
-                                <a href="/users/vendor-page" class="btn btn-primary">View Shop</a>
+                                <a href="/api/customer/vendor/<%= vendor.id %>" class="btn btn-primary">View Shop</a>
                             </div>
                         </div>
                     </div>
@@ -223,8 +211,7 @@
                         <!--Product's Description-->
                         <div class="tab-pane fade show active" id="tab-pane-1">
                             <h4 class="mb-3">Product Description</h4>
-                            <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod takimata dolor ea invidunt.</p>
-                            <p>Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum. Amet dolore tempor consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita clita diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed et diam takimata sed justo. Magna takimata justo et amet magna et.</p>
+                            <p><%= product.description %></p>
                         </div>
                          <!--Product's Information-->
                         <div class="tab-pane fade" id="tab-pane-2">
@@ -328,156 +315,7 @@
 
 
 
-    <!-- Products Start -->
-    <div class="container-fluid py-5">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">You May Also Like</span></h2>
-        <div class="row px-xl-5">
-            <div class="col">
-                <div class="owl-carousel related-carousel">
-                    <!--Product-->
-                    <div class="product-item bg-light">
-                        <!--product's image & buttons with icons-->
-                        <div class="product-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="/img/user/main/product-1.jpg" alt="">
-                            <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                                
-                            </div>
-                        </div>
-                        <!--product's content-->
-                        <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                            <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5>$123.00</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                            <!--product's review stars-->
-                            <div class="d-flex align-items-center justify-content-center mb-1">
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Product-->
-                    <div class="product-item bg-light">
-                        <!--product's image & buttons with icons-->
-                        <div class="product-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="/img/user/main/product-2.jpg" alt="">
-                            <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                                
-                            </div>
-                        </div>
-                        <!--product's content-->
-                        <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                            <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5>$123.00</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                            <!--product's review stars-->
-                            <div class="d-flex align-items-center justify-content-center mb-1">
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Product-->
-                    <div class="product-item bg-light">
-                        <!--product's image & buttons with icons-->
-                        <div class="product-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="/img/user/main/product-3.jpg" alt="">
-                            <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                                
-                            </div>
-                        </div>
-                        <!--product's content-->
-                        <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                            <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5>$123.00</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                            <!--product's review stars-->
-                            <div class="d-flex align-items-center justify-content-center mb-1">
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Product-->
-                    <div class="product-item bg-light">
-                        <!--product's image & buttons with icons-->
-                        <div class="product-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="/img/user/main/product-4.jpg" alt="">
-                            <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                                
-                            </div>
-                        </div>
-                        <!--product's content-->
-                        <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                            <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5>$123.00</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                            <!--product's review stars-->
-                            <div class="d-flex align-items-center justify-content-center mb-1">
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Product-->
-                    <div class="product-item bg-light">
-                        <!--product's image & buttons with icons-->
-                        <div class="product-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="/img/user/main/product-5.jpg" alt="">
-                            <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                                
-                            </div>
-                        </div>
-                        <!--product's content-->
-                        <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                            <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5>$123.00</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                            <!--product's review stars-->
-                            <div class="d-flex align-items-center justify-content-center mb-1">
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Products End -->
+   
 
 
     <!--footer-->

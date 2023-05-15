@@ -224,13 +224,7 @@ exports.addProduct = async (req, res, next) => {
   }
 }
 
-exports.showProduct = async (req,res) => {
-  Product.find()
-  .then(
-    (products) => {res.render('all-products', {products: products})}
-  )
-  .catch((error) => {console.log(error.message)});
-}
+
 
 
 

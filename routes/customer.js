@@ -9,15 +9,17 @@ router.get('/signup', customer.getSignup);
 
 router.post('/signup', customer.handleFileUpload, signup);
 
-router.post('/signin', signin);
+router.get('/signin', customer.getSignin);
 
-router.get('/homepage', customer.getHomepage);
+router.post('/signin', customer.signin);
+
+// router.get('/homepage', customer.getHomepage);
 
 router.get('/logout', logout);
 
-router.get('/signin', (req,res) => {
-  res.render('login');
-})
+// router.get('/signin', (req,res) => {
+//   res.render('login');
+// })
  router.get('/getme', isAuthenticated, customerProfile);
 
 // router.get('/customer',verifyToken, getMe);
@@ -25,11 +27,11 @@ router.get('/signin', (req,res) => {
 // Example usage:
 // router.get('/customer', verifyToken, getMe);
 
-router.get('/products', showProduct);
+router.get('/homepage', customer.showProduct);
 
 router.get('/product/:id', productProfile);
 
-router.get('/vendor/:id', productVendor);
+router.get('/vendor/:id', customer.productVendor);
 
 router.get('/product/:id/addtocart', isAuthenticated, addToCart);
 
@@ -43,15 +45,14 @@ router.get('/cart', isAuthenticated, showCart);
 //frontend
 
 
-router.get('/cart', customer.getCart);
+// router.get('/cart', customer.getCart);
 
-router.get('/checkout', customer.getCheckout);
+router.get('/checkout', isAuthenticated, customer.createOrder);
 
 router.get('/contact', customer.getContact);
 
 router.get('/product', customer.getProduct);
 
-router.get('/signin', customer.getSignin);
 
 
 router.get('/shop', customer.getShop);

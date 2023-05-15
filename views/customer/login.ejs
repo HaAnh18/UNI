@@ -31,14 +31,14 @@
   				<div class="">
   					
 					<!--Login section-->
-  					<form class="js-login-form pt-4 p-4" >
+  					<form class="js-login-form pt-4 p-4" method="POST" action="/api/customer/signin">
   						
   						<h2 class="fx-animate-1">Login</h2>
   						<h5 class="fx-animate-3">Please enter your details</h5>
 
 						<!--Username-->
   						<div class="input-group mb-4 fx-animate-1" >
-						  <input type="text" class="form-control p-3" placeholder="username" id="contact-l-username" name="login-username" onkeyup="validateLUsername()" required>
+						  <input type="text" class="form-control p-3" placeholder="username" id="contact-l-username" name="username" required>
 						  <span class="input-group-text" id="basic-addon2"><i class="bi bi-envelope"></i></span>
 						  <!--error message-->
 						  <span id="l-username-error"></span>
@@ -46,14 +46,14 @@
 
 						<!--Password-->
 						<div class="input-group mb-4 fx-animate-2">
-						  <input type="password" class="form-control p-3" placeholder="Password" id="contact-l-password" name="login-password" onkeyup="validateLPassword()" required> 
+						  <input type="password" class="form-control p-3" placeholder="Password" id="contact-l-password" name="password" required> 
 						  <span class="input-group-text" id="basic-addon2"><i class="bi bi-key"></i></span>
 						  <!--error message-->
 						  <span id="l-password-error"></span>
 						</div>
 						
 						<div class="mb-4 fx-animate-3">
-							<button class="btn btn-lg btn-outline-warning" type="submit" onclick="return validateLForm()">Login</button>
+							<button class="btn btn-lg btn-outline-warning" type="submit">Login</button>
 						</div>
 						<div class="mb-4 fx-animate-5">
 							<a class="text-warning" href="#">Forgot password?</a> or <a onclick="show_signup()" class="text-warning" href="#">Signup</a>
