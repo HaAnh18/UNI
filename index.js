@@ -20,8 +20,10 @@ app.set("views", "./views"); // setting config option for views folder
 
 const vendorRoute = require("./routes/vendor");
 const userRoute = require("./routes/customer");
+const shipperRoute = require("./routes/shipper");
 app.use("/vendor", vendorRoute);
 app.use("/customer",userRoute);
+app.use('/shipper', shipperRoute);
 
 
 // Starting
