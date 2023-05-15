@@ -6,6 +6,7 @@ Author: Vu Loc
 ID: S3891483
 Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-javascript/ 
 */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;700&display=swap");
 
 body {
   min-height: 100vh;
