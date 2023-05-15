@@ -45,9 +45,9 @@ exports.signup = async (req, res, next) => {
 
     res.json(data);
 
-    // const shipperExist = await Shipper.findOne({username: data.username});
-    // const usernameExistinCustomer = await Customer.findOne({username: data.username});
-    // const usernameExistinVendor = await Vendor.findOne({username: data.username});
+    const shipperExist = await Shipper.findOne({username: data.username});
+    const usernameExistinCustomer = await Customer.findOne({username: data.username});
+    const usernameExistinVendor = await Vendor.findOne({username: data.username});
 
     // if (shipperExist || usernameExistinCustomer || usernameExistinVendor) {
     //   res.status(400).json({

@@ -3,15 +3,15 @@ const router = express.Router();
 const {signup, signin, logout, getMe, handleFileUpload, showCart, customerProfile, addToCart, productProfile, productVendor} = require("../controllers/customer");
 const {isAuthenticated} = require('../middlewares/auth');
 const {showProduct} = require('../controllers/vendor')
-const Vendor = require("../models/vendor");
+const customer = require("../controllers/customer");
 
-router.get('/signup', (req,res)=>{
-  res.render("signup");
-})
+router.get('/signup', customer.getSignup);
 
-router.post('/signup', handleFileUpload, signup);
+router.post('/signup', customer.handleFileUpload, signup);
 
 router.post('/signin', signin);
+
+router.get('/homepage', customer.getHomepage);
 
 router.get('/logout', logout);
 
@@ -41,7 +41,7 @@ router.get('/cart', isAuthenticated, showCart);
 
 
 //frontend
-router.get('/homepage', customer.getHomepage);
+
 
 router.get('/cart', customer.getCart);
 
@@ -53,7 +53,6 @@ router.get('/product', customer.getProduct);
 
 router.get('/signin', customer.getSignin);
 
-router.get('/signup', customer.getSignup);
 
 router.get('/shop', customer.getShop);
 

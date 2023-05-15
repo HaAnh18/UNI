@@ -79,10 +79,10 @@ app.listen(port, () => {
 
 
 
-//frontend
-const vendorRoute = require("./routes/vendor");
-const userRoute = require("./routes/customer");
-const shipperRoute = require("./routes/shipper");
-app.use("/vendor", vendorRoute);
-app.use("/customer",userRoute);
-app.use('/shipper', shipperRoute);
+// //frontend
+// const vendorRoute = require("./routes/vendor");
+// const userRoute = require("./routes/customer");
+// const shipperRoute = require("./routes/shipper");
+// app.use("/vendor", vendorRoute);
+// app.use("/customer",userRoute);
+// app.use('/shipper', shipperRoute);

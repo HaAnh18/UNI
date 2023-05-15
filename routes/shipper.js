@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {signup, signin, logout, getMe, handleFileUpload, shipperProfile} = require("../controllers/shipper");
 const {isAuthenticated} = require('../middlewares/auth-shipper');
+const shipper = require('../controllers/shipper');
 
 router.get('/signup', (req,res)=>{
   res.render("signup-shipper");

@@ -31,16 +31,17 @@ exports.handleFileUpload = (req, res, next) => {
 
 exports.signup = async (req, res, next) => {
 
-  // const {username} = req.body;
-  // const customerExist = await Customer.findOne({username});
+  const {username} = req.body;
+  const customerExist = await Customer.findOne({username});
+  const usernameExistinShipper = await Shipper.findOne({username: data.username});
+  const usernameExistinVendor = await Vendor.findOne({username: data.username});
 
-  // if (customerExist) {
-  //   return res.status(400).json({
-  //     success: false,
-  //     message: "Username already exists"
-  //   })
-  // }
-
+  if (customerExist || usernameExistinShipper || usernameExistinVendor) {
+    return res.status(400).json({
+      success: false,
+      message: "Username already exists"
+    })
+  }
 
   try {
     // const customer = await Customer.create(req.body);
@@ -83,15 +84,13 @@ exports.signin = async (req, res, next) => {
     username: req.body.username,
     password: req.body.password
   }
-  // res.json(info.username);
   try {
-    // const {username, password} = req.body;
     
     if (!info.username || !info.password) {
-      // return res.status(400).json({
-      //   success: false,
-      //   message: "Username and password are required"
-      // })
+      return res.status(400).json({
+        success: false,
+        message: "Username and password are required"
+      })
       // flash('error', 'Please enter your username and password');
       // return res.redirect('/api/customer/signin');
       // return res.render("signin", {message: "Please enter your username and password"})
@@ -131,8 +130,6 @@ exports.signin = async (req, res, next) => {
     console.log(error);
     next(new ErrorResponse(`Cannot log in, check your credentials`, 400));
   }
-
-  
 }
 
 
@@ -302,7 +299,7 @@ exports.getSignin = (req,res) => {
 };
 
 exports.getSignup = (req,res) => {
-  res.render("users/signup");
+  res.render("customer/signup");
 };
 
 exports.getShop = (req,res) => {

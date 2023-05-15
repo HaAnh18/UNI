@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {signup, signin, logout, getMe, handleFileUpload, vendorProfile, addProduct} = require("../controllers/vendor");
 const {isAuthenticated} = require('../middlewares/auth-vendor');
+const vendor = require('../controllers/vendor');
 
 router.get('/signup', (req,res)=>{
   res.render("signup-vendor");
