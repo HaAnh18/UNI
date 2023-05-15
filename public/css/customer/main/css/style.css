@@ -159,8 +159,14 @@ a {
 
 a:hover {
   color: #e6b400;
-  text-decoration: underline;
+  border-bottom: 1px white solid;
 }
+
+.footer-link,
+.header-link {
+  width: fit-content;
+}
+
 
 a:not([href]):not([class]) {
   color: inherit;
