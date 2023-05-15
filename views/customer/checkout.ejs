@@ -8,7 +8,7 @@
     
 
     <!-- Favicon -->
-    <link href="images/favicon.ico" rel="icon">
+    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -18,15 +18,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="/css/customer/animate/animate.min.css" rel="stylesheet">
-    <link href="/css/customer/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/css/user/animate/animate.min.css" rel="stylesheet">
+    <link href="/css/user/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="/css/customer/main/css/style.css" rel="stylesheet">
+    <link href="/css/user/main/css/style.css" rel="stylesheet">
 </head>
 
 <!--header-->
-<%- include('../customer-partials/header/header.ejs') %>
+<%- include('../partials/header/header.ejs') %>
 
 <body>
     
@@ -55,49 +55,12 @@
                 <div class="bg-light p-30 mb-5">
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <label>First Name</label>
-                            <input class="form-control" type="text" placeholder="John" name="checkout-first-name">
+                            <label>Full Name</label>
+                            <input class="form-control" type="text" placeholder="John" name="checkout-full-name">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Last Name</label>
-                            <input class="form-control" type="text" placeholder="Doe" name="checkout-last-name">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com" name="checkout-email">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Mobile No.</label>
-                            <input class="form-control" type="text" placeholder="+123 456 789" name="checkout-phone-number">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Address Line 1</label>
-                            <input class="form-control" type="text" placeholder="123 Street" name="checkout-address-1">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Address Line 2</label>
-                            <input class="form-control" type="text" placeholder="123 Street" name="checkout-address-2">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Country</label>
-                            <select class="custom-select">
-                                <option selected>Viet Nam</option>
-                                <option>Singapore</option>
-                                <option>Japanese</option>
-                                <option>China</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>City</label>
-                            <input class="form-control" type="text" placeholder="Ho Chi Minh" name="checkout-city">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>State</label>
-                            <input class="form-control" type="text" placeholder="Ho Chi Minh" name="checkout-state">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>ZIP Code</label>
-                            <input class="form-control" type="text" placeholder="123" name="checkout-ZIP-code">
+                            <label>Address</label>
+                            <input class="form-control" type="text" placeholder="123 Street" name="checkout-address">
                         </div>
                         <div class="col-md-12">
                             <div class="custom-control custom-checkbox">
@@ -114,49 +77,12 @@
                     <div class="bg-light p-30">
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <label>First Name</label>
-                                <input class="form-control" type="text" placeholder="John" name="ship-to-different-address-form-first-name">
+                                <label>Full Name</label>
+                                <input class="form-control" type="text" placeholder="John" name="ship-to-different-address-form-full-name">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label>Last Name</label>
-                                <input class="form-control" type="text" placeholder="Doe" name="ship-to-different-address-form-last-name">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>E-mail</label>
-                                <input class="form-control" type="text" placeholder="example@email.com" name="ship-to-different-address-form-email">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Mobile No</label>
-                                <input class="form-control" type="text" placeholder="+123 456 789" name="ship-to-different-address-form-phone-number">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Address Line 1</label>
-                                <input class="form-control" type="text" placeholder="123 Street" name="ship-to-different-address-form-address-1">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Address Line 2</label>
-                                <input class="form-control" type="text" placeholder="123 Street" name="ship-to-different-address-form-address-2">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Country</label>
-                                <select class="custom-select">
-                                    <option selected>Viet Nam</option>
-                                    <option>Singapore</option>
-                                    <option>Japanese</option>
-                                    <option>China</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>City</label>
-                                <input class="form-control" type="text" placeholder="Ho Chi Minh" name="ship-to-different-address-form-city">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>State</label>
-                                <input class="form-control" type="text" placeholder="Ho Chi Minh" name="ship-to-different-address-form-state">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>ZIP Code</label>
-                                <input class="form-control" type="text" placeholder="123" name="ship-to-different-address-form-ZIP-code">
+                                <label>Address</label>
+                                <input class="form-control" type="text" placeholder="123 Street" name="ship-to-different-address-form-address">
                             </div>
                         </div>
                     </div>
@@ -222,7 +148,7 @@
                                 <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
                             </div>
                         </div>
-                        <button class="btn btn-block btn-primary font-weight-bold py-3">Place Order</button>
+                        <button class="btn btn-block btn-primary font-weight-bold py-3"> <a href="/users/index"> <h5>Place Order</h5></a></button>
                     </div>
                 </div>
             </div>
@@ -232,7 +158,7 @@
 
 
     <!--footer-->
-    <%- include('../customer-partials/footer/footer.ejs') %>
+    <%- include('../partials/footer/footer.ejs') %>
 
 
     <!-- Back to Top -->
@@ -242,15 +168,15 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/customer/easing/easing.min.js"></script>
-    <script src="/js/customer/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/js/user/easing/easing.min.js"></script>
+    <script src="/js/user/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Contact Javascript File -->
-    <script src="/js/customer/mail/jqBootstrapValidation.min.js"></script>
-    <script src="/js/customer/mail/contact.js"></script>
+    <script src="/js/user/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/js/user/mail/contact.js"></script>
 
     <!-- Template Javascript -->
-    <script src="/js/customer/main/js/main.js"></script>
+    <script src="/js/user/main/js/main.js"></script>
 </body>
 
 </html>

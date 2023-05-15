@@ -18,15 +18,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="/css/customer/animate/animate.min.css" rel="stylesheet">
-    <link href="/css/customer/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/css/user/animate/animate.min.css" rel="stylesheet">
+    <link href="/css/user/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="/css/customer/main/css/style.css" rel="stylesheet">
+    <link href="/css/user/main/css/style.css" rel="stylesheet">
 </head>
 
 <!--header-->
-<%- include('../customer-partials/header/header.ejs') %>
+<%- include('../partials/header/header.ejs') %>
 
 <body>
     
@@ -54,27 +54,32 @@
                 <div class="contact-form bg-light p-30">
                     <div id="success"></div>
                     <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <!---->
                         <div class="control-group">
                             <input type="text" class="form-control" id="name" placeholder="Your Name"
                                 required="required" data-validation-required-message="Please enter your name" name="contact-name"/>
                             <p class="help-block text-danger"></p>
                         </div>
+                        <!---->
                         <div class="control-group">
                             <input type="email" class="form-control" id="email" placeholder="Your Email"
                                 required="required" data-validation-required-message="Please enter your email" name="contact-email"/>
                             <p class="help-block text-danger"></p>
                         </div>
+                        <!---->
                         <div class="control-group">
                             <input type="text" class="form-control" id="subject" placeholder="Subject"
                                 required="required" data-validation-required-message="Please enter a subject" name="contact-subject"/>
                             <p class="help-block text-danger"></p>
                         </div>
+                        <!---->
                         <div class="control-group">
                             <textarea class="form-control" rows="8" id="message" placeholder="Message"
                                 required="required"
                                 data-validation-required-message="Please enter your message" name="contact-message"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
+                        <!--button-->
                         <div>
                             <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Send Message</button>
                         </div>
@@ -101,7 +106,7 @@
 
 
     <!--footer-->
-    <%- include('../customer-partials/footer/footer.ejs') %>
+    <%- include('../partials/footer/footer.ejs') %>
 
 
     <!-- Back to Top -->
@@ -111,15 +116,15 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/customer/easing/easing.min.js"></script>
-    <script src="/js/customer/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/js/user/easing/easing.min.js"></script>
+    <script src="/js/user/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Contact Javascript File -->
-    <script src="/js/customer/mail/jqBootstrapValidation.min.js"></script>
-    <script src="/js/customer/mail/contact.js"></script>
+    <script src="/js/user/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/js/user/mail/contact.js"></script>
 
     <!-- Template Javascript -->
-    <script src="/js/customer/main/js/main.js"></script>
+    <script src="/js/user/main/js/main.js"></script>
 </body>
 
 </html>
