@@ -16,31 +16,12 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
   font-family: "Poppins", sans-serif;
 }
 
-:root {
-  /* ===== Colors ===== */
-  --primary-color: #0e4bf1;
-  --panel-color: #fff;
-  --text-color: #000;
-  --black-light-color: #707070;
-  --border-color: #e6e5e5;
-  --toggle-color: #ddd;
-  --box1-color: #4da3ff;
-  --box2-color: #ffe6ac;
-  --box3-color: #e7d1fc;
-  --title-icon-color: #fff;
-
-  /* ====== Transition ====== */
-  --tran-05: all 0.5s ease;
-  --tran-03: all 0.3s ease;
-  --tran-03: all 0.2s ease;
-}
-
 body {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to right, #0083b0, #00b4db);
+  background: var(--primary-background);
 }
 
 /* Give credit for ChatGPT */
@@ -117,7 +98,7 @@ body {
 .field .error {
   display: flex;
   align-items: center;
-  color: #d93025;
+  color: var(--red);
   font-size: 13px;
   display: none;
 }

@@ -13,7 +13,10 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
   <div class="logo-name">
     <a href="/api/vendor/profile">
       <div class="logo-image">
-        <img src="data:<%= vendor.photo.contentType %>;base64,<%= vendor.photo.data.toString('base64') %>" alt="" />
+        <img
+          src="data:<%= vendor.photo.contentType %>;base64,<%= vendor.photo.data.toString('base64') %>"
+          alt=""
+        />
       </div>
 
       <span class="logo_name"><%= vendor.name %></span>
@@ -42,19 +45,19 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/vendor/pendingOrder">
+            <a href="/api/vendor/pendingOrder">
               <i class="bi bi-clock-history"></i>
               <span class="link-name">Pending </span>
             </a>
           </li>
           <li>
-            <a href="/vendor/activeOrder">
+            <a href="/api/vendor/activeOrder">
               <i class="bi bi-rocket-takeoff"></i>
               <span class="link-name">Active</span>
             </a>
           </li>
           <li>
-            <a href="/vendor/cancelledOrder">
+            <a href="/api/vendor/cancelledOrder">
               <i class="bi bi-x-circle"></i>
               <span class="link-name">Cancelled</span>
             </a>

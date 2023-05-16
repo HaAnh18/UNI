@@ -16,25 +16,6 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
   font-family: "Poppins", sans-serif;
 }
 
-:root {
-  /* ===== Colors ===== */
-  --primary-color: #0e4bf1;
-  --panel-color: #f2f2f2;
-  --text-color: #000;
-  --black-light-color: #707070;
-  --border-color: #e6e5e5;
-  --toggle-color: #ddd;
-  --box1-color: #f06292;
-  --box2-color: #ffe6ac;
-  --box3-color: #ba68c8;
-  --title-icon-color: #fff;
-
-  /* ====== Transition ====== */
-  --tran-05: all 0.5s ease;
-  --tran-03: all 0.3s ease;
-  --tran-03: all 0.2s ease;
-}
-
 body {
   min-height: 100vh;
 }
@@ -138,20 +119,26 @@ nav.close ~ .dashboard {
 }
 .activity-data .data {
   display: flex;
-  flex-direction: column;
   margin: 0 15px;
 }
-.activity-data .data-title {
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--text-color);
-}
 .activity-data .data .data-list {
+  width: 300px;
   font-size: 18px;
   font-weight: 400;
   margin-top: 20px;
+  padding: 0 24px;
   white-space: nowrap;
   color: var(--text-color);
+}
+.activity-data .data-title {
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
+.activity-data .data .badge {
+  width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Responsive styles */

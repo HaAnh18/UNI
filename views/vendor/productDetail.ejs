@@ -34,19 +34,20 @@ Acknowledgement: https://www.web-leb.com/code/25
                         <form class="row g-3"  method="POST" action="/api/vendor/addproduct" enctype="multipart/form-data">
                             <div class="col-md-6">
                                 <label for="name" class="form-label">Product name</label>
-                                <input name="name" id="name" type="text" class="form-control" required>
+                                <input name="name" value="Current Name" id="name" type="text" class="form-control" required>
                             </div>
 
                             <div class="col-12">
                                 <label for="description" class="form-label">Description</label>
-                                <textarea name="description" value="Hello World" type="text" maxlength="500" class="form-control" cols="30"
+                                <textarea name="description" value="Current Description" id="description" type="text" maxlength="500" class="form-control" cols="30"
                                 rows="10" required></textarea>
                             </div>
+
 
                             <div class="col-md-4">
                                 <label for="category" class="form-label">Category</label>
                                 <select name="category" class="form-select" required> 
-                                    <option selected disabled> Select Category</option>
+                                    <option disabled> Select Category</option>
                                     <option id="clothing" value="clothing">Clothing</option>
                                     <option id="book" value="book">Book</option>
                                     <option id="electronic" value="electronic">Electronic</option>
@@ -55,13 +56,13 @@ Acknowledgement: https://www.web-leb.com/code/25
 
                             <div class="col-md-2">
                                 <label for="price" class="form-label">Price</label>
-                                <input name="price" min="0" id="price" type="number" class="form-control" required>
+                                <input name="price" value="Current Price" min="0" id="price" type="number" class="form-control" required>
                             </div>
                         
                         
                             <div class="profile-image-container visual">
                                 <label for="image"></label>
-                                <input type="file" id="image" name="image" required accept="jpeg, jpg, png" onchange="readURL(this);">
+                                <input type="file" id="image" value="Current img" name="image" required accept="jpeg, jpg, png" onchange="readURL(this);">
                                 <img src="/images/vendor/vendorLogin.png" alt="Profile Image" id="profile-image">
                             </div>
 

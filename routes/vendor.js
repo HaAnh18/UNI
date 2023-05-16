@@ -1,8 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const {signup, signin, logout, getMe, handleFileUpload, vendorProfile, addProduct} = require("../controllers/vendor");
-const {isAuthenticated} = require('../middlewares/auth-vendor');
-const vendor = require('../controllers/vendor');
+const {
+  signup,
+  signin,
+  logout,
+  getMe,
+  handleFileUpload,
+  vendorProfile,
+  addProduct,
+} = require("../controllers/vendor");
+const { isAuthenticated } = require("../middlewares/auth-vendor");
+const vendor = require("../controllers/vendor");
 
 // router.get('/signup', (req,res)=>{
 //   res.render("signup-vendor");
@@ -10,11 +18,11 @@ const vendor = require('../controllers/vendor');
 
 router.get("/signup", vendor.getSignup);
 
-router.post('/signup', handleFileUpload, signup);
+router.post("/signup", handleFileUpload, signup);
 
-router.post('/signin', signin);
+router.post("/signin", signin);
 
-router.get('/logout', logout);
+router.get("/logout", logout);
 
 // router.get('/signin', (req,res) => {
 //   res.render('login-vendor');
@@ -22,11 +30,16 @@ router.get('/logout', logout);
 
 router.get("/signin", vendor.getLogin);
 
-router.get('/getme', isAuthenticated, vendorProfile);
+router.get("/getme", isAuthenticated, vendorProfile);
 
-router.get('/addproduct', isAuthenticated, vendor.getAddProduct);
+router.get("/addproduct", isAuthenticated, vendor.getAddProduct);
 
-router.post('/addproduct', isAuthenticated, vendor.handleFileUpload, vendor.addProduct);
+router.post(
+  "/addproduct",
+  isAuthenticated,
+  vendor.handleFileUpload,
+  vendor.addProduct
+);
 
 // router.get('/customer',verifyToken, getMe);
 // router.get('/customer', verifyToken, getMe);
@@ -37,7 +50,6 @@ router.post('/addproduct', isAuthenticated, vendor.handleFileUpload, vendor.addP
 router.get("/dashboard", isAuthenticated, vendor.showDashboard);
 
 router.get("/products", isAuthenticated, vendor.showProduct);
-
 
 router.get("/addproduct", isAuthenticated, vendor.getAddProduct);
 
@@ -51,5 +63,6 @@ router.get("/activeOrder", isAuthenticated, vendor.activeOrder);
 
 router.get("/cancelledOrder", isAuthenticated, vendor.cancelledOrder);
 
+router.get("/productDetail", isAuthenticated, vendor.productDetail);
 
 module.exports = router;

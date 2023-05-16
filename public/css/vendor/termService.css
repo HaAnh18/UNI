@@ -17,15 +17,6 @@ Acknowledgement: https://github.com/codingmarket07/Terms-and-Condition-Section-T
   list-style: none;
 }
 
-:root {
-  --primary-clr: linear-gradient(to left, #1cb5e0, #000046);
-  --white: #f2f2f2;
-  --text-color: #0b4588;
-  --text-clr: #000;
-  --tabs-list-bg-clr: linear-gradient(to bottom, #0083b0, #00b4db);
-  --btn-hvr: #1565c0;
-}
-
 body {
   background: var(--primary-clr);
   font-size: 12px;
