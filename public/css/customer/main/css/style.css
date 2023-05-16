@@ -6169,13 +6169,13 @@ button.bg-light:focus {
 
 /*adjust dark background (affect header navbar, footer)*/
 .bg-dark {
-  background-color: #3D464D !important;
+  background-color: #1d1c1b !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
-  background-color: #3D464D !important;
+  background-color: #1d1c1b !important;
 }
 
 .bg-white {
