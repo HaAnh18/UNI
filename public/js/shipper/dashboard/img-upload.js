@@ -1,20 +1,12 @@
-const imgDiv = document.querySelector('.user-img');
-const img = document.querySelector('#photo');
-const file = document.querySelector("#file");
-const uploadbtn = document.querySelector('#uploadbtn');
+// RMIT University Vietnam
+// Course: COSC2430 Web Programming
+// Semester: 2023A
+// Assessment: Assignment 2
+// Author: Vu Loc
+// ID: S3891483
+// Acknowledgement: 
+//     https://openai.com/blog/chatgpt
 
-
-file.addEventListener(' change', function(){
-    const chosedfile = this.files[0];
-    if(chosedfile){
-      const reader = new FileReader();
-
-      reader.addEventListener( 'load', function() {
-        img.setAttribute('src', reader.result);
-      })
-      reader.readAsDataURL(chosedlife);
-    }
-})
 
 // Upload and preview Profile Image
 let uploadFile = document.getElementById("upload-file");
