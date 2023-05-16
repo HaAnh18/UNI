@@ -7,9 +7,8 @@ ID: S3891483
 Acknowledgement: https://github.com/codingmarket07/Terms-and-Condition-Section-Tabs-In-HTML-CSS-and-Javascript.git 
 */
 
-
 /* ===== Google Font Import - Poppins ===== */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;700&display=swap");
 * {
   margin: 0;
   padding: 0;
