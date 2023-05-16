@@ -17,27 +17,54 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                 <!-- Registration Form -->
                 <div class="form signup">
                     <span class="title">Registration</span>
-              
-                        <div class="input-field">
-                            <input name="username" type="text" placeholder="Enter username" required>
-                            <i class="uil uil-user"></i>
+
+                        <div class="upload-img">
+                            <div class="profile-image-container visual">
+                                <label for="upload-file"></label>
+                                <img src="/images/vendor/vendorLogin.png" alt="Profile Image" id="profile-image">
+                                
+                                <input name="vendorPicture" type="file" id="upload-file" accept="jpeg, jpg, png" onchange="readURL(this);">
+                            </div>
                         </div>
-                        <div class="input-field">
-                            <input name="password" type="password" class="password" placeholder="Enter password" required>
-                            <i class="uil uil-lock icon"></i>
-                            <i class="uil uil-eye-slash showHidePw"></i>
+
+                        <div class="field username-field">
+                            <div class="input-field">
+                                <input name="username" class="username" type="text" placeholder="Enter username" required>
+                                <i class="uil uil-user"></i>
+                            </div>
+                            <span class="error username-error">
+                                <p class="error-text">Please enter a valid username</p>
+                              </span>
                         </div>
+                        <div class="field create-password">
+                            <div class="input-field">
+                              <input
+                                type="password"
+                                placeholder="Create password"
+                                class="password"
+                                required
+                              />
+                              <i class="bi bi-shield-lock"></i>
+                              <i class="bi bi-eye-slash bi-eye-fill showHidePw"></i>
+                              
+                            </div>
+                            <span class="error password-error">
+                              <p class="error-text">
+                                Please enter a valid password</p>
+                            </span>
+                          </div>
+                          
                         <div class="input-field">
-                            <input name="businessName" type="text" placeholder="Enter business name" required>
+                            <input name="businessName" type="text" minlength="5" placeholder="Enter business name" required>
                             <i class="uil uil-house-user"></i>
                         </div>
                         <div class="input-field">
-                            <input name="businessAddress" type="text" placeholder="Enter business address" required>
+                            <input name="businessAddress" type="text" minlength="5" placeholder="Enter business address" required>
                             <i class="uil uil-building"></i>
                         </div>
 
                         <div class="input-field button">
-                            <button type="button" class="text next">Next</button>
+                            <button type="submit" class="text">Submit</button>
                         </div>
                    
                     <div class="login-signup">
@@ -45,26 +72,6 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                             <a href="/vendor/login" class="text login-link">Login Now</a>
                         </span>
                     </div>
-                </div>
-                <!-- Profile Picture input -->
-                <div class="form image">
- 
-                    <span class="title">Registration</span>
-                    <div class="upload-img">
-                        <div class="profile-image-container visual">
-                            <label for="upload-file"></label>
-                            <img src="/images/vendor/vendorLogin.png" alt="Profile Image" id="profile-image">
-                            
-                            <input name="vendorPicture" type="file" id="upload-file" accept="jpeg, jpg, png" onchange="readURL(this);">
-                        </div>
-                    </div>
-                    <div class="input-field button">
-                        <button type="button" class="text back">Back</button>
-                    </div>
-                    <div class="input-field button">
-                        <button type="submit">Submit</button>
-                    </div>
-                    
                 </div>
             </form>
         </div>

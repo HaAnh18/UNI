@@ -6,40 +6,27 @@ Author: Vu Loc
 ID: S3891483
 Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css-javascript/
 */
+const form = document.querySelector("form");
+const usernameField = form.querySelector(".username-field");
+const usernameInput = usernameField.querySelector(".username");
+const passField = form.querySelector(".create-password");
+const passInput = passField.querySelector(".password");
 
-const container = document.querySelector(".container"),
-  pwShowHide = document.querySelectorAll(".showHidePw"),
-  pwFields = document.querySelectorAll(".password"),
-  next = document.querySelector(".next"),
-  back = document.querySelector(".back");
-//   js code to show/hide password and change icon
-pwShowHide.forEach((eyeIcon) => {
+// Hide and show password
+const eyeIcons = document.querySelectorAll(".showHidePw");
+
+eyeIcons.forEach((eyeIcon) => {
   eyeIcon.addEventListener("click", () => {
-    pwFields.forEach((pwField) => {
-      if (pwField.type === "password") {
-        pwField.type = "text";
-        pwShowHide.forEach((icon) => {
-          icon.classList.replace("uil-eye-slash", "uil-eye");
-        });
-      } else {
-        pwField.type = "password";
-        pwShowHide.forEach((icon) => {
-          icon.classList.replace("uil-eye", "uil-eye-slash");
-        });
-      }
-    });
+    const pInput = eyeIcon.parentElement.querySelector("input");
+    if (pInput.type === "password") {
+      eyeIcon.classList.replace("bi-eye-slash", "bi-eye-fill");
+      pInput.type = "text";
+    } else {
+      eyeIcon.classList.replace("bi-eye-fill", "bi-eye-slash");
+      pInput.type = "password";
+    }
   });
 });
-
-// sign up form
-// js code to change Vendor registration
-next.addEventListener("click", () => {
-  container.classList.add("change");
-});
-back.addEventListener("click", () => {
-  container.classList.remove("change");
-});
-
 
 // Upload and preview Profile Image
 let uploadFile = document.getElementById("upload-file");
@@ -59,3 +46,41 @@ function readURL(input) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+
+// Username Validation
+function checkUsername() {
+  const usernamePattern = /^[a-zA-Z0-9]{8,15}$/;
+  if (!usernamePattern.test(usernameInput.value)) {
+    usernameField.classList.add("invalid");
+  } else {
+    usernameField.classList.remove("invalid");
+  }
+}
+// Password Validation
+function createPass() {
+  const passPattern =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
+  if (!passPattern.test(passInput.value)) {
+    passField.classList.add("invalid");
+  } else {
+    passField.classList.remove("invalid");
+  }
+}
+
+// Form Submission
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  checkUsername();
+  createPass();
+
+  usernameInput.addEventListener("keyup", checkUsername);
+  passInput.addEventListener("keyup", createPass);
+
+  if (
+    !usernameField.classList.contains("invalid") &&
+    !passField.classList.contains("invalid")
+  ) {
+    location.href = form.getAttribute("action");
+  }
+});

@@ -8,7 +8,7 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
 */
 
 /* ===== Google Font Import - Poppins ===== */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -138,7 +138,7 @@ nav.close ~ .dashboard {
 }
 .activity-data .data {
   display: flex;
-  flex-direction: column;
+
   margin: 0 15px;
 }
 .activity-data .data-title {
@@ -147,11 +147,24 @@ nav.close ~ .dashboard {
   color: var(--text-color);
 }
 .activity-data .data .data-list {
+  width: 300px;
   font-size: 18px;
   font-weight: 400;
   margin-top: 20px;
+  padding: 0 24px;
   white-space: nowrap;
   color: var(--text-color);
+}
+.activity-data .data .data-list a {
+  text-decoration: none;
+  color: black;
+}
+
+.activity-data .data .badge {
+  width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Responsive styles */
