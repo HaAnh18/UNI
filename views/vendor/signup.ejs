@@ -13,7 +13,7 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
 <body>
     <div class="container">
         <div class="forms">
-            <form>
+            <form method="POST" action="/api/vendor/signup" enctype="multipart/form-data" >
                 <!-- Registration Form -->
                 <div class="form signup">
                     <span class="title">Registration</span>
@@ -23,7 +23,7 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                                 <label for="upload-file"></label>
                                 <img src="/images/vendor/vendorLogin.png" alt="Profile Image" id="profile-image">
                                 
-                                <input name="vendorPicture" type="file" id="upload-file" accept="jpeg, jpg, png" onchange="readURL(this);">
+                                <input name="image" id="upload-file" type="file" accept="jpeg, jpg, png" onchange="readURL(this);">
                             </div>
                         </div>
 
@@ -32,9 +32,9 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                                 <input name="username" class="username" type="text" placeholder="Enter username" required>
                                 <i class="uil uil-user"></i>
                             </div>
-                            <span class="error username-error">
+                            <!-- <span class="error username-error">
                                 <p class="error-text">Please enter a valid username</p>
-                              </span>
+                              </span> -->
                         </div>
                         <div class="field create-password">
                             <div class="input-field">
@@ -42,24 +42,25 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                                 type="password"
                                 placeholder="Create password"
                                 class="password"
+                                name="password"
                                 required
                               />
                               <i class="bi bi-shield-lock"></i>
                               <i class="bi bi-eye-slash bi-eye-fill showHidePw"></i>
                               
                             </div>
-                            <span class="error password-error">
+                            <!-- <span class="error password-error">
                               <p class="error-text">
                                 Please enter a valid password</p>
-                            </span>
+                            </span> -->
                           </div>
                           
                         <div class="input-field">
-                            <input name="businessName" type="text" minlength="5" placeholder="Enter business name" required>
+                            <input name="name" type="text" minlength="5" placeholder="Enter business name" required>
                             <i class="uil uil-house-user"></i>
                         </div>
                         <div class="input-field">
-                            <input name="businessAddress" type="text" minlength="5" placeholder="Enter business address" required>
+                            <input name="address" type="text" minlength="5" placeholder="Enter business address" required>
                             <i class="uil uil-building"></i>
                         </div>
 
@@ -67,11 +68,11 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                             <button type="submit" class="text">Submit</button>
                         </div>
                    
-                    <div class="login-signup">
-                        <span class="text">Already a member?
-                            <a href="/vendor/login" class="text login-link">Login Now</a>
-                        </span>
-                    </div>
+                        <div class="login-signup">
+                            <span class="text">Already a member?
+                                <a href="/api/vendor/signin" class="text login-link">Login Now</a>
+                            </span>
+                        </div>
                 </div>
             </form>
         </div>
