@@ -34,7 +34,8 @@ var lPasswordError = document.getElementById('l-password-error');
 var sPasswordError = document.getElementById('s-password-error');
 //phone number
 /*var phoneError = document.getElementById('phone-error');*/
-
+//signup address
+var sAddressError = document.getElementById('s-address-error');
 
 /*validator*/
 
@@ -90,7 +91,7 @@ function validateSUsername(){
     //condition 
     //if the slot is empty will display error message
     if(sEmail.length == 0){
-        sUsernameError.innerHTML = 'Email is required';
+        sUsernameError.innerHTML = 'username is required';
         return false;
     }
     //rules

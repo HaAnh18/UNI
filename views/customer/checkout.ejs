@@ -18,15 +18,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="/css/user/animate/animate.min.css" rel="stylesheet">
-    <link href="/css/user/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/css/customer/animate/animate.min.css" rel="stylesheet">
+    <link href="/css/customer/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="/css/user/main/css/style.css" rel="stylesheet">
+    <link href="/css/customer/main/css/style.css" rel="stylesheet">
 </head>
 
 <!--header-->
-<%- include('../partials/header/header.ejs') %>
+<%- include('../customer-partials/header/header-user.ejs') %>
 
 <body>
     
@@ -37,8 +37,12 @@
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="#">Home</a>
-                    <a class="breadcrumb-item text-dark" href="#"><%= customer.name%>'s Profile</a>
+
+
+                    <a class="breadcrumb-item text-dark" href="#" style="text-underline-offset: 5px;">Home</a>
+                    <a class="breadcrumb-item text-dark" href="#" style="text-underline-offset: 5px;"><%= customer.name%>'s Profile</a>
+                    <a class="breadcrumb-item text-dark" href="#" style="text-underline-offset: 5px;">Shopping Cart</a>
+
                     <span class="breadcrumb-item active">Checkout</span>
                 </nav>
             </div>
@@ -50,44 +54,6 @@
     <!-- Checkout Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
-            <div class="col-lg-8">
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Billing Address</span></h5>
-                <div class="bg-light p-30 mb-5">
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>Full Name</label>
-                            <input class="form-control" type="text" placeholder="John" name="checkout-full-name">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Address</label>
-                            <input class="form-control" type="text" placeholder="123 Street" name="checkout-address">
-                        </div>
-                        <div class="col-md-12">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="shipto" name="ship-to-different-address-form-checkbox">
-                                <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--Another form for when user clicked on Ship to different address-->
-                <div class="collapse mb-5" id="shipping-address">
-                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Shipping Address</span></h5>
-                    <div class="bg-light p-30">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label>Full Name</label>
-                                <input class="form-control" type="text" placeholder="John" name="ship-to-different-address-form-full-name">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Address</label>
-                                <input class="form-control" type="text" placeholder="123 Street" name="ship-to-different-address-form-address">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!--Bills & Payment-->
             <div class="col-lg-4">
@@ -132,27 +98,9 @@
                 <div class="mb-5">
                     <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Payment</span></h5>
                     <div class="bg-light p-30">
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                                <label class="custom-control-label" for="paypal">Paypal</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                <label class="custom-control-label" for="directcheck">Direct Check</label>
-                            </div>
-                        </div>
-                        <div class="form-group mb-4">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
-                            </div>
-                        </div>
-                        <button class="btn btn-block btn-primary font-weight-bold py-3"> 
-                            <a href="/users/index"> <h5>Place Order</h5></a>
-                        </button>
+
+                        <button class="btn btn-block btn-primary font-weight-bold py-3"> <a href="/users/index"> <h5>Place Order</h5></a></button>
+                        
                     </div>
                 </div>
             </div>
@@ -162,7 +110,7 @@
 
 
     <!--footer-->
-    <%- include('../partials/footer/footer.ejs') %>
+    <%- include('../customer-partials/footer/footer.ejs') %>
 
 
     <!-- Back to Top -->
@@ -172,15 +120,15 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/user/easing/easing.min.js"></script>
-    <script src="/js/user/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/js/customer/easing/easing.min.js"></script>
+    <script src="/js/customer/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Contact Javascript File -->
-    <script src="/js/user/mail/jqBootstrapValidation.min.js"></script>
-    <script src="/js/user/mail/contact.js"></script>
+    <script src="/js/customer/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/js/customer/mail/contact.js"></script>
 
     <!-- Template Javascript -->
-    <script src="/js/user/main/js/main.js"></script>
+    <script src="/js/customer/main/js/main.js"></script>
 </body>
 
 </html>
