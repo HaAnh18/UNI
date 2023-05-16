@@ -14,9 +14,12 @@ router.post('/signin', signin);
 
 router.get('/logout', logout);
 
-router.get('/signin', (req,res) => {
-  res.render('login-vendor');
-})
+// router.get('/signin', (req,res) => {
+//   res.render('login-vendor');
+// })
+
+router.get("/signin", vendor.getLogin);
+
 router.get('/getme', isAuthenticated, vendorProfile);
 
 router.get('/addproduct', isAuthenticated, (req,res) => {
@@ -31,11 +34,11 @@ router.post('/addproduct', isAuthenticated, handleFileUpload, addProduct);
 // router.get('/customer', verifyToken, getMe);
 
 //frontend
-router.get("/", vendor.showDashboard);
+router.get("/dashboard", isAuthenticated, vendor.showDashboard);
 
 router.get("/products", vendor.showProduct);
 
-router.get("/login", vendor.getLogin);
+
 
 router.get("/signup", vendor.getSignup);
 

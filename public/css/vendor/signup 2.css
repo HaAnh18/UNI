@@ -1,0 +1,231 @@
+/* RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Vu Loc
+ID: S3891483
+Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css-javascript/
+*/
+
+/* ===== Google Font Import - Poppins ===== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  /* ===== Colors ===== */
+  --primary-color: #0e4bf1;
+  --panel-color: #fff;
+  --text-color: #000;
+  --black-light-color: #707070;
+  --border-color: #e6e5e5;
+  --toggle-color: #ddd;
+  --box1-color: #4da3ff;
+  --box2-color: #ffe6ac;
+  --box3-color: #e7d1fc;
+  --title-icon-color: #fff;
+
+  /* ====== Transition ====== */
+  --tran-05: all 0.5s ease;
+  --tran-03: all 0.3s ease;
+  --tran-03: all 0.2s ease;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #0083b0, #00b4db);
+}
+
+/* Give credit for ChatGPT */
+.profile-image-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 0.1px solid var(--primary-color);
+}
+
+.profile-image-container label {
+  cursor: pointer;
+}
+.profile-image-container input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.profile-image-container img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+/* Signup forms */
+.container {
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 0 20px;
+}
+.container .forms {
+  display: flex;
+  align-items: center;
+  height: 600px;
+  width: 200%;
+  transition: left 0.18s ease;
+}
+.forms form {
+  display: flex;
+  height: 600px;
+  width: 200%;
+  transition: left 0.18s ease;
+}
+.container .form {
+  width: 50%;
+  padding: 30px;
+  background-color: #fff;
+  transition: margin-left 0.18s ease;
+}
+/* Details form */
+.forms .signup {
+  height: 600px;
+}
+.container.change .signup {
+  margin-left: -50%;
+  opacity: 0;
+  transition: margin-left 0.18s ease, opacity 0.15s ease;
+}
+/* Image form */
+.forms .image {
+  opacity: 0;
+  transition: opacity 0.09s ease;
+}
+.container.change .image {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+.form .upload-img {
+  position: relative;
+  transition: left 0.18s ease;
+  padding-top: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .form .title {
+  position: relative;
+  font-size: 27px;
+  font-weight: 600;
+}
+.form .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background-color: var(--primary-color);
+  border-radius: 25px;
+}
+.form .input-field {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+}
+.input-field input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0 35px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-bottom: 2px solid #ccc;
+  border-top: 2px solid transparent;
+  transition: left 0.18s ease;
+}
+.input-field button {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0 35px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-bottom: 2px solid #ccc;
+  border-top: 2px solid transparent;
+  transition: left 0.18s ease;
+}
+.input-field input:is(:focus, :valid) {
+  border-bottom-color: var(--primary-color);
+}
+.input-field i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 23px;
+  transition: left 0.18s ease;
+}
+.input-field input:is(:focus, :valid) ~ i {
+  color: var(--primary-color);
+}
+.input-field i.icon {
+  left: 0;
+}
+.input-field i.showHidePw {
+  right: 0;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.form .text {
+  color: #333;
+  font-size: 14px;
+}
+.form a.text {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+.form a:hover {
+  text-decoration: underline;
+}
+.form .button {
+  margin-top: 35px;
+}
+.form .button button {
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  transition: left 0.18s ease;
+}
+.button input:hover {
+  background-color: var(--box1-color);
+}
+.form .login-signup {
+  margin-top: 30px;
+  text-align: center;
+}
