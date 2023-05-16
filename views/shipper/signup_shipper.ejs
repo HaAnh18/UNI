@@ -9,27 +9,27 @@
     <link rel="stylesheet" href="/css/shipper/main/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/shipper/login/login.css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/shipper/dashboard_shipper/img-upload.css" rel="stylesheet">
 </head>
 <header class="d-flex justify-content-center "><h1>Sign Up Now</h1></header>
 <body>
     <!----Main---->
 
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="row border rounder-5 p-3 bg-white shadow box-area">
-            <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #961E3A ;">
-                <div class="featured_images mb-3">
-                    <img src="/images/shipper/shipper-la-gi1.png" class="img-fluid" style="width: 250px;" alt="Shipper Picture">
-                </div>
-                <small class="text-black text-wrap text-center" style="font-family: 'Courier New', Courier, monospace;" style="width: 17rem;">Become one of our partner and start shipping today. </small>
-            </div>
+        <div class="row border rounder-5 p-3 bg-white shadow box-area d-flex justify-content-center align-items-center">
             <!--form start--> 
-            <div class="col-md-6 right-box">
+            <div class="col-md-6">
             <form action="#">
                 <!--Avatar Start-->
                     <div class="img-users mb-3 d-flex justify-content-center align-items-center">
-                        <img src="/images/shipper/avatar.jpg" alt="Avatar" id="photo">
-                        <input name="Avatar"type="file" id="file">
-                        <label for="file" id="uploadbtn"><i class="fas fa-camera"></i></label>
+                        <div class="upload-img">
+                            <div class="profile-image-container visual">
+                                <label for="upload-file"></label>
+                                    <img src="/images/shipper/avatar.jpg" alt="Profile Image" id="profile-image">
+                                                    
+                                <input name="image" id="upload-file" type="file" accept="jpeg, jpg, png" onchange="readURL(this);">
+                            </div>
+                        </div> 
                     </div>
                     <!---Alert---->
                     <div class="alert alert-danger" role="alert">
@@ -77,10 +77,10 @@
                     </select>
                   </div>
                 <div class="d-grid">
-                    <a href="/"  class="btn">Signup Now</a>
+                    <button class="btn text-white">Signup Now</button>
                     <p class="text-center text-muted">By signing up, I accept that I have read and agreed to Union's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a> which outlines how Union collects, uses, and discloses my personal data, as well as my legal rights.</p>
                     <p class="text-center">
-                        Already have an account? <a href="/">Login Now</a>
+                        Already have an account? <a href="/api/shipper/signin">Login Now</a>
                     </p>
                 </div>
             </form>
@@ -89,6 +89,7 @@
         </div>
     </div>
 </body>
+<script src="/js/shipper/dashboard/img-upload.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="/js/shipper/signup/script.js"></script>
 <script src="/js/shipper/signup/bootstrap.bundle.min.js"></script>
