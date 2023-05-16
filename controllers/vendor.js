@@ -70,7 +70,7 @@ exports.signup = async (req, res, next) => {
     //   data
     // })
 
-    // res.redirect('/api/vendor/signin');
+    res.redirect('/api/vendor/signin');
 
     // generateToken(vendor, 200, res);
      
@@ -215,13 +215,15 @@ exports.addProduct = async (req, res, next) => {
       vendorId: req.vendor
     }
 
+    // console.log(productInfo);
+
     Product.create(productInfo);
     res.redirect("/api/vendor/products");
     // res.json(productInfo);
     // console.log(productInfo);
   
   } catch (error) {
-
+    console.log(error.message);
   }
 }
 
@@ -236,7 +238,10 @@ exports.showDashboard = async (req, res) => {
 };
 
 exports.showProduct = async (req, res) => {
-  res.render("vendor/products");
+  const vendor = await Vendor.findById(req.vendor);
+  const products = await Product.find({vendorId: vendor.id});
+  // console.log(products);
+  res.render("vendor/products", {vendor: vendor, products: products});
 };
 
 exports.getLogin = async (req, res) => {
@@ -248,11 +253,13 @@ exports.getSignup = async (req, res) => {
 };
 
 exports.getAddProduct = async (req, res) => {
-  res.render("vendor/add-product");
+  const vendor = await Vendor.findById(req.vendor);
+  res.render("vendor/add-product", {vendor: vendor});
 };
 
 exports.vendorProfile = async (req, res) => {
-  res.render("vendor/profile");
+  const vendor = await Vendor.findById(req.vendor);
+  res.render("vendor/profile", {vendor: vendor});
 };
 
 exports.termService = async (req, res) => {
