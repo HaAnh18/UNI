@@ -505,6 +505,11 @@ exports.getCustomerOrder = (req,res) => {
   res.render("customer/order");
 }
 
+//user order status
+exports.getCustomerOrderStatus = (req,res) => {
+  res.render("customer/order-status");
+}
+
 //user security
 exports.getCustomerSecurity = (req,res) => {
   res.render("customer/security");

@@ -88,6 +88,8 @@ router.get('/checkout', customer.getCustomerCheckout);
 router.get('/profile', isAuthenticated, customer.getCustomerProfile);
 //order
 router.get('/order', customer.getCustomerOrder);
+//order status
+router.get('/order-status', customer.getCustomerOrderStatus);
 //security
 router.get('/security', customer.getCustomerSecurity);
 /*=======================================================================================================================================*/
