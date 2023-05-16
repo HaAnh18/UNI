@@ -17,17 +17,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="/css/user/animate/animate.min.css" rel="stylesheet">
-    <link href="/css/user/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/css/customer/animate/animate.min.css" rel="stylesheet">
+    <link href="/css/customer/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="/css/user/main/css/style.css" rel="stylesheet">
+    <link href="/css/customer/main/css/style.css" rel="stylesheet">
 </head>
 
 
 
     <!--header-->
-    <%- include('../partials/header/header-user.ejs') %>
+    <%- include('../customer-partials/header/header-user.ejs') %>
 
 
 <body>
@@ -49,9 +49,9 @@
     <div class="container-xl px-4 mt-4">
         <!-- Account page navigation-->
         <nav class="nav nav-borders">
-            <a class="nav-link active ms-0" href="/users/profile" >Profile</a>
-            <a class="nav-link" href="/users/order" >Billing</a>
-            <a class="nav-link" href="/users/security">Security</a>
+            <a class="nav-link active ms-0" href="/api/customer/profile" >Profile</a>
+            <a class="nav-link" href="/api/customer/order" >Billing</a>
+            <a class="nav-link" href="/api/customer/security">Security</a>
         </nav>
         <hr class="mt-0 mb-4">
         <div class="row">
@@ -96,7 +96,7 @@
 
 
     <!--footer-->
-    <%- include('../partials/footer/footer.ejs') %>
+    <%- include('../customer-partials/footer/footer.ejs') %>
 
 
     <!-- Bottom-to-Top button -->
@@ -106,15 +106,15 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/user/easing/easing.min.js"></script>
-    <script src="/js/user/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/js/customer/easing/easing.min.js"></script>
+    <script src="/js/customer/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Contact Javascript File -->
-    <script src="/js/user/mail/jqBootstrapValidation.min.js"></script>
-    <script src="/js/user/mail/contact.js"></script>
+    <script src="/js/customer/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/js/customer/mail/contact.js"></script>
 
     <!-- Template Javascript -->
-    <script src="/js/user/main/js/main.js"></script>
+    <script src="/js/customer/main/js/main.js"></script>
 </body>
 
 </html>
