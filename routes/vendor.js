@@ -4,9 +4,11 @@ const {signup, signin, logout, getMe, handleFileUpload, vendorProfile, addProduc
 const {isAuthenticated} = require('../middlewares/auth-vendor');
 const vendor = require('../controllers/vendor');
 
-router.get('/signup', (req,res)=>{
-  res.render("signup-vendor");
-})
+// router.get('/signup', (req,res)=>{
+//   res.render("signup-vendor");
+// })
+
+router.get("/signup", vendor.getSignup);
 
 router.post('/signup', handleFileUpload, signup);
 
@@ -22,11 +24,9 @@ router.get("/signin", vendor.getLogin);
 
 router.get('/getme', isAuthenticated, vendorProfile);
 
-router.get('/addproduct', isAuthenticated, (req,res) => {
-  res.render('add-product');
-});
+router.get('/addproduct', isAuthenticated, vendor.getAddProduct);
 
-router.post('/addproduct', isAuthenticated, handleFileUpload, addProduct);
+router.post('/addproduct', isAuthenticated, vendor.handleFileUpload, vendor.addProduct);
 
 // router.get('/customer',verifyToken, getMe);
 // router.get('/customer', verifyToken, getMe);
@@ -36,23 +36,20 @@ router.post('/addproduct', isAuthenticated, handleFileUpload, addProduct);
 //frontend
 router.get("/dashboard", isAuthenticated, vendor.showDashboard);
 
-router.get("/products", vendor.showProduct);
+router.get("/products", isAuthenticated, vendor.showProduct);
 
 
+router.get("/addproduct", isAuthenticated, vendor.getAddProduct);
 
-router.get("/signup", vendor.getSignup);
+router.get("/profile", isAuthenticated, vendor.vendorProfile);
 
-router.get("/addproduct", vendor.getAddProduct);
+router.get("/termService", isAuthenticated, vendor.termService);
 
-router.get("/profile", vendor.vendorProfile);
+router.get("/pendingOrder", isAuthenticated, vendor.pendingOrder);
 
-router.get("/termService", vendor.termService);
+router.get("/activeOrder", isAuthenticated, vendor.activeOrder);
 
-router.get("/pendingOrder", vendor.pendingOrder);
-
-router.get("/activeOrder", vendor.activeOrder);
-
-router.get("/cancelledOrder", vendor.cancelledOrder);
+router.get("/cancelledOrder", isAuthenticated, vendor.cancelledOrder);
 
 
 module.exports = router;
