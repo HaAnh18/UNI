@@ -59,11 +59,36 @@ router.get('/product', customer.getProduct);
 
 router.get('/shop', customer.getShop);
 
-router.get('/profile', customer.customerProfile);
+// router.get('/profile', customer.customerProfile);
 
 router.get('/orderhistory', customer.getOrderHistory);
 
 router.get('/changepassword', customer.getChangePassword);
 
-
+/*=========================================================Customer Route================================================================*/
+//about us
+router.get('/about', customer.getCustomerAboutUs);
+//contact
+router.get('/contact', customer.getCustomerContact);
+//FAQs
+router.get('/faq', customer.getCustomerFaq);
+//login & signup
+router.get('/login', customer.getCustomerLogin);
+//homepage (index)
+//already route above
+//shop
+router.get('/shop', customer.getCustomerShop);
+//shop detail
+//already route above
+//cart
+router.get('/cart', customer.getCustomerCart);
+//checkout
+router.get('/checkout', customer.getCustomerCheckout);
+//profile
+router.get('/profile', isAuthenticated, customer.getCustomerProfile);
+//order
+router.get('/order', customer.getCustomerOrder);
+//security
+router.get('/security', customer.getCustomerSecurity);
+/*=======================================================================================================================================*/
 module.exports = router;
