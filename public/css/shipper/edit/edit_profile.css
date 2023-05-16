@@ -31,17 +31,6 @@ body {
     color: #5E1325;
     cursor: pointer;
   }
-  .user-img{
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    margin: 15% 45%;
-}
-#photo{
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-}
 #file{
     display: none;
 }
