@@ -4,19 +4,20 @@ const {signup, signin, logout, getMe, handleFileUpload, shipperProfile} = requir
 const {isAuthenticated} = require('../middlewares/auth-shipper');
 const shipper = require('../controllers/shipper');
 
-router.get('/signup', (req,res)=>{
-  res.render("signup-shipper");
-})
+// router.get('/signup', (req,res)=>{
+//   res.render("signup-shipper");
+// })
 
-router.post('/signup', handleFileUpload, signup);
+// router.post('/signup', handleFileUpload, signup);
 
-router.post('/signin', signin);
+// router.post('/signin', signin);
 
 router.get('/logout', logout);
 
-router.get('/signin', (req,res) => {
-  res.render('login-shipper');
-})
+// router.get('/signin', (req,res) => {
+//   res.render('login-shipper');
+// })
+
  router.get('/getme', isAuthenticated, shipperProfile);
 
 // router.get('/customer',verifyToken, getMe);

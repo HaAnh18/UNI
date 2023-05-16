@@ -342,18 +342,6 @@ body {
 	color: var(--magenta);
 	pointer-events: unset;
 }
-#content main .head-title .btn-download {
-	height: 36px;
-	padding: 0 16px;
-	border-radius: 36px;
-	background: var(--magenta);
-	color: var(--light);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	grid-gap: 10px;
-	font-weight: 500;
-}
 
 
 
@@ -552,9 +540,6 @@ body {
 		min-width: 420px;
 	}
 	#content main .table-data .order table {
-		min-width: 420px;
-	}
-	#content main .table-data .todo .todo-list {
 		min-width: 420px;
 	}
 }
