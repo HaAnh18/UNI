@@ -43,7 +43,7 @@ exports.signup = async (req, res, next) => {
       distributionHub: req.body.distributionHub
     };
 
-    res.json(data);
+    // res.json(data);
 
     const shipperExist = await Shipper.findOne({username: data.username});
     const usernameExistinCustomer = await Customer.findOne({username: data.username});
