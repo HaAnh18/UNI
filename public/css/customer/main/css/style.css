@@ -159,14 +159,8 @@ a {
 
 a:hover {
   color: #e6b400;
-  border-bottom: 1px white solid;
+  text-decoration: underline;
 }
-
-.footer-link,
-.header-link {
-  width: fit-content;
-}
-
 
 a:not([href]):not([class]) {
   color: inherit;
@@ -6169,14 +6163,15 @@ button.bg-light:focus {
   background-color: #e6e6e6 !important;
 }
 
+/*adjust dark background (affect header navbar, footer)*/
 .bg-dark {
-  background-color: #3D464D !important;
+  background-color: #203349 !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
-  background-color: #262c31 !important;
+  background-color: #203349 !important;
 }
 
 .bg-white {
@@ -9719,8 +9714,4 @@ a.text-dark:hover, a.text-dark:focus {
   100% {
     transform: translateY(-15px);
   }
-}
-
-.profile-picture {
-  width: 200px;
 }
