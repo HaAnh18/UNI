@@ -35,6 +35,8 @@ router.get('/vendor/:id', customer.productVendor);
 
 router.get('/product/:id/addtocart', isAuthenticated, addToCart);
 
+router.get('/delete/:id', isAuthenticated, customer.deleteProduct);
+
 // router.get('/cart', isAuthenticated, (req,res) => {
 //   res.render('')
 // })
@@ -47,13 +49,13 @@ router.get('/cart', isAuthenticated, showCart);
 
 // router.get('/cart', customer.getCart);
 
-router.get('/checkout', isAuthenticated, customer.createOrder);
+router.get('/checkout', isAuthenticated,customer.getCheckout);
+
+router.get('/createorder', isAuthenticated, customer.createOrder);
 
 router.get('/contact', customer.getContact);
 
 router.get('/product', customer.getProduct);
-
-
 
 router.get('/shop', customer.getShop);
 

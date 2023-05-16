@@ -38,8 +38,8 @@
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="/users/index">Home</a>
-                    <a class="breadcrumb-item text-dark" href="/users/shop">Shop</a>
-                    <span class="breadcrumb-item active">Shop Detail</span>
+                    <a class="breadcrumb-item text-dark" href="/users/shop"><%= product.category %></a>
+                    <span class="breadcrumb-item active"><%= product.name %></span>
                 </nav>
             </div>
         </div>
@@ -112,22 +112,13 @@
                     </div>
 
                     <div class="d-flex align-items-center mb-4 pt-2">
-                        <!--quantity adjustment area-->
-                        <div class="input-group quantity mr-3" style="width: 130px;">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-minus">
-                                    <i class="fa fa-minus"></i>
-                                </button>
-                            </div>
-                            <input type="text" class="form-control bg-secondary border-0 text-center" value="1" name="product-quantity">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-plus">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
+                        
                         <!--Add to cart Button-->
-                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
+                        <!-- <button class="btn btn-primary px-3"> -->
+                            <a class="btn btn-primary px-3" href="/api/customer/product/<%= product.id %>/addtocart">
+                                <i class="fa fa-shopping-cart mr-1"></i> Add To Cart
+                            </a>
+                        <!-- </button> -->
                     </div>
                     <!-- media sharing section-->
                     <div class="d-flex pt-2">
