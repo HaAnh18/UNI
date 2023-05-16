@@ -1,0 +1,112 @@
+/* RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Vu Loc
+ID: S3891483
+Acknowledgement: https://devsne.vn/template/website
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+/* Footer */
+.vendorPage footer {
+  width: calc(100% - 250px);
+  left: 250px;
+}
+footer {
+  position: relative;
+  transition: var(--tran-05);
+}
+nav.close ~ footer {
+  left: 73px;
+  width: calc(100% - 73px);
+}
+.text-success {
+  color: #ca93a0 !important;
+}
+#tempaltemo_footer {
+  background: -webkit-linear-gradient(to bottom, #be3455, #000046) !important;
+  background: linear-gradient(to bottom, #be3455, #000046) !important;
+}
+#tempaltemo_footer a {
+  color: #f2f2f2;
+}
+#tempaltemo_footer a:hover {
+  color: var(text-color) !important;
+}
+#tempaltemo_footer ul.footer-link-list li {
+  padding-top: 10px;
+}
+#tempaltemo_footer ul.footer-icons li {
+  width: 2.6em;
+  height: 2.6em;
+  line-height: 2.6em;
+}
+#tempaltemo_footer ul.footer-icons li:hover {
+  background-color: #cfd6e1;
+  transition: 0.5s;
+}
+#tempaltemo_footer ul.footer-icons li:hover i {
+  color: #212934;
+  transition: 0.5s;
+}
+#tempaltemo_footer .border-light {
+  border-color: #2d343f !important;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+.input-group > .form-control,
+.input-group > .form-floating,
+.input-group > .form-select {
+  color: #000046;
+}
+
+/* Footer Responsive */
+@media (max-width: 1000px) {
+  .vendorPage footer {
+    left: 73px;
+    width: calc(100% - 73px);
+  }
+  nav.close ~ footer {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+}
+@media (max-width: 700px) {
+  .vendorPage footer {
+    left: 0;
+    width: calc(100%);
+  }
+  nav.close ~ footer {
+    left: 73px;
+    width: calc(100% - 73px);
+  }
+}
+@media (max-width: 400px) {
+  body {
+    width: 100vw;
+  }
+  .vendorPage footer {
+    left: 0;
+    width: 100%;
+  }
+  nav.close ~ footer {
+    left: 73px;
+    width: calc(100% - 73px);
+  }
+}

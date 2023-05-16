@@ -148,7 +148,8 @@ const generateToken = async (vendor, statusCode, res) => {
   res
   .status(statusCode)
   .cookie('token', token, options)
-  .json({success: true, token})
+  // .json({success: true, token})
+  .redirect("/api/vendor/dashboard")
   // console.log(({success: true, token}))
 }
 
@@ -224,19 +225,14 @@ exports.addProduct = async (req, res, next) => {
   }
 }
 
-exports.showProduct = async (req,res) => {
-  Product.find()
-  .then(
-    (products) => {res.render('all-products', {products: products})}
-  )
-  .catch((error) => {console.log(error.message)});
-}
+
 
 
 
 //frontend
 exports.showDashboard = async (req, res) => {
-  res.render("vendor/vendor");
+  const vendor = await Vendor.findById(req.vendor);
+  res.render("vendor/vendor", {vendor: vendor});
 };
 
 exports.showProduct = async (req, res) => {

@@ -18,7 +18,7 @@
   		document.querySelector(".login-button").classList.remove("button-selected");
   	}
 
-/*-----------------------------------validate----------------------------------------------*/
+/*-----------------------------------validate (original)----------------------------------------------*/
 
 /*set pointer*/
 
@@ -110,12 +110,12 @@ function validateLUsername(){
     //condition 
     //if the slot is empty will display error message
     if(lEmail.length == 0){
-        lUsernameError.innerHTML = 'Email is required';
+        lUsernameError.innerHTML = 'Username is required';
         return false;
     }
     //rules
     if(lEmail.match(/^[A-Za-z]\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
-        lUsernameError.innerHTML = 'Email Invalid';
+        lUsernameError.innerHTML = 'Username Invalid';
         return false;
     }
 
@@ -126,23 +126,51 @@ function validateLUsername(){
 //signup password
 function validateSPassword(){
     //take value from user input to password
-    var sPassword = document.getElementById('contact-s-password').value;
+    // var sPassword = document.getElementById('contact-s-password').value;
     //condition 
     //if the slot is empty will display error message
-    if(sPassword.length == 0){
-        sPasswordError.innerHTML = 'Password is required';
+    var p = document.getElementById('contact-s-password').value,
+        errors = [];
+    if (p.length < 8) {
+        errors.push("Your password must be at least 8 characters"); 
+    }
+    else if (p.search(/[a-z]/i) < 0) {
+        errors.push("Your password must contain at least one letter.");
+    }
+    else if (p.search(/[0-9]/) < 0) {
+        errors.push("Your password must contain at least one digit."); 
+    }
+    else {
+        alert(errors.join("\n"));
         return false;
     }
-    //if the slot is bellow 8 character
-    if(sPassword.length < 8){
-        sPasswordError.innerHTML = 'Password length must be atleast 8 characters';
-        return false;
-    }
-    //rules
-    if(sPassword.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/)){
-        sPasswordError.innerHTML = 'required 1 number, 1 uppercse, 1 lowercase, 1 special symbol';
-        return false;
-    }
+    return true;
+    // if(sPassword.length == 0){
+    //     sPasswordError.innerHTML = 'Password is required';
+    //     return false;
+    // }
+    // //if the slot is bellow 8 character
+    // // if(sPassword.length < 8){
+    // //     sPasswordError.innerHTML = 'Password length must be at least 8 characters';
+    // //     return false;
+    // // }
+
+    // var pattern = new RegExp(
+    //     "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"        
+    // );
+
+    // if (pattern.test(sPassword)) {
+    //     return true;
+    //   } else {
+    //     sPasswordError.innerHTML = 'Required 1 number, 1 uppercse, 1 lowercase, 1 special symbol';
+    //     return false;
+    //   }
+
+    // //rules
+    // if(!sPassword.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/)){
+    //     sPasswordError.innerHTML = 'Required 1 number, 1 uppercse, 1 lowercase, 1 special symbol';
+    //     return false;
+    // }
 
     sPasswordError.innerHTML = '<i class="fa-solid fa-check"></i>';
     return true;
@@ -192,3 +220,4 @@ function validateLForm(){
         return false;
     }
 }
+

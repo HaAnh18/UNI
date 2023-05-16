@@ -13,19 +13,19 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
   <div class="logo-name">
     <a href="/vendor/profile">
       <div class="logo-image">
-        <img src="/images/vendor/atlas3.png" alt="" />
+        <img src="data:<%= vendor.photo.contentType %>;base64,<%= vendor.photo.data.toString('base64') %>" alt="" />
       </div>
 
-      <span class="logo_name">Vendor Name</span>
+      <span class="logo_name"><%= vendor.name %></span>
     </a>
   </div>
 
   <div class="menu-items">
     <ul class="nav-links">
       <li>
-        <a href="/vendor">
+        <a href="/api/vendor/dashboard">
           <i class="bi bi-house-door"></i>
-          <span class="link-name">Dahsboard</span>
+          <span class="link-name">Dashboard</span>
         </a>
       </li>
       <li>
@@ -65,7 +65,7 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
 
     <ul class="logout-mode">
       <li>
-        <a href="/vendor/login">
+        <a href="/api/vendor/signin">
           <i class="uil uil-signout"></i>
           <span class="link-name">Logout</span>
         </a>

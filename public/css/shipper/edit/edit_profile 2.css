@@ -1,0 +1,60 @@
+body {
+    background: #961E3A;
+  }
+  
+  .form-control:focus {
+    box-shadow: none;
+    border-color: #961E3A;
+  }
+  
+  .profile-button {
+    background: #961E3A;
+    box-shadow: none;
+    border: none;
+  }
+  
+  .profile-button:hover {
+    background: #5E1325;
+  }
+  
+  .profile-button:focus {
+    background: #5E1325;
+    box-shadow: none;
+  }
+  
+  .profile-button:active {
+    background: #5E1325;
+    box-shadow: none;
+  }
+  
+  .back:hover {
+    color: #5E1325;
+    cursor: pointer;
+  }
+  .user-img{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin: 15% 45%;
+}
+#photo{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+#file{
+    display: none;
+}
+#uploadbtn{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    padding: 6px 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #FFF;
+    transform: translateX(-90%);
+    margin-top: 100px;
+    background-color: rgb(173,172,172,0.801);
+    box-shadow: 2px 4px 4px rgb(0, 0, 0, 0.644);
+}

@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <!-- Favicon -->
-    <link href="/images/favicon.ico" rel="icon">
+    <link href="/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -18,15 +18,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
 
     <!-- Libraries Stylesheet -->
-    <link href="/css/customer/animate/animate.min.css" rel="stylesheet">
-    <link href="/css/customer/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/css/user/animate/animate.min.css" rel="stylesheet">
+    <link href="/css/user/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="/css/customer/main/css/style.css" rel="stylesheet">
+    <link href="/css/user/main/css/style.css" rel="stylesheet">
 </head>
 
+
+
     <!--header-->
-    <%- include('../customer-partials/header/header-user.ejs') %>
+    <%- include('../partials/header/header-user.ejs') %>
 
 
 <body>
@@ -50,64 +52,12 @@
     <div class="container-xl px-4 mt-4">
         <!-- Account page navigation-->
         <nav class="nav nav-borders">
-            <a class="nav-link active ms-0" href="/customer/profile">Profile</a>
-            <a class="nav-link" href="/customer/orderhistory" >Billing</a>
-            <a class="nav-link" href="/customer/changepassword">Security</a>
+            <a class="nav-link active ms-0" href="/users/profile">Profile</a>
+            <a class="nav-link" href="/users/order" >Billing</a>
+            <a class="nav-link" href="/users/security">Security</a>
         </nav>
         <hr class="mt-0 mb-4">
-        <!-- Payment methods card-->
-        <div class="card card-header-actions mb-4">
-            <div class="card-header">
-                Payment Methods
-                <button class="btn btn-sm btn-primary" type="button">Add Payment Method</button>
-            </div>
-            <div class="card-body px-0">
-                <!-- Payment method 1-->
-                <div class="d-flex align-items-center justify-content-between px-4">
-                    <div class="d-flex align-items-center">
-                        <i class="fab fa-cc-visa fa-2x cc-color-visa"></i>
-                        <div class="ms-4">
-                            <div class="small">Visa ending in 1234</div>
-                            <div class="text-xs text-muted">Expires 04/2024</div>
-                        </div>
-                    </div>
-                    <div class="ms-4 small">
-                        <div class="badge bg-light text-dark me-3">Default</div>
-                        <a href="#!">Edit</a>
-                    </div>
-                </div>
-                <hr>
-                <!-- Payment method 2-->
-                <div class="d-flex align-items-center justify-content-between px-4">
-                    <div class="d-flex align-items-center">
-                        <i class="fab fa-cc-mastercard fa-2x cc-color-mastercard"></i>
-                        <div class="ms-4">
-                            <div class="small">Mastercard ending in 5678</div>
-                            <div class="text-xs text-muted">Expires 05/2022</div>
-                        </div>
-                    </div>
-                    <div class="ms-4 small">
-                        <a class="text-muted me-3" href="#!">Make Default</a>
-                        <a href="#!">Edit</a>
-                    </div>
-                </div>
-                <hr>
-                <!-- Payment method 3-->
-                <div class="d-flex align-items-center justify-content-between px-4">
-                    <div class="d-flex align-items-center">
-                        <i class="fab fa-cc-amex fa-2x cc-color-amex"></i>
-                        <div class="ms-4">
-                            <div class="small">American Express ending in 9012</div>
-                            <div class="text-xs text-muted">Expires 01/2026</div>
-                        </div>
-                    </div>
-                    <div class="ms-4 small">
-                        <a class="text-muted me-3" href="#!">Make Default</a>
-                        <a href="#!">Edit</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <!-- Billing history card-->
         <div class="card mb-4">
             <div class="card-header">Billing History</div>
@@ -125,25 +75,25 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>#39201</td>
+                                <td><a href="/users/order-status"> #39201</a></td>
                                 <td>06/15/2021</td>
                                 <td>$29.99</td>
                                 <td><span class="badge bg-light text-dark">Pending</span></td>
                             </tr>
                             <tr>
-                                <td>#38594</td>
+                                <td><a href="/users/order-status"> #39232</a></td>
                                 <td>05/15/2021</td>
                                 <td>$29.99</td>
                                 <td><span class="badge bg-success">Complete</span></td>
                             </tr>
                             <tr>
-                                <td>#38223</td>
+                                <td><a href="/users/order-status"> #39291</a></td>
                                 <td>04/15/2021</td>
                                 <td>$29.99</td>
                                 <td><span class="badge bg-success">Complete</span></td>
                             </tr>
                             <tr>
-                                <td>#38125</td>
+                                <td><a href="/users/order-status"> #39101</a></td>
                                 <td>03/15/2021</td>
                                 <td>$29.99</td>
                                 <td><span class="badge bg-success">Complete</span></td>
@@ -159,7 +109,7 @@
 
 
     <!--footer-->
-    <%- include('../customer-partials/footer/footer.ejs') %>
+    <%- include('../partials/footer/footer.ejs') %>
 
 
     <!-- Bottom-to-Top button -->
@@ -169,15 +119,15 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/customer/easing/easing.min.js"></script>
-    <script src="/js/customer/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/js/user/easing/easing.min.js"></script>
+    <script src="/js/user/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Contact Javascript File -->
-    <script src="/js/customer/mail/jqBootstrapValidation.min.js"></script>
-    <script src="/js/customer/mail/contact.js"></script>
+    <script src="/js/user/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/js/user/mail/contact.js"></script>
 
     <!-- Template Javascript -->
-    <script src="/js/customer/main/js/main.js"></script>
+    <script src="/js/user/main/js/main.js"></script>
 </body>
 
 </html>

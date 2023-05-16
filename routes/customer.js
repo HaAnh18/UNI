@@ -3,21 +3,23 @@ const router = express.Router();
 const {signup, signin, logout, getMe, handleFileUpload, showCart, customerProfile, addToCart, productProfile, productVendor} = require("../controllers/customer");
 const {isAuthenticated} = require('../middlewares/auth');
 const {showProduct} = require('../controllers/vendor')
-const Vendor = require("../models/vendor");
+const customer = require("../controllers/customer");
 
-router.get('/signup', (req,res)=>{
-  res.render("signup");
-})
+router.get('/signup', customer.getSignup);
 
-router.post('/signup', handleFileUpload, signup);
+router.post('/signup', customer.handleFileUpload, signup);
 
-router.post('/signin', signin);
+router.get('/signin', customer.getSignin);
+
+router.post('/signin', customer.signin);
+
+// router.get('/homepage', customer.getHomepage);
 
 router.get('/logout', logout);
 
-router.get('/signin', (req,res) => {
-  res.render('login');
-})
+// router.get('/signin', (req,res) => {
+//   res.render('login');
+// })
  router.get('/getme', isAuthenticated, customerProfile);
 
 // router.get('/customer',verifyToken, getMe);
@@ -25,11 +27,11 @@ router.get('/signin', (req,res) => {
 // Example usage:
 // router.get('/customer', verifyToken, getMe);
 
-router.get('/products', showProduct);
+router.get('/homepage', customer.showProduct);
 
 router.get('/product/:id', productProfile);
 
-router.get('/vendor/:id', productVendor);
+router.get('/vendor/:id', customer.productVendor);
 
 router.get('/product/:id/addtocart', isAuthenticated, addToCart);
 
@@ -41,19 +43,17 @@ router.get('/cart', isAuthenticated, showCart);
 
 
 //frontend
-router.get('/homepage', customer.getHomepage);
 
-router.get('/cart', customer.getCart);
 
-router.get('/checkout', customer.getCheckout);
+// router.get('/cart', customer.getCart);
+
+router.get('/checkout', isAuthenticated, customer.createOrder);
 
 router.get('/contact', customer.getContact);
 
 router.get('/product', customer.getProduct);
 
-router.get('/signin', customer.getSignin);
 
-router.get('/signup', customer.getSignup);
 
 router.get('/shop', customer.getShop);
 
