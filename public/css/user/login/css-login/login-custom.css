@@ -258,6 +258,11 @@
 	color: #203349;
 }
 
+/*address*/
+.input-group #s-address-error i{
+	color: #203349;
+}
+
 /*phone number*/
 /*.input-group #phone-error i{
 	color: #203349;

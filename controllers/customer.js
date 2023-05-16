@@ -412,3 +412,60 @@ exports.getOrderHistory = (req,res) => {
 exports.getChangePassword = (req,res) => {
   res.render("customer/security");
 };
+
+/*====================================================Customer route======================================================*/
+//about us
+exports.getCustomerAboutUs = (req,res) => {
+  res.render("customer/about");
+}
+//contact
+exports.getCustomerContact = (req,res) => {
+  res.render("customer/contact");
+}
+//faq
+exports.getCustomerFaq = (req,res) => {
+  res.render("customer/faq");
+}
+
+//login & signup
+exports.getCustomerLogin = (req,res) => {
+  res.render("customer/login");
+}
+
+//homepage(index)
+//already route above
+
+//shop
+exports.getCustomerShop = (req,res) => {
+  res.render("customer/shop");
+}
+
+//shop detail
+//already route above
+
+//cart
+exports.getCustomerCart = (req,res) => {
+  res.render("customer/cart");
+}
+
+//checkout
+exports.getCustomerCheckout = (req,res) => {
+  res.render("customer/checkout");
+}
+
+//user profile
+exports.getCustomerProfile = async (req,res) => {
+  const customer = await Customer.findById(req.user);
+  res.render("customer/profile", {user: customer});
+}
+
+//user order
+exports.getCustomerOrder = (req,res) => {
+  res.render("customer/order");
+}
+
+//user security
+exports.getCustomerSecurity = (req,res) => {
+  res.render("customer/security");
+}
+

@@ -27,9 +27,7 @@
 
 
     <!--header-->
-    
-
-    <%- include('../partials/header/header-user.ejs') %>
+    <%- include('../customer-partials/header/header-user.ejs') %>
 
 <body>
 
@@ -56,7 +54,7 @@
                                 <div class="p-3" style="max-width: 700px;">
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Men Fashion</h1>
                                     <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="/api/customer/shop">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +65,7 @@
                                 <div class="p-3" style="max-width: 700px;">
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Women Fashion</h1>
                                     <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="/api/customer/shop">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +76,7 @@
                                 <div class="p-3" style="max-width: 700px;">
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kids Fashion</h1>
                                     <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="/api/customer/shop">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +153,7 @@
 
             <!--Cat 1-->
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="/users/shop">
+                <a class="text-decoration-none" href="/api/customer/shop">
                     <div class="cat-item d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
                             <img class="img-fluid" src="/img/user/main/cat-1.jpg" alt="">
@@ -170,7 +168,7 @@
 
             <!--Cat 2-->
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="/users/shop">
+                <a class="text-decoration-none" href="/api/customer/shop">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
                             <img class="img-fluid" src="/img/user/main/cat-2.jpg" alt="">
@@ -185,7 +183,7 @@
 
             <!--Cat 3-->
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="/users/shop">
+                <a class="text-decoration-none" href="/api/customer/shop">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
                             <img class="img-fluid" src="/img/user/main/cat-3.jpg" alt="">
@@ -199,7 +197,7 @@
             </div>
             <!--Cat 4-->
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="/users/shop">
+                <a class="text-decoration-none" href="/api/customer/shop">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
                             <img class="img-fluid" src="/img/user/main/cat-4.jpg" alt="">
@@ -236,7 +234,7 @@
                         </div>
                         <!--product's content-->
                         <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href=""><%= product.name %></a>
+                            <a class="h6 text-decoration-none text-truncate" href="/api/customer/product/<%= product.id %>"><%= product.name %></a>
                             <div class="d-flex align-items-center justify-content-center mt-2">
                                 <h5><%= product.price %> AUD</h5><h6 class="text-muted ml-2"></h6>
                             </div>
@@ -289,7 +287,7 @@
 
 
     <!--footer-->
-    <%- include('../partials/footer/footer.ejs') %>
+    <%- include('../customer-partials/footer/footer.ejs') %>
 
 
     <!-- Bottom-to-Top button -->

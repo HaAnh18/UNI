@@ -27,7 +27,7 @@
 
 
     <!--header-->
-    <%- include('../partials/header/header-user.ejs') %>
+    <%- include('../customer-partials/header/header-user.ejs') %>
 
 
 <body>
@@ -49,9 +49,9 @@
     <div class="container-xl px-4 mt-4">
         <!-- Account page navigation-->
         <nav class="nav nav-borders">
-            <a class="nav-link active ms-0" href="/users/profile" >Profile</a>
-            <a class="nav-link" href="/users/order" >Billing</a>
-            <a class="nav-link" href="/users/security" >Security</a>
+            <a class="nav-link active ms-0" href="/api/customer/profile" >Profile</a>
+            <a class="nav-link" href="/api/customer/order" >Billing</a>
+            <a class="nav-link" href="/api/customer/security">Security</a>
         </nav>
         <!---->
         <hr class="mt-0 mb-4">
@@ -94,7 +94,7 @@
 
 
     <!--footer-->
-    <%- include('../partials/footer/footer.ejs') %>
+    <%- include('../customer-partials/footer/footer.ejs') %>
 
 
     <!-- Bottom-to-Top button -->

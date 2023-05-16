@@ -26,7 +26,7 @@
 </head>
 
 <!--header-->
-<%- include('../partials/header/header.ejs') %>
+<%- include('../customer-partials/header/header-user.ejs') %>
 
 <body>
 
@@ -37,8 +37,8 @@
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="/users/index">Home</a>
-                    <a class="breadcrumb-item text-dark" href="/users/shop">Shop</a>
+                    <a class="breadcrumb-item text-dark" href="/api/customer/homepage">Home</a>
+                    <a class="breadcrumb-item text-dark" href="/api/customer/shop">Shop</a>
                     <span class="breadcrumb-item active">Shop List</span>
                 </nav>
             </div>
@@ -265,7 +265,7 @@
 
 
     <!--footer-->
-    <%- include('../partials/footer/footer.ejs') %>
+    <%- include('../customer-partials/footer/footer.ejs') %>
 
 
     <!-- Back to Top -->
