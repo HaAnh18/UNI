@@ -26,7 +26,7 @@
 </head>
 
 <!--header-->
-<%- include('../customer-partials/header/header-user.ejs') %>
+<%- include('../customer-partials/header/header.ejs') %>
 
 <body>
 
@@ -241,13 +241,14 @@
                         <div class="product-img position-relative overflow-hidden">
                             <img class="img w-100" height="250px" width="200px" src="data:<%= product.photo.contentType %>;base64,<%= product.photo.data.toString('base64') %>" alt="">
                             <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href="/users/shop"><i class="fa fa-shopping-cart"></i></a>
-                                
+                                <a class="btn btn-outline-dark btn-square" href="/api/customer/product/<%= product.id %>/addtocart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </a>
                             </div>
                         </div>
                         <!--product's content-->
                         <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href=""><%= product.name %></a>
+                            <a class="h6 text-decoration-none text-truncate" href="/api/customer/product/<%= product.id %>"><%= product.name %></a>
                             <div class="d-flex align-items-center justify-content-center mt-2">
                                 <h5><%= product.price %> AUD</h5><h6 class="text-muted ml-2"></h6>
                             </div>

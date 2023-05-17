@@ -7,25 +7,15 @@ const customer = require("../controllers/customer");
 
 router.get('/signup', customer.getSignup);
 
-router.post('/signup', customer.handleFileUpload, signup);
+router.post('/signup', customer.handleFileUpload, customer.signup);
 
 router.get('/signin', customer.getSignin);
 
 router.post('/signin', customer.signin);
 
-// router.get('/homepage', customer.getHomepage);
+router.get('/logout', customer.logout);
 
-router.get('/logout', logout);
-
-// router.get('/signin', (req,res) => {
-//   res.render('login');
-// })
- router.get('/getme', isAuthenticated, customerProfile);
-
-// router.get('/customer',verifyToken, getMe);
-// router.get('/customer', verifyToken, getMe);
-// Example usage:
-// router.get('/customer', verifyToken, getMe);
+router.get('/getme', isAuthenticated, customer.customerProfile);
 
 router.get('/homepage', customer.showProduct);
 
@@ -33,59 +23,54 @@ router.get('/product/:id', productProfile);
 
 router.get('/vendor/:id', customer.productVendor);
 
-router.get('/product/:id/addtocart', isAuthenticated, addToCart);
+router.get('/product/:id/addtocart', isAuthenticated, customer.addToCart);
 
 router.get('/delete/:id', isAuthenticated, customer.deleteProduct);
 
-// router.get('/cart', isAuthenticated, (req,res) => {
-//   res.render('')
-// })
-
-router.get('/cart', isAuthenticated, showCart);
+router.get('/cart', isAuthenticated, customer.showCart);
 
 
-//frontend
 
+router.get('/order', isAuthenticated, customer.createOrder);
 
-// router.get('/cart', customer.getCart);
-
-router.get('/checkout', isAuthenticated,customer.getCheckout);
+router.get('/checkout', isAuthenticated, customer.getCheckout);
 
 router.get('/createorder', isAuthenticated, customer.createOrder);
 
 router.get('/contact', customer.getContact);
 
-router.get('/product', customer.getProduct);
+// router.get('/product', customer.getProduct);
 
-router.get('/shop', customer.getShop);
 
 // router.get('/profile', customer.customerProfile);
 
-router.get('/orderhistory', customer.getOrderHistory);
+router.get('/orderhistory', isAuthenticated, customer.getOrderHistory);
+
+router.post('/editprofile', isAuthenticated, customer.handleFileUpload, customer.editProfile)
 
 router.get('/changepassword', customer.getChangePassword);
+
+router.get('/profile', isAuthenticated, customer.getCustomerProfile);
+
 
 /*=========================================================Customer Route================================================================*/
 //about us
 router.get('/about', customer.getCustomerAboutUs);
+
 //contact
 router.get('/contact', customer.getCustomerContact);
+
 //FAQs
 router.get('/faq', customer.getCustomerFaq);
-//login & signup
-router.get('/login', customer.getCustomerLogin);
-//homepage (index)
-//already route above
+
 //shop
-router.get('/shop', customer.getCustomerShop);
-//shop detail
-//already route above
+router.get('/shop', customer.getShop);
+
 //cart
 router.get('/cart', customer.getCustomerCart);
 //checkout
 router.get('/checkout', customer.getCustomerCheckout);
 //profile
-router.get('/profile', isAuthenticated, customer.getCustomerProfile);
 //order
 router.get('/order', customer.getCustomerOrder);
 //security
