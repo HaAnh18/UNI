@@ -5847,6 +5847,13 @@ a.close.disabled {
 /*carousel border*/
 .carousel-inner {
   position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/*carousel border for detail*/
+.carousel-inner-detail {
+  position: relative;
   width: 550px;
   height: 550px;
   overflow: hidden;
@@ -5866,7 +5873,6 @@ a.close.disabled {
   width: 100%;
   margin-right: -100%;
   backface-visibility: hidden;
-  object-fit: cover;
   transition: transform 0.6s ease-in-out;
 }
 
