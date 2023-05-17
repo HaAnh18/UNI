@@ -9,6 +9,7 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
 
 <%- include('../vendor-partials/head.ejs') %>
 <link rel="stylesheet" href="/css/vendor/main.css"/>
+
 <body class="vendorPage">
   <%- include('../vendor-partials/vendor-sidebar.ejs') %>
 
@@ -24,18 +25,7 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
           <span class="text">Dashboard</span>
         </div>
   
-        <div class="boxes">
-          <div class="box box1">
-            <i class="uil uil-dollar-alt"></i>
-            <span class="text">Total Income</span>
-            <span class="number">90,500,120</span>
-          </div>
-          <div class="box box2">
-            <i class="uil uil-shopping-cart-alt"></i>
-            <span class="text">Total Order</span>
-            <span class="number">66</span>
-          </div>
-        </div>
+        <canvas class="my-4 w-100" id="myChart" width="1492" height="630" style="display: block; box-sizing: border-box; height: 630px; width: 1492px;"></canvas>
       </div>
   
       <div class="activity">
@@ -91,6 +81,8 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
       </div>
     </div>
   </section>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js" integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
   <script src="/JS/vendor/script.js"></script>
       
 

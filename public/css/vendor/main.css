@@ -19,7 +19,10 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
 body {
   min-height: 100vh;
 }
-
+.feather {
+  width: 16px;
+  height: 16px;
+}
 /* Main page */
 .dashboard {
   position: relative;
