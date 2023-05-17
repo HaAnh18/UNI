@@ -18,11 +18,11 @@ const vendor = require("../controllers/vendor");
 
 router.get("/signup", vendor.getSignup);
 
-router.post("/signup", handleFileUpload, signup);
+router.post('/signup', vendor.handleFileUpload, vendor.signup);
 
-router.post("/signin", signin);
+router.post('/signin', vendor.signin);
 
-router.get("/logout", logout);
+router.get('/logout', vendor.logout);
 
 // router.get('/signin', (req,res) => {
 //   res.render('login-vendor');
@@ -30,9 +30,7 @@ router.get("/logout", logout);
 
 router.get("/signin", vendor.getLogin);
 
-router.get("/getme", isAuthenticated, vendorProfile);
-
-router.get("/addproduct", isAuthenticated, vendor.getAddProduct);
+router.get('/addproduct', isAuthenticated, vendor.getAddProduct);
 
 router.post(
   "/addproduct",
@@ -51,17 +49,19 @@ router.get("/dashboard", isAuthenticated, vendor.showDashboard);
 
 router.get("/products", isAuthenticated, vendor.showProduct);
 
+router.post('/editprofile', isAuthenticated, vendor.handleFileUpload, vendor.editProfile);
+
 router.get("/addproduct", isAuthenticated, vendor.getAddProduct);
 
 router.get("/profile", isAuthenticated, vendor.vendorProfile);
 
 router.get("/termService", isAuthenticated, vendor.termService);
 
-router.get("/pendingOrder", isAuthenticated, vendor.pendingOrder);
+router.get("/pendingorder", isAuthenticated, vendor.pendingOrder);
 
-router.get("/activeOrder", isAuthenticated, vendor.activeOrder);
+router.get("/activeorder", isAuthenticated, vendor.activeOrder);
 
-router.get("/cancelledOrder", isAuthenticated, vendor.cancelledOrder);
+router.get("/cancelledorder", isAuthenticated, vendor.cancelledOrder);
 
 router.get("/productDetail", isAuthenticated, vendor.productDetail);
 

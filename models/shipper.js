@@ -26,10 +26,9 @@ const shipperSchema = new mongoose.Schema({
   },
   distributionHub: {
     type: String,
-    enum: ['hubA', 'hubB']
+    enum: ['hubA', 'hubB', 'hubC', 'hubD']
   }
-
-
+  
 }, {timestamps: true});
 
 // ENCRYPTING PASSWORD BEFORE SAVING

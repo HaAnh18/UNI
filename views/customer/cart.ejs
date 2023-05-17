@@ -26,7 +26,7 @@
 </head>
 
 <!--header-->
-<%- include('../customer-partials/header/header-user.ejs') %>
+<%- include('../customer-partials/header/header.ejs') %>
 
 <body>
     
@@ -76,7 +76,9 @@
                                     <div class="input-group quantity mx-auto" style="width: 100px;">
                                         <div class="input-group-btn">
                                             <button class="btn btn-sm btn-primary btn-minus" >
-                                            <i class="fa fa-minus"></i>
+                                                <a href="">
+                                                    <i class="fa fa-minus"></i>
+                                                </a>
                                             </button>
                                         </div>
                                         <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="<%= product.quantity %>" name="product-quantity">

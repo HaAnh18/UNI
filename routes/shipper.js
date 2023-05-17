@@ -8,9 +8,13 @@ const shipper = require('../controllers/shipper');
 //   res.render("signup-shipper");
 // })
 
-// router.post('/signup', handleFileUpload, signup);
+router.get("/signup", shipper.getSignup);
 
-// router.post('/signin', signin);
+router.post('/signup', handleFileUpload, shipper.signup);
+
+router.get("/signin", shipper.getSignin);
+
+router.post('/signin', shipper.signin);
 
 router.get('/logout', logout);
 
@@ -26,14 +30,11 @@ router.get('/logout', logout);
 // router.get('/customer', verifyToken, getMe);
 
 //frontend
-router.get("/", shipper.getDashboard);
+router.get("/dashboard", isAuthenticated, shipper.getDashboard);
 
-router.get("/signin", shipper.getSignin);
 
-router.get("/signup", shipper.getSignup);
+router.get("/order", isAuthenticated, shipper.getOrder);
 
-router.get("/order", shipper.getOrder);
-
-router.get("/editprofile", shipper.getEditProfile);
+router.get("/editprofile", isAuthenticated, shipper.getEditProfile);
 
 module.exports = router;

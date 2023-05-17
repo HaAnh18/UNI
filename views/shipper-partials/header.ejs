@@ -13,13 +13,13 @@
     <body>
         <!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="/api/shipper/" class="brand">
+		<a href="/api/shipper/dashboard" class="brand">
 			<i class='bx bxs-universal-access'></i>
 			<span class="text">Union Shipping</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="/api/shipper/">
+				<a href="/api/shipper/dashboard">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -58,7 +58,7 @@
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="profile">
-				<img src="img/people.png">
+				<img src="data:<%= shipper.photo.contentType %>;base64,<%= shipper.photo.data.toString('base64') %>">
 			</a>
 		</nav>
 		<!-- NAVBAR -->

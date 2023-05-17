@@ -14,7 +14,14 @@
 
   <body>
 
-	
+		<% if(typeof message != "undefined" && message) { %>
+			<div class="container mt-3">
+				<div class="alert alert-danger alert-dismissible" role="alert">
+					   <div>	<%= message %></div>
+					   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			</div>
+		<%}%>
 
     <main class="text-white">
     	<h1 class="h2 text-center pt-3 pb-2"> UNI Store</h1>
@@ -76,90 +83,13 @@
 						<div>
 						
 							<div class="d-flex">
-								<div class="me-2 fx-animate-4"><a href="/customer/index"><i class="h3 text-white bi bi-arrow-left"></i></a></div>
+								<div class="me-2 fx-animate-4"><a href="/api/customer/homepage"><i class="h3 text-white bi bi-arrow-left"></i></a></div>
 							</div>
 
 						</div>
 
   					</form>
 
-					<!--Signup section-->
-					<form class="js-signup-form hide pt-4 p-4" >
-  						
-						<h2 class="fx-animate-1">Signup</h2>
-						<h5 class="fx-animate-3">Create an account</h5>
-						
-					  <!--Full name-->
-						<div class="input-group mb-3 fx-animate-1" >
-						<input type="text" class="form-control p-2" placeholder="Full Name" id="contact-name" name="signup-full-name" onkeyup="validateName()" required>
-						<span class="input-group-text" id="basic-addon2"><i class="bi bi-person"></i></span>
-						<!--error message-->
-						<span id="name-error"></span>
-					  </div>
-
-					  <!--Username-->
-					  <div class="input-group mb-3 fx-animate-1" >
-						  <input type="text" class="form-control p-2" placeholder="Username" id="contact-s-username" name="login-username" onkeyup="validateSUsername()" required>
-						  <span class="input-group-text" id="basic-addon2"><i class="bi bi-person-fill"></i></span>
-						  <!--error message-->
-						  <span id="s-username-error"></span>
-						</div>
-
-					  <!--Phone number-->
-					  <!--<div class="input-group mb-3 fx-animate-2">
-						  <input type="text" class="form-control p-2" placeholder="Phone number" id="contact-phone" onkeyup="validatePhone()">
-						  <span class="input-group-text" id="basic-addon2"><i class="bi bi-phone"></i></span>-->
-						  <!--error message-->
-						  <!--<span id="phone-error"></span>
-						</div>-->
-					  
-					  <!--Email-->
-					  <!--<div class="input-group mb-3 fx-animate-4" >
-						<input type="text" class="form-control p-2" placeholder="Email" id="contact-s-emai" onkeyup="validateSEmail()">
-						<span class="input-group-text" id="basic-addon2"><i class="bi bi-envelope"></i></span>-->
-						<!--error message-->
-						<!--<span id="s-email-error"></span>
-					  </div>-->
-
-					  <!--Password-->
-					  <div class="input-group mb-3 fx-animate-5">
-						<input type="password" class="form-control p-2" placeholder="Password" id="contact-s-password" name="signup-password" onkeyup="validateSPassword()" required>
-						<span class="input-group-text" id="basic-addon2"><i class="bi bi-key"></i></span>
-						<!--error message-->
-						<span id="s-password-error"></span>
-					  </div>
-
-					  
-					  <div class="mb-3 fx-animate-3">
-						  <button class="btn btn-lg btn-outline-warning" type="submit" onclick="return validateSForm()">Create account</button>
-					  </div>
-					  <div class="mb-3 fx-animate-5">
-						  <a class="text-warning" href="#">Forgot password?</a> or <a onclick="show_login()" class="text-warning" href="#">Login</a>
-					  </div>
-
-					  <!--Follow us-->
-					  <hr>
-					  <div>
-						  Follow us:
-						  <div class="d-flex">
-							  <div class="me-2 fx-animate-4"><a href=""><i class="h3 text-white bi bi-facebook"></i></a></div>
-							  <div class="me-2 fx-animate-5"><a href=""><i class="h3 text-white bi bi-twitter"></i></a></div>
-							  <div class="me-2 fx-animate-6"><a href=""><i class="h3 text-white bi bi-instagram"></i></a></div>
-						  </div>
-
-					  </div>
-
-					  <!--take me back button-->
-					  <br>
-					  <div>
-					  
-						  <div class="d-flex">
-							  <div class="me-2 fx-animate-4"><a href="/customer/index"><i class="h3 text-white bi bi-arrow-left"></i></a></div>
-						  </div>
-
-					  </div>
-
-				</form>
   					
   				</div>
   			</div>
@@ -174,5 +104,5 @@
 <!--icon-->
 <script src="https://kit.fontawesome.com/c4254e24a8.js"></script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </html>

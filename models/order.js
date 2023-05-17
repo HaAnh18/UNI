@@ -9,8 +9,13 @@ const orderSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'Vendor' 
   },
+  shipper: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Shipper',
+    default: null, 
+  },
   total: {
-    type: Number
+    type: Number,
   },
   status: {
     type: String,

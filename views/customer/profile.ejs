@@ -27,7 +27,7 @@
 
 
     <!--header-->
-    <%- include('../customer-partials/header/header-user.ejs') %>
+    <%- include('../customer-partials/header/header.ejs') %>
 
 
 <body>
@@ -70,21 +70,27 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="/api/customer/editprofile">
                             <!--username-->
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="<%= user.username %>">
+                                <label class="small mb-1" for="username">Username (how your name will appear to other users on the site)</label>
+                                <input disabled class="form-control" id="username" name="username" type="text" placeholder="Enter your username" value="<%= user.username %>">
                             </div>
                             <!-- Full name-->
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputUsername">Full name</label>
-                                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your full name" value="<%= user.name %>">
+                                <label class="small mb-1" for="name">Full name</label>
+                                <input class="form-control" id="name" name="name" type="text" placeholder="Enter your full name" value="<%= user.name %>">
+                            </div>
+
+                            <!--address-->
+                            <div class="mb-3">
+                                <label class="small mb-1" for="address">Address</label>
+                                <input class="form-control" id="address" name="address" type="text" placeholder="Enter your username" value="<%= user.address %>">
                             </div>
                             
                             
                             <!-- Save changes button-->
-                            <button class="btn btn-primary" type="button">Save changes</button>
+                            <button class="btn btn-primary" type="submit">Save changes</button>
                         </form>
                     </div>
                 </div>
