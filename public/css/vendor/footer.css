@@ -29,11 +29,11 @@ nav.close ~ footer {
   width: calc(100% - 73px);
 }
 .text-success {
-  color: #ca93a0 !important;
+  color: var(--primary-color) !important;
 }
 #tempaltemo_footer {
   background: -webkit-linear-gradient(to bottom, #be3455, #000046) !important;
-  background: linear-gradient(to bottom, #be3455, #000046) !important;
+  background: var(--primary-background) !important;
 }
 #tempaltemo_footer a {
   color: #f2f2f2;

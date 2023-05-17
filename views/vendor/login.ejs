@@ -11,18 +11,6 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
 <link rel="stylesheet" href="/css/vendor/login.css"/>
 
 <body>
-    <% if(typeof message != "undefined" && message) { %>
-        <div class="mt-3">
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                   <div>	<%= message %></div>
-                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </div>
-    <%}%>
-
-    <div class="container">
-
-      
     <div class="container">
         <div class="mt-3">
             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -43,7 +31,7 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
                     <div class="input-field button">
-                        <button type="submit" class="text">Login</button>
+                        <button type="submit" class="text btn-primary ">Login</button>
                     </div>
                 </form>
                 <div class="login-signup">
