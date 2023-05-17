@@ -78,6 +78,8 @@ router.get('/login', customer.getCustomerLogin);
 //already route above
 //shop
 router.get('/shop', customer.getCustomerShop);
+//categories
+router.get('/categories', customer.getCustomerCategories);
 //shop detail
 //already route above
 //cart

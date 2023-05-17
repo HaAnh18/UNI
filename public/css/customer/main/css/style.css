@@ -5844,9 +5844,11 @@ a.close.disabled {
   touch-action: pan-y;
 }
 
+/*carousel border*/
 .carousel-inner {
   position: relative;
-  width: 100%;
+  width: 550px;
+  height: 550px;
   overflow: hidden;
 }
 
@@ -5856,6 +5858,7 @@ a.close.disabled {
   content: "";
 }
 
+/*adjust carousel inner content*/
 .carousel-item {
   position: relative;
   display: none;
@@ -5863,6 +5866,7 @@ a.close.disabled {
   width: 100%;
   margin-right: -100%;
   backface-visibility: hidden;
+  object-fit: cover;
   transition: transform 0.6s ease-in-out;
 }
 
@@ -9720,7 +9724,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 /*for image in cart page*/
 .cart-image{
-  width: 50px;
+  width: 60px;
+  height: 60px;
 }
 
 /*adjust quantities box*/
@@ -9774,6 +9779,13 @@ a.text-dark:hover, a.text-dark:focus {
   width: 100px; 
   height: 100px;
 }
+
+/*prevent image from streching*/
+.img-fit{
+  object-fit: cover;
+  overflow: auto;
+}
+
 
 @keyframes action {
   0% {

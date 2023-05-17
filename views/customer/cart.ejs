@@ -36,9 +36,9 @@
     <div class="container-fluid">
         <div class="row px-xl-5">
             <div class="col-12">
-                <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark text-underline-mod" href="#" >Home</a>
-                    <a class="breadcrumb-item text-dark text-underline-mod" href="#" >Shop</a>
+                <nav class="breadcrumb bg-light mb-30">                
+                    <a class="breadcrumb-item text-dark text-underline-mod" href="#">Home </a>                   
+                    <a class="breadcrumb-item text-dark text-underline-mod" href="#">Shop </a> 
                     <span class="breadcrumb-item active">Shopping Cart</span>
                 </nav>
             </div>
@@ -66,7 +66,7 @@
                         <% products.forEach(function(product){ %>
                             <tr>
                                 <td class="align-middle">
-                                    <img src="data:<%= product.photo.contentType %>;base64,<%= product.photo.data.toString('base64') %>" alt="Product Image" class="cart-image">
+                                    <img src="data:<%= product.photo.contentType %>;base64,<%= product.photo.data.toString('base64') %>" alt="Product Image" class="cart-image img-fit">
                                     <a href="/api/customer/product/<%= product.id %>">
                                         <%= product.name %>
                                     </a>

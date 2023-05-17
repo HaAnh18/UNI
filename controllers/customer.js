@@ -481,6 +481,11 @@ exports.getCustomerShop = (req,res) => {
   res.render("customer/shop");
 }
 
+//shop
+exports.getCustomerCategories = (req,res) => {
+  res.render("customer/categories");
+}
+
 //shop detail
 //already route above
 
