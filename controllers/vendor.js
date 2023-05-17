@@ -256,16 +256,24 @@ exports.termService = async (req, res) => {
 };
 
 exports.pendingOrder = async (req, res) => {
-  res.render("vendor/pendingOrder");
+  const vendor = await Vendor.findById(req.vendor);
+  res.render("vendor/pendingOrder", { vendor: vendor });
 };
 
 exports.activeOrder = async (req, res) => {
-  res.render("vendor/activeOrder");
+  const vendor = await Vendor.findById(req.vendor);
+  res.render("vendor/activeOrder", { vendor: vendor });
 };
 
 exports.cancelledOrder = async (req, res) => {
-  res.render("vendor/cancelledOrder");
+  const vendor = await Vendor.findById(req.vendor);
+  res.render("vendor/cancelledOrder", { vendor: vendor });
 };
 exports.productDetail = async (req, res) => {
-  res.render("vendor/productDetail");
+  const vendor = await Vendor.findById(req.vendor);
+  res.render("vendor/productDetail", { vendor: vendor });
+};
+exports.completedOrder = async (req, res) => {
+  const vendor = await Vendor.findById(req.vendor);
+  res.render("vendor/completedOrder", { vendor: vendor });
 };

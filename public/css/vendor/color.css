@@ -20,7 +20,8 @@
   --linear-box: linear-gradient(to right, #d4cacd, #bfcad6);
 
   --primary-background: linear-gradient(to left, #e4a8b6, #9e5365);
-
+  --data-table: #d1a5a5;
+  --card-background: linear-gradient(to right, #d1a5a5, #e4a8b6);
   --text-clr: #000;
   --tabs-list-bg-clr: linear-gradient(to left, #c9516d, #9e5365);
   --btn-hvr: #1565c0;

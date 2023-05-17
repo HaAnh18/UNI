@@ -119,8 +119,7 @@ nav.close ~ .dashboard {
   width: 300px;
   font-size: 18px;
   font-weight: 400;
-  margin-top: 20px;
-  padding: 0 24px;
+  padding: 16px 24px;
   white-space: nowrap;
   color: var(--text-color);
 }
@@ -128,12 +127,24 @@ nav.close ~ .dashboard {
   text-decoration: none;
   color: black;
 }
+.activity-data .data-title {
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
 
 .activity-data .data .badge {
   width: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 6px;
+}
+
+.activity-data .data:nth-child(even) {
+  background-color: var(--data-table);
+}
+.activity-data .data:nth-child(even) span {
+  color: var(--text-clr);
 }
 
 /* Responsive styles */

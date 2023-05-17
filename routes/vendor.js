@@ -65,4 +65,6 @@ router.get("/cancelledOrder", isAuthenticated, vendor.cancelledOrder);
 
 router.get("/productDetail", isAuthenticated, vendor.productDetail);
 
+router.get("/completedOrder", isAuthenticated, vendor.completedOrder);
+
 module.exports = router;

@@ -41,7 +41,7 @@ body {
 }
 
 .events .item {
-  background: linear-gradient(90deg, rgb(79 125 253) 0%, rgb(51 153 237) 50%);
+  background: var(--card-background);
   border-radius: 25px;
   position: relative;
   padding: 40px;

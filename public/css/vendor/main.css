@@ -97,7 +97,10 @@ nav.close ~ .dashboard {
   background-color: var(--box3-color);
 }
 .activity-data .data:nth-child(even) {
-  background-color: lightgray;
+  background-color: var(--data-table);
+}
+.activity-data .data:nth-child(even) span {
+  color: var(--text-clr);
 }
 .dash-content .activity .activity-data {
   display: flex;
