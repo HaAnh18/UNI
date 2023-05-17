@@ -123,6 +123,12 @@ nav.close ~ .dashboard {
   white-space: nowrap;
   color: var(--text-color);
 }
+.activity-data .data a {
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
 .activity-data .data .data-list a {
   text-decoration: none;
   color: black;

@@ -1,0 +1,65 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Vu Loc
+ID: S3891483
+Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-javascript/ 
+-->
+
+<%- include('../vendor-partials/head.ejs') %>
+<link rel="stylesheet" href="/css/vendor/orders.css"/>
+<body class="vendorPage">
+  <%- include('../vendor-partials/vendor-sidebar.ejs') %>
+
+  <section class="dashboard">
+    <div class="top">
+      <i class="uil uil-bars sidebar-toggle"></i>
+    </div> 
+    
+    <div class="dash-content">
+  
+      <div class="activity">
+        <div class="title">
+            <i class="bi bi-search"></i>
+          <span class="text">Order Detail</span>
+        </div>
+  
+        <div class="activity-data row">
+          <div class="data">
+            <span class="data-list data-title">Product Name</span>
+            <span class="data-list data-title">Customer Name</span>
+            <span class="data-list data-title">Product Quantity</span>
+            <span class="data-list data-title">Price</span>
+          </div>
+
+          <div class="data">
+            <span class="data-list">1234567891012345</span>
+            <span class="data-list">Customer Name</span>
+            <span class="data-list">Total Price</span>
+            <span class="data-list ">123</span>
+          </div>
+
+          <div class="data">
+            <span class="data-list">1234567891012345</span>
+            <span class="data-list">Customer Name</span>
+            <span class="data-list">Total Price</span>
+            <span class="data-list ">123</span>
+          </div>
+
+          
+        </div> 
+      </div>
+    </div>
+  </section>
+  <script src="/JS/vendor/script.js"></script>
+      
+
+
+
+
+</body>
+
+<%- include('../vendor-partials/vendor-footer.ejs') %>
+
+</html>
