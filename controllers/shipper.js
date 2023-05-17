@@ -5,7 +5,6 @@ const ErrorResponse = require("../utils/errorResponse");
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
-const shipper = require("../models/shipper");
 
  
 var storage = multer.diskStorage({
@@ -43,18 +42,17 @@ exports.signup = async (req, res, next) => {
       distributionHub: req.body.distributionHub
     };
 
-    // res.json(data);
 
     const shipperExist = await Shipper.findOne({username: data.username});
     const usernameExistinCustomer = await Customer.findOne({username: data.username});
     const usernameExistinVendor = await Vendor.findOne({username: data.username});
 
-    // if (shipperExist || usernameExistinCustomer || usernameExistinVendor) {
-    //   res.status(400).json({
-    //     success: false,
-    //     message: "Username already exists"
-    //   })
-    // }
+    if (shipperExist || usernameExistinCustomer || usernameExistinVendor) {
+      res.status(400).json({
+        success: false,
+        message: "Username already exists"
+      })
+    }
   
     Shipper.create(data);
 
@@ -64,7 +62,7 @@ exports.signup = async (req, res, next) => {
     //   data
     // })
 
-    // res.redirect('/api/vendor/signin');
+    res.redirect('/api/shipper/signin');
 
     // generateToken(vendor, 200, res);
      
@@ -129,8 +127,7 @@ exports.signin = async (req, res, next) => {
 }
 
 
-
-const generateToken = async (vendor, statusCode, res) => {
+const generateToken = async (shipper, statusCode, res) => {
 
   const token = await shipper.jwtGenerateToken();
 
@@ -142,7 +139,8 @@ const generateToken = async (vendor, statusCode, res) => {
   res
   .status(statusCode)
   .cookie('token', token, options)
-  .json({success: true, token})
+  // .json({success: true, token})
+  .redirect('/api/shipper/dashboard');
   // console.log(({success: true, token}))
 }
 
@@ -193,8 +191,6 @@ exports.shipperProfile = async (req, res, next) => {
   res.render('profile-shipper', { shipper: shipper.toObject({ getters: true }) });
 }
 
-
-
 //frontend
 exports.getSignin = (req,res) => {
   res.render("shipper/login_shipper");
@@ -204,14 +200,17 @@ exports.getSignup = (req,res) => {
   res.render("shipper/signup_shipper");
 };
 
-exports.getDashboard = (req,res) => {
-  res.render("shipper/shipper_dashboard");
+exports.getDashboard = async (req,res) => {
+  const shipper = await Shipper.findById(req.shipper);
+  res.render("shipper/shipper_dashboard", {shipper: shipper});
 };
 
-exports.getOrder = (req,res) => {
-  res.render("shipper/order_detail");
+exports.getOrder = async (req,res) => {
+  const shipper = await Shipper.findById(req.shipper);
+  res.render("shipper/order_detail", {shipper: shipper});
 };
 
-exports.getEditProfile = (req,res) => {
-  res.render("shipper/edit_profile");
+exports.getEditProfile = async (req,res) => {
+  const shipper = await Shipper.findById(req.shipper);
+  res.render("shipper/edit_profile", {shipper: shipper});
 };

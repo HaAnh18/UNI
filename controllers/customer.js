@@ -8,7 +8,6 @@ const Product = require("../models/product");
 const Vendor = require("../models/vendor");
 const Shipper = require("../models/shipper");
 const Order = require("../models/order");
-
 const { popupfunction } = require("../public/js/popupfunction");
 
 var storage = multer.diskStorage({
@@ -33,10 +32,7 @@ exports.handleFileUpload = (req, res, next) => {
 
 exports.signup = async (req, res, next) => {
 
-  
-
   try {
-    // const customer = await Customer.create(req.body);
     var data = {
       username: req.body.username,
       password: req.body.password,
@@ -53,24 +49,14 @@ exports.signup = async (req, res, next) => {
     const usernameExistinShipper = await Shipper.findOne({username: data.username});
     const usernameExistinVendor = await Vendor.findOne({username: data.username});
 
-  if (customerExist || usernameExistinShipper || usernameExistinVendor) {
-    return res.status(400).json({
-      success: false,
-      message: "Username already exists"
-    })
-  }
+    if (customerExist || usernameExistinShipper || usernameExistinVendor) {
+      return res.render("customer/login", {message: "Username already exists"});
+    }
   
     Customer.create(data);
 
-    // console.log(data);
-    // res.status(201).json({
-    //   success: true,
-    //   data
-    // })
-
     res.redirect('/api/customer/signin');
 
-    // generateToken(customer, 200, res);
      
   } catch(error) {
     console.log(error);
@@ -90,43 +76,24 @@ exports.signin = async (req, res, next) => {
   try {
     
     if (!info.username || !info.password) {
-      return res.status(400).json({
-        success: false,
-        message: "Username and password are required"
-      })
-      // flash('error', 'Please enter your username and password');
-      // return res.redirect('/api/customer/signin');
-      // return res.render("signin", {message: "Please enter your username and password"})
-      // return req.flash("wrong");
+      const message = "Please enter your username and password";
+      return res.render("customer/login", {message: message})
     }
 
     // CHECK USERNAME
     const customer = await Customer.findOne({username: info.username});
     if (!customer) {
-      return popupfunction('invalid');
-      // return res.status(400).json({
-      //   success: false,
-      //   message: "Invalid credentials"
-      // })
-      // return next(new ErrorResponse(`Invalid credentials`, 400));
+      return res.render("customer/login", {message: "Invalid credentials"})
     };
 
     // VERIFY CUSTOMER'S PASSWORD
     const isMatched = await customer.comparePassword(info.password);
     if (!isMatched) {
-      // return res.status(400).json({
-      //   success: false,
-      //   message: "Invalid credentials"
-      // });
-      return res.redirect('/api/customer/signin');
-      // return next(new ErrorResponse(`Invalid credentials`, 400));
+      return res.render("customer/login", {message: "Invalid credentials"})
     } 
     
 
-    // console.log(req.user);
     generateToken(customer, 200, res);
-    // res.json(req.cookie)
-    // res.redirect('/profile');
 
   } catch (error) {
     console.log(error);
@@ -147,9 +114,7 @@ const generateToken = async (customer, statusCode, res) => {
   res
   .status(statusCode)
   .cookie('token', token, options)
-  // .json({success: true, token})
   .redirect('/api/customer/homepage');
-  // console.log(({success: true, token}))
 }
 
 // LOG OUT USER
@@ -161,29 +126,6 @@ exports.logout = (req, res, next) => {
   })
 }
 
-// exports.getMe = async (req, res, next) => {
-
-//   try {
-//     const customer = await Customer.findById(req.user.id);
-//     res.status(200).json({
-//       success: true,
-//       customer
-//     })
-     
-//   } catch(error) {
-//     next(error);
-//   }
-// }
-
-// exports.getMe = asyncHandler(async (req, res, next) => {
-// 	const customer = await Customer.findById(req.user.id);
-
-// 	res.status(200).json({
-// 		success: true,
-// 		data: customer,
-// 	});
-// });
-
 exports.getMe = async (req, res, next) => {
   const customer = await Customer.findById(req.userId);
   console.log(customer);
@@ -192,31 +134,19 @@ exports.getMe = async (req, res, next) => {
 // CUSTOMER PROFILE 
 exports.customerProfile = async (req, res, next) => {
   const user = await Customer.findById(req.user);
-  // res.status(200).json({
-  //   success: true,
-  //   user
-  // })
-  // const base64Image = 'data:user.photo;base64'; // your base64 image data here
-  // res.send(user.photo);
   res.render('customer/profile', { user: user.toObject({ getters: true }) });
 }
 
 exports.productProfile = async (req, res, next) => {
-  const product = await Product.findById(req.params.id)
-  // console.log(product.vendorId);
+  const product = await Product.findById(req.params.id);
   const vendor = await Vendor.findById(product.vendorId);
-  // console.log(vendor.name);
   res.render('customer/detail', {product: product, vendor: vendor});
-  
 };
 
 exports.productVendor = async (req, res, next) => {
-  const product = await Product.find({vendorId: req.params.id})
-  const vendor = await Vendor.findById(req.params.id)
-  
-  res.render("customer/vendor-page", {vendor: vendor, products: product})
-    // res.json(product);
-
+  const product = await Product.find({vendorId: req.params.id});
+  const vendor = await Vendor.findById(req.params.id);
+  res.render("customer/vendor-page", {vendor: vendor, products: product});
 }
 
 exports.addToCart = async (req, res, next) => {
@@ -234,7 +164,6 @@ exports.addToCart = async (req, res, next) => {
     }
 
     await customer.save();
-    // res.json(customer.cart);
     res.redirect("/api/customer/cart");
   } catch (error) {
     next(error);
@@ -246,29 +175,13 @@ exports.showCart = async (req,res,next) => {
     const products = [];
     var total = 0;
     const customer = await Customer.findById(req.user);
-    // console.log(customer.cart.length);
     for (var i = 0; i<customer.cart.length; i++) {
-      // const abc = await Product.find({vendorId: req.params.id});
-      // console.log(`${product}: ${customer.cart[product]}`)
       var product = await Product.findById(customer.cart[i].product);
-      // console.log(customer.cart[i].product);
-      // console.log("1" + product);
-      // console.log(item.length);
-      // cart.push(customer.cart[i])
-      // product.push({quantity: customer.cart[i].quantity });
-      // product["quantity"] = customer.cart.quantity;
       Object.assign(product, {quantity: customer.cart[i].quantity});
       products.push(product);
       total += product.quantity * product.price;
-      // console.log(product.quantity);
-      // console.log(product.quantity);
-      // console.log(product.name);
-
-      // console.log(`${names[index]} is at position ${index}`)
     }
-    // console.log(products);
     res.render('customer/cart', {products: products, total: total});
-    // console.log(customer.cart);
   } catch (error) {
     console.log(error.message);
   }
@@ -293,49 +206,57 @@ exports.showProduct = async (req,res) => {
 };
 
 exports.createOrder = async (req,res) => {
-    try {
-      const products = [];
-      var total = 0;
-      const customer = await Customer.findById(req.user);
-      for (var i = 0; i< customer.cart.length; i++) {
-        var product = await Product.findById(customer.cart[i].product);
-        Object.assign(product, {quantity: customer.cart[i].quantity});
-        products.push(product);
-        total += product.quantity * product.price;
-        customer.cart.remove(customer.cart[i]);
+  try {
+    const products = [];
+    const customer = await Customer.findById(req.user);
+    for (var i = 0; i< customer.cart.length; i++) {
+      var product = await Product.findById(customer.cart[i].product);
+      Object.assign(product, {quantity: customer.cart[i].quantity});
+      products.push(product);
+    };
+
+    for (var a = 0; a < customer.cart.length; a++) {
+      customer.cart.remove(customer.cart[a]);
+    }
+    customer.save();
+
+    let groupBy = (array, key) => {
+      return array.reduce((result, obj) => {
+         (result[obj[key]] = result[obj[key]] || []).push(obj);
+         return result;
+      }, {});
+   };
+
+   var splitOrder = groupBy(products, "vendorId");
+   var numberOfVendor = Object.keys(splitOrder).length;
+  
+  for (var n = 0; n<numberOfVendor; n++) {
+    var listOfItems = [];
+    var eachTotal = 0;
+    for (var m = 0; m<Object.values(splitOrder)[n].length; m++) {
+      var items = { 
+        product: Object.values(splitOrder)[n][m].id, 
+        quantity: Object.values(splitOrder)[n][m].quantity
       };
-
-      let groupBy = (array, key) => {
-        return array.reduce((result, obj) => {
-           (result[obj[key]] = result[obj[key]] || []).push(obj);
-           return result;
-        }, {});
-     };
-
-     var splitOrder = groupBy(products, "vendorId");
-     var numberOfVendor = Object.keys(splitOrder).length;
-    
-      for (var n = 0; n<numberOfVendor; n++) {
-        var listOfItems = [];
-      
-        for (var m = 0; m<Object.values(splitOrder)[n].length; m++) {
-          var items = { 
-            productId: Object.values(splitOrder)[n][m].id, 
-            quantity: Object.values(splitOrder)[n][m].quantity
-          };
-          listOfItems.push(items);
-        }
-
-        var orderInfo = {
+      eachTotal += Object.values(splitOrder)[n][m].price * items.quantity;
+      listOfItems.push(items);
+    }
+ 
+    var distributionHub = ['hubA', 'hubB', 'hubC', 'hubD'];
+    var orderInfo = {
           customer: customer.id,
           vendor: Object.keys(splitOrder)[n],
-          total: total,
+          total: eachTotal,
+          status: "Active",
           products: listOfItems,
-        }
+          distribution: distributionHub[(Math.floor(Math.random() * distributionHub.length))],
+    }
+    
+    Order.create(orderInfo);
+  }
 
-        Order.create(orderInfo);
-      }
-    } catch (error) {
+  // res.render('customer/checkout', {customer: customer, orders: listOfOrder, total: total});
+  } catch (error) {
     console.log(error.message);
   }
 }
@@ -343,7 +264,6 @@ exports.createOrder = async (req,res) => {
 exports.deleteProduct = async (req,res) => {
   try {    
     const customer = await Customer.findById(req.user);
-    // console.log(customer);
     for (var i = 0; i<customer.cart.length; i++) {
       if (customer.cart[i].product == req.params.id) {
         customer.cart.remove(customer.cart[i]);
@@ -351,23 +271,10 @@ exports.deleteProduct = async (req,res) => {
     }
     customer.save();
     res.redirect("/api/customer/cart")
-    // console.log(total);
-    // res.render('customer/cart', {products: products, total: total});
-    // console.log(customer.cart);
   } catch (error) {
     console.log(error.message);
   }
 }
-
-
-//frontend
-// exports.getHomepage = (req,res) => {
-//   res.render("customer/index");
-// };
-
-// exports.getCart = (req,res) => {
-//   res.render("customer/cart");
-// };
 
 exports.getCheckout = async (req,res) => {
   try {
@@ -391,11 +298,9 @@ exports.getCheckout = async (req,res) => {
 
    var splitOrder = groupBy(products, "vendorId");
    var numberOfVendor = Object.keys(splitOrder).length;
-  //  console.log(numberOfVendor);
   
   for (var n = 0; n<numberOfVendor; n++) {
     var listOfItems = [];
-    // console.log(Object.keys(splitOrder)[n]);
     var vendor = await Vendor.findById(Object.keys(splitOrder)[n]);
     for (var m = 0; m<Object.values(splitOrder)[n].length; m++) {
       var items = { 
@@ -408,12 +313,32 @@ exports.getCheckout = async (req,res) => {
     }
     listOfOrder.push(listOfItems);
   }
-  console.log(listOfOrder.length);
 
   res.render('customer/checkout', {customer: customer, orders: listOfOrder, total: total});
   } catch (error) {
     console.log(error.message);
   }
+};
+
+exports.editProfile = async (req,res) => {
+  const customer = await Customer.findById(req.user);
+ // Find the document and update it
+  Customer.findOneAndUpdate(
+  { _id: customer.id}, // Specify the filter criteria to find the document
+  { $set: { 
+    name: req.body.name,
+    address: req.body.address
+  } }, // Specify the update operation
+  { new: true } // Set the option to return the updated document
+)
+  .then(updatedDocument => {
+    // Handle the updated document
+    res.redirect('/api/customer/profile');
+  })
+  .catch(error => {
+    // Handle any errors that occur
+    console.error(error);
+  });
 };
 
 exports.getContact = (req,res) => {
@@ -442,12 +367,11 @@ exports.getShop = (req,res) => {
   .catch((error) => {console.log(error.message)});
 };
 
-// exports.customerProfile = (req,res) => {
-//   res.render("customer/profile");
-// };
 
-exports.getOrderHistory = (req,res) => {
-  res.render("customer/order");
+exports.getOrderHistory = async (req,res) => {
+  const customer = await Customer.findById(req.user);
+  const order = await Order.find({customer: customer.id});
+  res.render("customer/order", {customer: customer, orders: order});
 };
 
 exports.getChangePassword = (req,res) => {
@@ -458,55 +382,39 @@ exports.getChangePassword = (req,res) => {
 //about us
 exports.getCustomerAboutUs = (req,res) => {
   res.render("customer/about");
-}
+};
 //contact
 exports.getCustomerContact = (req,res) => {
   res.render("customer/contact");
-}
+};
 //faq
 exports.getCustomerFaq = (req,res) => {
   res.render("customer/faq");
-}
-
-//login & signup
-exports.getCustomerLogin = (req,res) => {
-  res.render("customer/login");
-}
-
-//homepage(index)
-//already route above
-
-//shop
-exports.getCustomerShop = (req,res) => {
-  res.render("customer/shop");
-}
-
-//shop detail
-//already route above
+};
 
 //cart
 exports.getCustomerCart = (req,res) => {
   res.render("customer/cart");
-}
+};
 
 //checkout
 exports.getCustomerCheckout = (req,res) => {
   res.render("customer/checkout");
-}
+};
 
 //user profile
 exports.getCustomerProfile = async (req,res) => {
   const customer = await Customer.findById(req.user);
   res.render("customer/profile", {user: customer});
-}
+};
 
 //user order
 exports.getCustomerOrder = (req,res) => {
   res.render("customer/order");
-}
+};
 
 //user security
 exports.getCustomerSecurity = (req,res) => {
   res.render("customer/security");
-}
+};
 

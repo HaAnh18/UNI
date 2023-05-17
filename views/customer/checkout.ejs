@@ -26,11 +26,9 @@
 </head>
 
 <!--header-->
-<%- include('../customer-partials/header/header-user.ejs') %>
+<%- include('../customer-partials/header/header.ejs') %>
 
 <body>
-    
-
 
     <!-- Breadcrumb Start -->
     <div class="container-fluid">
@@ -96,10 +94,9 @@
                 </div>
                 <!--Payment-->
                 <div class="mb-5">
-                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Payment</span></h5>
                     <div class="bg-light p-30">
 
-                        <button class="btn btn-block btn-primary font-weight-bold py-3"> <a href="/users/index"> <h5>Place Order</h5></a></button>
+                        <button class="btn btn-block btn-primary font-weight-bold py-3"> <a href="/api/customer/order"> <h5>Place Order</h5></a></button>
                         
                     </div>
                 </div>

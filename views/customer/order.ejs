@@ -28,7 +28,7 @@
 
 
     <!--header-->
-    <%- include('../customer-partials/header/header-user.ejs') %>
+    <%- include('../customer-partials/header/header.ejs') %>
 
 
 <body>
@@ -40,7 +40,7 @@
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="#">Home</a>
                     <a class="breadcrumb-item text-dark" href="#">User</a>
-                    <span class="breadcrumb-item active">User's Profile</span>
+                    <span class="breadcrumb-item active"><%= customer.name%>'s Profile</span>
                 </nav>
             </div>
         </div>
@@ -67,37 +67,19 @@
                     <table class="table mb-0">
                         <thead>
                             <tr>
-                                <th class="border-gray-200" scope="col">Transaction ID</th>
-                                <th class="border-gray-200" scope="col">Date</th>
+                                <th class="border-gray-200" scope="col">Order ID</th>
                                 <th class="border-gray-200" scope="col">Amount</th>
                                 <th class="border-gray-200" scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><a href="/users/order-status"> #39201</a></td>
-                                <td>06/15/2021</td>
-                                <td>$29.99</td>
-                                <td><span class="badge bg-light text-dark">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td><a href="/users/order-status"> #39232</a></td>
-                                <td>05/15/2021</td>
-                                <td>$29.99</td>
-                                <td><span class="badge bg-success">Complete</span></td>
-                            </tr>
-                            <tr>
-                                <td><a href="/users/order-status"> #39291</a></td>
-                                <td>04/15/2021</td>
-                                <td>$29.99</td>
-                                <td><span class="badge bg-success">Complete</span></td>
-                            </tr>
-                            <tr>
-                                <td><a href="/users/order-status"> #39101</a></td>
-                                <td>03/15/2021</td>
-                                <td>$29.99</td>
-                                <td><span class="badge bg-success">Complete</span></td>
-                            </tr>
+                            <% orders.forEach(function(order){ %>
+                                <tr>
+                                    <td><a href="/users/order-status">#<%= order.id %></a></td>
+                                    <td><%= order.total %> AUD</td>
+                                    <td><span class="badge bg-light text-dark"><%= order.status %></span></td>
+                                </tr>
+                            <% }); %>
                         </tbody>
                     </table>
                 </div>

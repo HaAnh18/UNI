@@ -26,18 +26,18 @@
                         <p>Please sign in</p>
                     </div>
                     <!----Form Start---->
-                    <form action="#">
+                    <form method="POST" action="/api/shipper/signin">
                         <div class="alert alert-danger" role="alert">
                             A simple danger alert—check it out!
                         </div>    
                     <div class="input-group mb-3">
-                        <input type="text" name= "shipper_username" class="form-control form-control-lg bg-light fs-6" placeholder="Username">
+                        <input type="text" name= "username" class="form-control form-control-lg bg-light fs-6" placeholder="Username">
                     </div>
                     <div class="alert alert-danger" role="alert">
                         A simple danger alert—check it out!
                     </div>   
                     <div class="input-group mb-3">
-                        <input type="text" name= "shipper_password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                        <input type="password" name= "password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
                     </div>
                     <div class="input-group mb-3">
                         <button class=" btn btn-lg w-100 fs-6 text-white" type="submit" >Login</button>
