@@ -51,6 +51,8 @@ router.get("/products", isAuthenticated, vendor.showProduct);
 
 router.post('/editprofile', isAuthenticated, vendor.handleFileUpload, vendor.editProfile);
 
+router.post('/:id/editproduct', isAuthenticated, vendor.handleFileUpload, vendor.editProduct);
+
 router.get("/addproduct", isAuthenticated, vendor.getAddProduct);
 
 router.get("/profile", isAuthenticated, vendor.vendorProfile);
@@ -63,8 +65,10 @@ router.get("/activeorder", isAuthenticated, vendor.activeOrder);
 
 router.get("/cancelledorder", isAuthenticated, vendor.cancelledOrder);
 
-router.get("/productDetail", isAuthenticated, vendor.productDetail);
+router.get("/product/:id", isAuthenticated, vendor.productDetail);
 
-router.get("/completedOrder", isAuthenticated, vendor.completedOrder);
+router.get("/completedorder", isAuthenticated, vendor.completedOrder);
+
+router.get("/order/:id/changestatus", isAuthenticated, vendor.changeStatus);
 
 module.exports = router;

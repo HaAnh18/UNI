@@ -33,41 +33,18 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
             <span class="data-list data-title">Status</span>
           </div>
 
-          <div class="data">
-            <span class="data-list">1234567891012345</span>
-            <span class="data-list">Customer Name</span>
-            <span class="data-list">Total Price</span>
-            <span class="data-list badge text-bg-danger">Cancelled</span>
-          </div>
+          <% orders.forEach(function(order){ %>
 
-          <div class="data">
-            <span class="data-list">Order id</span>
-            <span class="data-list">Customer Name</span>
-            <span class="data-list">Total Price</span>
-            <span class="data-list badge text-bg-danger">Cancelled</span>
-          </div>
+            <div class="data">
+              <span class="data-list">#<%= order.id %></span>
+              <span class="data-list"><%= order.customerName %></span>
+              <span class="data-list"><%= order.total %> AUD</span>
+              <span class="data-list badge text-bg-danger"><%= order.status %></span>
+            </div>
 
-          <div class="data">
-            <span class="data-list">Order id</span>
-            <span class="data-list">Customer Name</span>
-            <span class="data-list">Total Price</span>
-            <span class="data-list badge text-bg-danger">Cancelled</span>
-          </div>
+          <% }); %>
 
-          <div class="data">
-            <span class="data-list">Order id</span>
-            <span class="data-list">Customer Name</span>
-            <span class="data-list">Total Price</span>
-            <span class="data-list badge text-bg-danger">Cancelled</span>
-          </div>
-
-          <div class="data">
-            <span class="data-list">Order id</span>
-            <span class="data-list">Customer Name</span>
-            <span class="data-list">Total Price</span>
-            <span class="data-list badge text-bg-danger">Cancelled</span>
-          </div>
-        </div> 
+      
       </div>
     </div>
   </section>

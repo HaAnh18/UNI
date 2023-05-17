@@ -5,7 +5,6 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 const Product = require("../models/product");
-
 const Shipper = require("../models/shipper");
 const Order = require("../models/order");
 const bcrypt = require("bcryptjs");
@@ -46,8 +45,6 @@ exports.signup = async (req, res, next) => {
       address: req.body.address,
     };
 
-
-
     const vendorExist = await Vendor.findOne({username: data.username});
     const usernameExistInCustomer = await Customer.findOne({username: data.username});
     const usernameExistInShipper = await shipper.findOne({username: data.username});
@@ -62,7 +59,6 @@ exports.signup = async (req, res, next) => {
     }
 
     Vendor.create(data);
-
 
     res.redirect("/api/vendor/signin");
 
@@ -80,20 +76,17 @@ exports.signup = async (req, res, next) => {
 };
 
 exports.signin = async (req, res, next) => {
-  var info = {
-    username: req.body.username,
-    password: req.body.password,
-  };
-  // res.json(info.username);
   try {
-    // const {username, password} = req.body;
+    var info = {
+      username: req.body.username,
+      password: req.body.password,
+    };
 
     if (!info.username || !info.password) {
 
       return res.render("vendor/login", {message: "Username and password are required"});
 
 
-      // return req.flash("wrong");
     }
 
     // CHECK USERNAME
@@ -146,10 +139,7 @@ const generateToken = async (vendor, statusCode, res) => {
 // LOG OUT USER
 exports.logout = (req, res, next) => {
   res.clearCookie("token");
-  res.status(200).json({
-    success: true,
-    message: "Logged out",
-  });
+  res.render("vendor/login");
 };
 
 
@@ -180,12 +170,25 @@ exports.addProduct = async (req, res, next) => {
 }
 
 
-
-
 //frontend
 exports.showDashboard = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
-  res.render("vendor/vendor", { vendor: vendor });
+  const orders = await Order.find({vendor: vendor.id});
+  const listOfOrders = [];
+  var total = 0;
+  // console.log(orders);
+  for (var i = 0; i< orders.length; i++) {
+    var customer = await Customer.findById(orders[i].customer);
+    Object.assign(orders[i], {customerName: customer.name});
+    // console.log(orders[i].customer);
+    console.log(orders[i].customerName);
+    listOfOrders.push(orders[i]);
+    if (orders[i].status == "Completed") {
+      total += orders[i].total;
+    }
+  }
+  // console.log(listOfOrders);
+  res.render("vendor/vendor", { vendor: vendor, orders: listOfOrders, total: total});
 };
 
 exports.showProduct = async (req, res) => {
@@ -223,11 +226,14 @@ exports.pendingOrder = async (req, res) => {
   const listOfOrders = [];
   // console.log(orders);
   for (var i = 0; i< orders.length; i++) {
-    if (orders[i] == "Cancelled") {
+    if (orders[i].status == "Pending") {
+      var customer = await Customer.findById(orders[i].customer);
+      Object.assign(orders[i], {customerName: customer.name});
       listOfOrders.push(orders[i]);
+      // console.log(orders[i].customerName);
     }
   }
-  res.render("vendor/pendingOrder");
+  res.render("vendor/pendingorder", {vendor: vendor, orders: listOfOrders});
 };
 
 exports.activeOrder = async (req, res) => {
@@ -237,40 +243,52 @@ exports.activeOrder = async (req, res) => {
   // console.log(orders);
   for (var i = 0; i< orders.length; i++) {
     if (orders[i].status == "Active") {
+      var customer = await Customer.findById(orders[i].customer);
+      Object.assign(orders[i], {customerName: customer.name});
       listOfOrders.push(orders[i]);
     }
   }
-  console.log(listOfOrders);
+  // console.log(listOfOrders)
   res.render("vendor/active-order", {vendor: vendor, orders: listOfOrders});
 };
 
-exports.cancelledOrder = async (req, res) => {
-  const vendor = await Vendor.findById(req.vendor);
-  res.render("vendor/cancelledOrder", { vendor: vendor });
-};
-exports.productDetail = async (req, res) => {
-  const vendor = await Vendor.findById(req.vendor);
-  res.render("vendor/productDetail", { vendor: vendor });
-};
 exports.completedOrder = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
-  res.render("vendor/completedOrder", { vendor: vendor });
   const orders = await Order.find({vendor: req.vendor});
   const listOfOrders = [];
   // console.log(orders);
   for (var i = 0; i< orders.length; i++) {
-    if (orders[i] == "Cancelled") {
+    if (orders[i].status == "Cancelled") {
+      var customer = await Customer.findById(orders[i].customer);
+      Object.assign(orders[i], {customerName: customer.name});
       listOfOrders.push(orders[i]);
     }
   }
-  res.render("vendor/cancelledOrder");
+  res.render("vendor/completedorder", { vendor: vendor, orders: listOfOrders });
+};
+
+exports.cancelledOrder = async (req, res) => {
+  const vendor = await Vendor.findById(req.vendor);
+  const orders = await Order.find({vendor: req.vendor});
+  const listOfOrders = [];
+  // console.log(orders);
+  for (var i = 0; i< orders.length; i++) {
+    if (orders[i].status == "Cancelled") {
+      var customer = await Customer.findById(orders[i].customer);
+      Object.assign(orders[i], {customerName: customer.name});
+      listOfOrders.push(orders[i]);
+    }
+  }
+  res.render("vendor/cancelledorder", { vendor: vendor, orders: listOfOrders });
+};
+exports.productDetail = async (req, res) => {
+  const vendor = await Vendor.findById(req.vendor);
+  const product = await Product.findById(req.params.id);
+  res.render("vendor/productDetail", { vendor: vendor , product: product});
 };
 
 exports.editProfile = async (req,res) => {
   const vendor = await Vendor.findById(req.vendor);
-  // console.log(req.file.size);
-  // console.log(vendor.photo);
-  // console.log(req.file);
   const hashPassword = await bcrypt.hash(req.body.password,10);
   if (req.file == undefined) {
      // Find the document and update it
@@ -319,3 +337,74 @@ exports.editProfile = async (req,res) => {
   }
 
 };
+
+exports.editProduct = async (req,res) => {
+  const vendor = await Vendor.findById(req.vendor);
+  const product = await Product.findById(req.params.id);
+  if (req.file == undefined) {
+     // Find the document and update it
+  Product.findOneAndUpdate(
+  { _id: product.id}, // Specify the filter criteria to find the document
+  { $set: { 
+    name: req.body.name,
+    description: req.body.description,
+    category: req.body.category,
+    price: req.body.price
+  } }, // Specify the update operation
+  { new: true }, // Set the option to return the updated document
+)
+  .then(updatedDocument => {
+    // Handle the updated document
+    res.redirect("/api/vendor/products");
+    // console.log(product);
+  })
+  .catch(error => {
+    // Handle any errors that occur
+    console.error(error);
+  });
+  } else {
+    //  Find the document and update it
+  Product.findOneAndUpdate(
+  { _id: product.id}, // Specify the filter criteria to find the document
+  { $set: { 
+    name: req.body.name,
+    description: req.body.description,
+    photo: {
+      data: fs.readFileSync(path.join(__dirname + '/../uploads/' + req.file.filename)),
+      contentType: 'image/png'
+    },
+    category: req.body.category,
+    price: req.body.price
+  } }, // Specify the update operation
+  { new: true } // Set the option to return the updated document
+)
+  .then(updatedDocument => {
+    // Handle the updated document
+    // res.redirect(`/api/vendor/product/${res.parmas.id}`);
+    res.redirect("/api/vendor/products");
+  })
+  .catch(error => {
+    // Handle any errors that occur
+    console.error(error);
+  });
+  }
+
+};
+
+exports.changeStatus = async (req,res) => {
+  const order = await Order.findById(req.params.id);
+ // Find the document and update it
+  Order.findOneAndUpdate(
+  { _id: order.id }, // Specify the filter criteria to find the document
+  { $set: { status: 'Active' } }, // Specify the update operation
+  { new: true } // Set the option to return the updated document
+)
+  .then(updatedDocument => {
+    // Handle the updated document
+    res.redirect('/api/vendor/dashboard');
+  })
+  .catch(error => {
+    // Handle any errors that occur
+    console.error(error);
+  });
+}

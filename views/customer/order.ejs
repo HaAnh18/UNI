@@ -38,9 +38,9 @@
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="#">Home</a>
-                    <a class="breadcrumb-item text-dark" href="#">User</a>
-                    <span class="breadcrumb-item active"><%= customer.name%>'s Profile</span>
+                    <a class="breadcrumb-item text-dark" href="/api/customer/homepage">Home</a>
+                    <a class="breadcrumb-item text-dark" href="/api/customer/profile"><%= customer.name%></a>
+                    <span class="breadcrumb-item active">Order History</span>
                 </nav>
             </div>
         </div>
@@ -53,7 +53,7 @@
         <!-- Account page navigation-->
         <nav class="nav nav-borders">
             <a class="nav-link active ms-0" href="/api/customer/profile" >Profile</a>
-            <a class="nav-link" href="/api/customer/order" >Billing</a>
+            <a class="nav-link" href="/api/customer/orderhistory" >Order History</a>
             <a class="nav-link" href="/api/customer/security">Security</a>
         </nav>
         <hr class="mt-0 mb-4">
@@ -75,7 +75,7 @@
                         <tbody>
                             <% orders.forEach(function(order){ %>
                                 <tr>
-                                    <td><a href="/users/order-status">#<%= order.id %></a></td>
+                                    <td><a href="/api/customer/orderstatus/<%= order.id %>">#<%= order.id %></a></td>
                                     <td><%= order.total %> AUD</td>
                                     <td><span class="badge bg-light text-dark"><%= order.status %></span></td>
                                 </tr>

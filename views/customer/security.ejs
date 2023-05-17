@@ -37,9 +37,9 @@
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="#">Home</a>
-                    <a class="breadcrumb-item text-dark" href="#">User</a>
-                    <span class="breadcrumb-item active">User's Profile</span>
+                    <a class="breadcrumb-item text-dark" href="/api/customer/homepage">Home</a>
+                    <a class="breadcrumb-item text-dark" href="/api/customer/profile"><%= customer.name %></a>
+                    <span class="breadcrumb-item active">Security</span>
                 </nav>
             </div>
         </div>
@@ -50,7 +50,7 @@
         <!-- Account page navigation-->
         <nav class="nav nav-borders">
             <a class="nav-link active ms-0" href="/api/customer/profile" >Profile</a>
-            <a class="nav-link" href="/api/customer/orderhistory" >Billing</a>
+            <a class="nav-link" href="/api/customer/orderhistory" >Order History</a>
             <a class="nav-link" href="/api/customer/security">Security</a>
         </nav>
         <!---->
@@ -61,18 +61,28 @@
                 <div class="card mb-4">
                     <div class="card-header">Change Password</div>
                     <div class="card-body">
-                        <form>
+                        <form action="/api/customer/changepassword" method="POST">
+
+                            <% if(typeof message != "undefined" && message) { %>
+                                <div class="mb-3">
+                                    <div class="alert alert-danger" role="alert">
+                                        <div>	<%= message %></div>
+                                    </div>
+                                </div>
+                            <%}%>
+
                             <!-- Form Group (current password)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="currentPassword">Current Password</label>
-                                <input class="form-control" id="currentPassword" type="password" placeholder="Enter current password">
+                                <input class="form-control" name="current" id="currentPassword" type="password" placeholder="Enter current password">
                             </div>
                             <!-- Form Group (new password)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="newPassword">New Password</label>
-                                <input class="form-control" id="newPassword" type="password" placeholder="Enter new password">
+                                <input class="form-control" name="new" id="newPassword" type="password" placeholder="Enter new password">
                             </div>
-                            <button class="btn btn-primary" type="button">Save</button>
+
+                            <button class="btn btn-primary" type="submit">Save</button>
                         </form>
                     </div>
                 </div>
@@ -113,6 +123,7 @@
 
     <!-- Template Javascript -->
     <script src="/js/customer/main/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

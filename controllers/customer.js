@@ -8,6 +8,7 @@ const Product = require("../models/product");
 const Vendor = require("../models/vendor");
 const Shipper = require("../models/shipper");
 const Order = require("../models/order");
+const bcrypt = require("bcryptjs");
 const { popupfunction } = require("../public/js/popupfunction");
 
 var storage = multer.diskStorage({
@@ -126,11 +127,6 @@ exports.logout = (req, res, next) => {
   })
 }
 
-exports.getMe = async (req, res, next) => {
-  const customer = await Customer.findById(req.userId);
-  console.log(customer);
-}
-
 // CUSTOMER PROFILE 
 exports.customerProfile = async (req, res, next) => {
   const user = await Customer.findById(req.user);
@@ -247,15 +243,14 @@ exports.createOrder = async (req,res) => {
           customer: customer.id,
           vendor: Object.keys(splitOrder)[n],
           total: eachTotal,
-          status: "Active",
+          status: "Pending",
           products: listOfItems,
           distribution: distributionHub[(Math.floor(Math.random() * distributionHub.length))],
     }
     
     Order.create(orderInfo);
   }
-
-  // res.render('customer/checkout', {customer: customer, orders: listOfOrder, total: total});
+  res.redirect("/api/customer/homepage");
   } catch (error) {
     console.log(error.message);
   }
@@ -374,8 +369,9 @@ exports.getOrderHistory = async (req,res) => {
   res.render("customer/order", {customer: customer, orders: order});
 };
 
-exports.getChangePassword = (req,res) => {
-  res.render("customer/security");
+exports.getChangePassword = async (req,res) => {
+  const customer = await Customer.findById(req.user);
+  res.render("customer/security", {customer: customer});
 };
 
 /*====================================================Customer route======================================================*/
@@ -408,13 +404,80 @@ exports.getCustomerProfile = async (req,res) => {
   res.render("customer/profile", {user: customer});
 };
 
-//user order
-exports.getCustomerOrder = (req,res) => {
-  res.render("customer/order");
-};
+exports.getOrderStatus = async (req,res) => {
+  const customer = await Customer.findById(req.user);
+  const order = await Order.findById(req.params.id);
+  res.render("customer/order-status", {user: customer, order: order});
+}
 
 //user security
 exports.getCustomerSecurity = (req,res) => {
   res.render("customer/security");
 };
+
+exports.changePassword = async (req,res) => {
+  const customer = await Customer.findById(req.user);
+  const hashPassword = bcrypt.hash(req.body.new, 10);
+  const isMatched = await customer.comparePassword(req.body.current);
+  if (isMatched) {
+    Customer.findOneAndUpdate(
+      { _id: customer.id }, // Specify the filter criteria to find the document
+      { $set: { password: hashPassword } }, // Specify the update operation
+      { new: true } // Set the option to return the updated document
+    )
+      .then(updatedDocument => {
+        // Handle the updated document
+        res.redirect('/api/customer/profile');
+      })
+      .catch(error => {
+        // Handle any errors that occur
+        console.error(error);
+      });
+  } else {
+    res.render('customer/security', {message: "Wrong password"})
+  }
+ 
+}
+
+exports.getClothing = (req,res) => {
+  Product.find()
+  .then((products) => {
+    var clothing = [];
+    for (var i = 0; i< products.length; i++) {
+      if (products[i].category == "clothing") {
+        clothing.push(products[i]);
+      }
+    };
+    var category = "Clothing"
+    res.render("customer/category", {products: clothing, category: category});
+  })
+}
+
+exports.getElectronic = (req,res) => {
+  Product.find()
+  .then((products) => {
+    var electronic = [];
+    for (var i = 0; i< products.length; i++) {
+      if (products[i].category == "electronic") {
+        electronic.push(products[i]);
+      }
+    };
+    var category = "Electronic"
+    res.render("customer/category", {products: electronic, category: category});
+  })
+}
+
+exports.getBook = (req,res) => {
+  Product.find()
+  .then((products) => {
+    var book = [];
+    for (var i = 0; i< products.length; i++) {
+      if (products[i].category == "book") {
+        book.push(products[i]);
+      }
+    };
+    var category = "Book"
+    res.render("customer/category", {products: book, category: category});
+  })
+}
 

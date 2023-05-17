@@ -48,7 +48,7 @@ router.get('/orderhistory', isAuthenticated, customer.getOrderHistory);
 
 router.post('/editprofile', isAuthenticated, customer.handleFileUpload, customer.editProfile)
 
-router.get('/changepassword', customer.getChangePassword);
+router.get('/changepassword', isAuthenticated, customer.getChangePassword);
 
 router.get('/profile', isAuthenticated, customer.getCustomerProfile);
 
@@ -71,9 +71,17 @@ router.get('/cart', customer.getCustomerCart);
 //checkout
 router.get('/checkout', customer.getCustomerCheckout);
 //profile
-//order
-router.get('/order', customer.getCustomerOrder);
+
+router.get('/orderstatus/:id', isAuthenticated, customer.getOrderStatus);
 //security
 router.get('/security', customer.getCustomerSecurity);
+
+router.post('/changepassword', isAuthenticated, customer.changePassword);
+
+router.get('/category/clothing', customer.getClothing);
+
+router.get('/category/electronic', customer.getElectronic);
+
+router.get('/category/book', customer.getBook);
 /*=======================================================================================================================================*/
 module.exports = router;

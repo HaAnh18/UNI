@@ -44,9 +44,9 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Account login</button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="/api/customer/login"><button class="dropdown-item" type="button">Customer login</button></a>
-                            <a href=""><button class="dropdown-item" type="button">Vendor login</button></a>
-                            <a href=""><button class="dropdown-item" type="button">Shipper login</button></a>
+                            <a href="/api/customer/signin"><button class="dropdown-item" type="button">Customer login</button></a>
+                            <a href="/api/vendor/signin"><button class="dropdown-item" type="button">Vendor login</button></a>
+                            <a href="/api/shipper/signin"><button class="dropdown-item" type="button">Shipper login</button></a>
                         </div>
                     </div>
                 </div>
@@ -116,11 +116,11 @@
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                     <div class="navbar-nav w-100">
 
-                        <a href="/api/customer/shop" class="nav-item nav-link">Clothes</a>
+                        <a href="/api/customer/category/clothing" class="nav-item nav-link">Clothing</a>
 
-                        <a href="/api/customer/shop" class="nav-item nav-link">Electtronics</a>
+                        <a href="/api/customer/category/electronic" class="nav-item nav-link">Electronics</a>
 
-                        <a href="/api/customer/shop" class="nav-item nav-link">Computers</a>
+                        <a href="/api/customer/category/book" class="nav-item nav-link">Books</a>
 
                         <a href="/api/customer/shop" class="nav-item nav-link">View all</a>
                         
@@ -162,6 +162,19 @@
                                 <i class="fas fa-shopping-cart text-primary"></i>
                             </a>
                         </div>
+
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user text-primary"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/api/customer/profile">My Profile</a>
+                            <a class="dropdown-item" href="/api/customer/orderhistory">My Purchase</a>
+                            <a class="dropdown-item" href="#">Log Out</a>
+                            </div>
+                        </li>   
+                        </ul>
                     </div>
                 </nav>
             </div>

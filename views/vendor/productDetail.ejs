@@ -31,16 +31,16 @@ Acknowledgement: https://www.web-leb.com/code/25
                 </div>
                 <div class="container">
                     <section class="card">
-                        <form class="row g-3"  method="POST" action="/api/vendor/addproduct" enctype="multipart/form-data">
+                        <form class="row g-3"  method="POST" action="/api/vendor/<%= product.id %>/editproduct" enctype="multipart/form-data">
                             <div class="col-md-6">
-                                <label for="name" class="form-label">Product name</label>
-                                <input name="name" value="Current Name" id="name" type="text" class="form-control" required>
+                                <label for="name" class="form-label">Current Name</label>
+                                <input name="name" value="<%= product.name%>" id="name" type="text" class="form-control" >
                             </div>
 
                             <div class="col-12">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea name="description" id="description" type="text" maxlength="500" class="form-control" cols="30"
-                                rows="10" required>Current Description</textarea>
+                                rows="10" required><%= product.description%></textarea>
                             </div>
 
 
@@ -48,28 +48,27 @@ Acknowledgement: https://www.web-leb.com/code/25
                                 <label for="category" class="form-label">Category</label>
                                 <select name="category" class="form-select" required> 
                                     <option disabled> Select Category</option>
-                                    <option selected id="clothing" value="clothing">Current Category</option>
-                                    <option id="book" value="book">Book</option>
-                                    <option id="electronic" value="electronic">Electronic</option>
+                                    <option selected id="clothing" value="<%= product.category%>"><%= product.category%></option>
+                                    <option id="clothing" value="Clothing">Clothing</option>
+                                    <option id="book" value="Book">Book</option>
+                                    <option id="electronic" value="Electronic">Electronic</option>
                                 </select>
                             </div>
 
                             <div class="col-md-2">
                                 <label for="price" class="form-label">Price</label>
-                                <input name="price" value="Current Price" min="0" id="price" type="number" class="form-control" required>
+                                <input name="price" value="<%= product.price%>" min="0" id="price" type="number" class="form-control" >
                             </div>
                         
                         
                             <div class="profile-image-container visual">
                                 <label for="image"></label>
-                                <input type="file" id="image" value="Current img" name="image" required accept="jpeg, jpg, png" onchange="readURL(this);">
-                                <img src="/images/vendor/vendorLogin.png" alt="Product Image" id="profile-image">
+                                <input type="file" id="image" name="image" accept="jpeg, jpg, png" onchange="readURL(this);">
+                                <img src="data:<%= product.photo.contentType %>;base64,<%= product.photo.data.toString('base64') %>" alt="Product Image" id="profile-image">
                             </div>
 
-                            
-
                             <div class="d-grid d-md-flex justify-content-md-start">
-                                <button class="btn btn-primary btn-lg" type="submit">Add your product!</button>
+                                <button class="btn btn-primary btn-lg" type="submit">Update your product!</button>
                             </div>
                         </form>
                     </section> 
