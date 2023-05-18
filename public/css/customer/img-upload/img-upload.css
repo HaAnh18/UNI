@@ -1,0 +1,42 @@
+/*RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Vu Loc
+ID: S3891483
+Acknowledgement: 
+*/
+
+
+/*User upload and preview profile image Give credit for ChatGPT */
+.profile-image-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 0.1px solid var(--primary-color);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  .profile-image-container label {
+    cursor: pointer;
+  }
+  .profile-image-container input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .profile-image-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
