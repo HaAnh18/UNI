@@ -18,7 +18,7 @@ Acknowledgement: https://github.com/codingmarket07/Terms-and-Condition-Section-T
 }
 
 body {
-  background: var(--primary-clr);
+  background: var(--primary-background) !important;
   font-size: 12px;
   color: var(--text-clr);
 }
@@ -138,8 +138,8 @@ body {
 }
 
 .tc_wrap .tabs_content .tab_foot button.agree {
-  background: var(--primary-clr);
-  border-color: var(--primary-clr);
+  background: var(--primary-color);
+  border-color: var(--primary-color);
   color: var(--white);
 }
 

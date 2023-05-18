@@ -18,11 +18,11 @@ const vendor = require("../controllers/vendor");
 
 router.get("/signup", vendor.getSignup);
 
-router.post('/signup', vendor.handleFileUpload, vendor.signup);
+router.post("/signup", vendor.handleFileUpload, vendor.signup);
 
-router.post('/signin', vendor.signin);
+router.post("/signin", vendor.signin);
 
-router.get('/logout', vendor.logout);
+router.get("/logout", vendor.logout);
 
 // router.get('/signin', (req,res) => {
 //   res.render('login-vendor');
@@ -30,7 +30,7 @@ router.get('/logout', vendor.logout);
 
 router.get("/signin", vendor.getLogin);
 
-router.get('/addproduct', isAuthenticated, vendor.getAddProduct);
+router.get("/addproduct", isAuthenticated, vendor.getAddProduct);
 
 router.post(
   "/addproduct",
@@ -49,7 +49,12 @@ router.get("/dashboard", isAuthenticated, vendor.showDashboard);
 
 router.get("/products", isAuthenticated, vendor.showProduct);
 
-router.post('/editprofile', isAuthenticated, vendor.handleFileUpload, vendor.editProfile);
+router.post(
+  "/editprofile",
+  isAuthenticated,
+  vendor.handleFileUpload,
+  vendor.editProfile
+);
 
 router.post('/:id/editproduct', isAuthenticated, vendor.handleFileUpload, vendor.editProduct);
 
@@ -70,5 +75,7 @@ router.get("/product/:id", isAuthenticated, vendor.productDetail);
 router.get("/completedorder", isAuthenticated, vendor.completedOrder);
 
 router.get("/order/:id/changestatus", isAuthenticated, vendor.changeStatus);
+
+router.get("/orderDetail", isAuthenticated, vendor.orderDetail);
 
 module.exports = router;

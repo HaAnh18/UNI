@@ -9,6 +9,7 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
 
 <%- include('../vendor-partials/head.ejs') %>
 <link rel="stylesheet" href="/css/vendor/main.css"/>
+
 <body class="vendorPage">
   <%- include('../vendor-partials/vendor-sidebar.ejs') %>
 
@@ -23,7 +24,6 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
           <i class="uil uil-tachometer-fast-alt"></i>
           <span class="text">Dashboard</span>
         </div>
-  
         <div class="boxes">
           <div class="box box1">
             <i class="uil uil-dollar-alt"></i>
@@ -37,6 +37,8 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
           </div>
         </div>
       </div>
+        <!-- <canvas class="my-4 w-100" id="myChart" width="1492" height="630" style="display: block; box-sizing: border-box; height: 630px; width: 1492px;"></canvas> -->
+      </div>
   
       <div class="activity">
         <div class="title">
@@ -46,33 +48,33 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
   
         <div class="activity-data row">
 
-          <div class="data">
-            <span class="data-list data-title">Order ID</span>
-            <span class="data-list data-title">Customer Name</span>
-            <span class="data-list data-title">Total Price</span>
-            <span class="data-list data-title">Status</span>
+          <div class="data row">
+            <span class="data-list data-title col">Order ID</span>
+            <span class="data-list data-title col">Customer Name</span>
+            <span class="data-list data-title col">Total Price</span>
+            <span class="data-list data-title col">Status</span>
           </div>
           
           <% orders.forEach(function(order){ %>
 
             <div class="data">
-              <span class="data-list">#<%= order.id %></span>
-              <span class="data-list"><%= order.customerName %></span>
-              <span class="data-list"><%= order.total %> AUD</span>
+              <span class="data-list col">#<%= order.id %></span>
+              <span class="data-list col"><%= order.customerName %></span>
+              <span class="data-list col"><%= order.total %> AUD</span>
               <% if (order.status == "Active") { %>
                 <!-- Code to be executed if condition1 is true -->
-                <span class="data-list badge text-bg-success"><%= order.status %></span>
+                <span class="data-list col-sm-2 badge text-bg-success"><%= order.status %></span>
               <% } else if (order.status == "Pending") { %>
                 <!-- Code to be executed if condition1 is false and condition2 is true -->
                 <a href="/api/vendor/order/<%=order.id %>/changestatus">
-                  <span class="data-list badge text-bg-warning"><%= order.status %></span>
+                  <span class="data-list col-sm-2 badge text-bg-warning"><%= order.status %></span>
                 </a>
               <% } else if (order.status == "Cancelled") { %>
                   <!-- Code to be executed if condition1 is false and condition2 is true -->
-                  <span class="data-list badge text-bg-danger"><%= order.status %></span>
+                  <span class="data-list col-sm-2 badge text-bg-danger"><%= order.status %></span>
               <% } else { %>
                 <!-- Code to be executed if both condition1 and condition2 are false -->
-                <span class="data-list badge text-bg-info"><%= order.status %></span>
+                <span class="data-list col-sm-2 badge text-bg-info"><%= order.status %></span>
               <% } %>
               
             </div>
@@ -83,6 +85,8 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
       </div>
     </div>
   </section>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js" integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
   <script src="/JS/vendor/script.js"></script>
       
 
