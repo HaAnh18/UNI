@@ -463,12 +463,9 @@ body {
 	font-weight: 700;
 }
 #content main .table-data .order table tr td .status.completed {
-	background: var(--magenta);
+	background: green;
 }
-#content main .table-data .order table tr td .status.process {
-	background: var(--yellow);
-}
-#content main .table-data .order table tr td .status.pending {
+#content main .table-data .order table tr td .status.cancelled {
 	background: var(--orange);
 }
 /* MAIN */
