@@ -2366,41 +2366,43 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-  color: #212529;
+  color: #ffffff;
   background-color: #961E3A;
   border-color: #961E3A;
 }
 
 .btn-primary:hover {
-  color: #212529;
+  color: #ffffff;
   background-color: #831B33;
   border-color: #70172C;
 }
 
 .btn-primary:focus, .btn-primary.focus {
-  color: #212529;
+  color: #ffffff;
   background-color: #831B33;
   border-color: #70172C;
-  box-shadow: 0 0 0 0.2rem rgba(222, 185, 50, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(112, 23, 44, 0.5);
 }
 
+
 .btn-primary.disabled, .btn-primary:disabled {
-  color: #212529;
+  color: #ffffff;
   background-color: #961E3A;
   border-color: #961E3A;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
-  color: #212529;
+  color: #ffffff;
   background-color: #70172C;
   border-color: #5E1325;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(222, 185, 50, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(112, 23, 44, 0.5);
 }
+
 
 .btn-secondary {
   color: #212529;
@@ -2514,40 +2516,40 @@ fieldset:disabled a.btn {
 }
 
 .btn-warning {
-  color: #212529;
+  color: #ffffff;
   background-color: #4B0F1D;
   border-color: #4B0F1D;
 }
 
 .btn-warning:hover {
-  color: #212529;
+  color: #ffffff;
   background-color: #380B16;
   border-color: #25080F;
 }
 
 .btn-warning:focus, .btn-warning.focus {
-  color: #212529;
+  color: #ffffff;
   background-color: #380B16;
   border-color: #25080F;
-  box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(112, 23, 44, 0.5);
 }
 
 .btn-warning.disabled, .btn-warning:disabled {
-  color: #212529;
+  color: #ffffff;
   background-color: #4B0F1D;
   border-color: #4B0F1D;
 }
 
 .btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active,
 .show > .btn-warning.dropdown-toggle {
-  color: #212529;
+  color: #ffffff;
   background-color: #25080F;
   border-color: #130407;
 }
 
 .btn-warning:not(:disabled):not(.disabled):active:focus, .btn-warning:not(:disabled):not(.disabled).active:focus,
 .show > .btn-warning.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(112, 23, 44, 0.5);
 }
 
 .btn-danger {
@@ -2667,13 +2669,13 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary:hover {
-  color: #212529;
+  color: #ffffff;
   background-color: #961E3A;
   border-color: #961E3A;
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 211, 51, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(112, 23, 44, 0.5);
 }
 
 .btn-outline-primary.disabled, .btn-outline-primary:disabled {
@@ -2683,14 +2685,14 @@ fieldset:disabled a.btn {
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
-  color: #212529;
+  color: #ffffff;
   background-color: #961E3A;
   border-color: #961E3A;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 211, 51, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(112, 23, 44, 0.5);
 }
 
 .btn-outline-secondary {
@@ -2795,13 +2797,13 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-warning:hover {
-  color: #212529;
+  color: #ffffff;
   background-color: #4B0F1D;
   border-color: #4B0F1D;
 }
 
 .btn-outline-warning:focus, .btn-outline-warning.focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(112, 23, 44, 0.5);
 }
 
 .btn-outline-warning.disabled, .btn-outline-warning:disabled {
@@ -2811,14 +2813,14 @@ fieldset:disabled a.btn {
 
 .btn-outline-warning:not(:disabled):not(.disabled):active, .btn-outline-warning:not(:disabled):not(.disabled).active,
 .show > .btn-outline-warning.dropdown-toggle {
-  color: #212529;
+  color: #ffffff;
   background-color: #4B0F1D;
   border-color: #4B0F1D;
 }
 
 .btn-outline-warning:not(:disabled):not(.disabled):active:focus, .btn-outline-warning:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-warning.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(112, 23, 44, 0.5);
 }
 
 .btn-outline-danger {
@@ -3575,11 +3577,11 @@ input[type="button"].btn-block {
 }
 
 .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
-  background-color: rgba(255, 211, 51, 0.5);
+  background-color: rgba(112, 23, 44, 0.5);
 }
 
 .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before {
-  background-color: rgba(255, 211, 51, 0.5);
+  background-color: rgba(112, 23, 44, 0.5);
 }
 
 .custom-radio .custom-control-label::before {
@@ -3591,7 +3593,7 @@ input[type="button"].btn-block {
 }
 
 .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
-  background-color: rgba(255, 211, 51, 0.5);
+  background-color: rgba(112, 23, 44, 0.5);
 }
 
 .custom-switch {
@@ -3627,7 +3629,7 @@ input[type="button"].btn-block {
 }
 
 .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
-  background-color: rgba(255, 211, 51, 0.5);
+  background-color: rgba(112, 23, 44, 0.5);
 }
 
 .custom-select {
@@ -4546,7 +4548,7 @@ input[type="button"].btn-block {
 }
 
 .breadcrumb-item {
-  display: flex;
+  display: inline;
 }
 
 .breadcrumb-item + .breadcrumb-item {
@@ -4557,7 +4559,7 @@ input[type="button"].btn-block {
   display: inline-block;
   padding-right: 0.5rem;
   color: #6c757d;
-  content: "/";
+  content: "/\00a0";
 }
 
 .breadcrumb-item + .breadcrumb-item:hover::before {
@@ -4682,7 +4684,7 @@ a.badge-primary:hover, a.badge-primary:focus {
 
 a.badge-primary:focus, a.badge-primary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(255, 211, 51, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(112, 23, 44, 0.5);
 }
 
 .badge-secondary {
@@ -4742,7 +4744,7 @@ a.badge-warning:hover, a.badge-warning:focus {
 
 a.badge-warning:focus, a.badge-warning.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(112, 23, 44, 0.5);
 }
 
 .badge-danger {
@@ -5842,9 +5844,18 @@ a.close.disabled {
   touch-action: pan-y;
 }
 
+/*carousel border*/
 .carousel-inner {
   position: relative;
   width: 100%;
+  overflow: hidden;
+}
+
+/*carousel border for detail*/
+.carousel-inner-detail {
+  position: relative;
+  width: 550px;
+  height: 550px;
   overflow: hidden;
 }
 
@@ -5854,6 +5865,7 @@ a.close.disabled {
   content: "";
 }
 
+/*adjust carousel inner content*/
 .carousel-item {
   position: relative;
   display: none;
@@ -6167,13 +6179,13 @@ button.bg-light:focus {
 
 /*adjust dark background (affect header navbar, footer)*/
 .bg-dark {
-  background-color: #3D464D !important;
+  background-color: #1d1c1b !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
-  background-color: #3D464D !important;
+  background-color: #1d1c1b !important;
 }
 
 .bg-white {
@@ -9475,8 +9487,9 @@ a.text-dark:hover, a.text-dark:focus {
   padding: 30px;
 }
 
+/*change color for all button in general(does not included hover)*/
 .btn.btn-primary {
-  color: #3D464D !important;
+  color: #ffffff !important;
 }
 
 .btn-square {
@@ -9700,6 +9713,7 @@ a.text-dark:hover, a.text-dark:focus {
   list-style-type: none;
 }
 
+/**/
 .back-to-top {
   position: fixed;
   display: none;
@@ -9708,6 +9722,76 @@ a.text-dark:hover, a.text-dark:focus {
   z-index: 11;
   animation: action 1s infinite alternate;
 }
+
+/**/
+.text-underline-mod{
+  text-underline-offset: 5px;
+}
+
+/*for image in cart page*/
+.cart-image{
+  width: 60px;
+  height: 60px;
+}
+
+/*adjust quantities box*/
+.quantity-box{
+  width: 100px;
+}
+
+/*adjust map window for contact*/
+.map-win{
+  width: 100%; 
+  height: 250px;
+  border:0;
+}
+
+/*adjust user img in the product review section from detail page*/
+.rev-image{
+  width: 45px;
+}
+
+/*adjust for main Carousel*/
+
+/*adjust Carousel box size*/
+.carousel-box{
+  height: 430px;
+}
+
+/*adjust carousel image*/
+.carousel-img{
+  object-fit: cover;
+}
+
+/*adjust carousel content box*/
+.carousel-content-box{
+  max-width: 700px;
+}
+
+/*adjust for side carousel*/
+
+/*adjust side Carousel box size*/
+.side-carousel-box{
+  height: 200px;
+}
+
+/*adjust feature*/
+.feature-box{
+  padding: 30px;
+}
+
+/*adjust categories image*/
+.category-img{
+  width: 100px; 
+  height: 100px;
+}
+
+/*prevent image from streching*/
+.img-fit{
+  object-fit: cover;
+  overflow: auto;
+}
+
 
 @keyframes action {
   0% {

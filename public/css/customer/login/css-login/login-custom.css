@@ -24,7 +24,7 @@
   	}
 
   	body{
-  		background-color: #0b1828;
+  		background-color: #1d1c1b;
   		min-width: 350px;
   	}
 
@@ -59,13 +59,13 @@
   		transform: skew(5deg);
   		top:0px;
   		right:-30px;
-  		background-color: #203349;
+  		background-color: #C7C7C7;
   	}
 
   	.form-container{
   		position: relative;
-  		height: 100%;
-  		background-color: #203349;
+  		height: 600px;
+  		background-color: #C7C7C7;
   	}
 
   	.login-button{
@@ -76,7 +76,7 @@
   		background-color: white;
   		padding: 10px 20px;
   		border-radius: 20px;
-  		color: #203349;
+  		color: #C7C7C7;
   		cursor: pointer;
   	}
 
@@ -88,12 +88,12 @@
   		background-color: white;
   		padding: 10px 20px;
   		border-radius: 20px;
-  		color: #203349;
+  		color: #C7C7C7;
   		cursor: pointer;
   	}
 
   	.button-selected{
-  		background-color: #203349;
+  		background-color: #C7C7C7;
   		color: white;
   	}
 
@@ -235,35 +235,49 @@
 /*tick icon for each slot*/
 /*username (login)*/
 .input-group #l-username-error i{
-	color: #203349;
+	color: #C7C7C7;
 }
 
 /*password (login)*/
 .input-group #l-password-error i {
-	color: #203349;
+	color: #C7C7C7;
 }
 
 /*username (sign up)*/
 .input-group #s-username-error i{
-	color: #203349;
+	color: #C7C7C7;
 }
 
 /*password (sign up)*/
 .input-group #s-password-error i{
-	color: #203349;
+	color: #C7C7C7;
 }
 
 /*full name*/
 .input-group #name-error i{
-	color: #203349;
+	color: #C7C7C7;
 }
 
 /*address*/
 .input-group #s-address-error i{
-	color: #203349;
+	color: #C7C7C7;
 }
 
 /*phone number*/
 /*.input-group #phone-error i{
-	color: #203349;
+	color: #C7C7C7;
 }*/
+
+/*color*/
+.text-viva{
+	color: #961E3A;
+}
+
+.text-viva-use{
+	color: #961E3A;
+}
+
+.text-viva-use:hover{
+	color: #70172C;
+}
+

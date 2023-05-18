@@ -1,0 +1,30 @@
+.status-card{
+    border-radius: 10px;
+}
+
+.status-card-content-color{
+    color: #961E3A;
+}
+
+.status-card-bg{
+    background-color: #e0e0e0; 
+    opacity: 1;
+}
+
+.status-card-progress-bar{
+    height: 6px; 
+    border-radius: 16px;
+}
+
+.status-card-progress-bar-65{
+    width: 65%; 
+    border-radius: 16px;
+     background-color: #961E3A;
+}
+
+.status-card-progress-bar-20{
+    width: 20%; 
+    border-radius: 16px; 
+    background-color: #961E3A;
+}
+

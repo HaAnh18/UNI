@@ -66,18 +66,16 @@ router.get('/faq', customer.getCustomerFaq);
 //shop
 router.get('/shop', customer.getShop);
 
-//cart
-router.get('/cart', customer.getCustomerCart);
-//checkout
-router.get('/checkout', customer.getCustomerCheckout);
-//profile
-
+//Order details
 router.get('/orderstatus/:id', isAuthenticated, customer.getOrderStatus);
-//security
+
+//Security
 router.get('/security', customer.getCustomerSecurity);
 
+//Change password
 router.post('/changepassword', isAuthenticated, customer.changePassword);
 
+//Categories
 router.get('/category/clothing', customer.getClothing);
 
 router.get('/category/electronic', customer.getElectronic);

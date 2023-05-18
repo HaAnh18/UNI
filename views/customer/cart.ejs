@@ -36,9 +36,9 @@
     <div class="container-fluid">
         <div class="row px-xl-5">
             <div class="col-12">
-                <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="#" style="text-underline-offset: 5px;">Home</a>
-                    <a class="breadcrumb-item text-dark" href="#" style="text-underline-offset: 5px;">Shop</a>
+                <nav class="breadcrumb bg-light mb-30">                
+                    <a class="breadcrumb-item text-dark text-underline-mod" href="#">Home </a>                   
+                    <a class="breadcrumb-item text-dark text-underline-mod" href="#">Shop </a> 
                     <span class="breadcrumb-item active">Shopping Cart</span>
                 </nav>
             </div>
@@ -66,14 +66,15 @@
                         <% products.forEach(function(product){ %>
                             <tr>
                                 <td class="align-middle">
-                                    <img src="data:<%= product.photo.contentType %>;base64,<%= product.photo.data.toString('base64') %>" alt="Product Image" style="width: 50px;">
+                                    <img src="data:<%= product.photo.contentType %>;base64,<%= product.photo.data.toString('base64') %>" alt="Product Image" class="cart-image img-fit">
                                     <a href="/api/customer/product/<%= product.id %>">
                                         <%= product.name %>
                                     </a>
                                 </td>
                                 <td class="align-middle"><%= product.price %></td>
                                 <td class="align-middle">
-                                    <div class="input-group quantity mx-auto" style="width: 100px;">
+                                    <div class="input-group quantity mx-auto quantity-box" >
+                                        <!--decrease quantities-->
                                         <div class="input-group-btn">
                                             <button class="btn btn-sm btn-primary btn-minus" >
                                                 <a href="">
@@ -81,7 +82,9 @@
                                                 </a>
                                             </button>
                                         </div>
+                                        <!--shown number-->
                                         <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="<%= product.quantity %>" name="product-quantity">
+                                        <!--increase quantities-->
                                         <div class="input-group-btn">
                                             <button class="btn btn-sm btn-primary btn-plus">
                                                 <i class="fa fa-plus"></i>
@@ -125,7 +128,7 @@
                             <h5>Total</h5>
                             <h5>$<%= total %></h5>
                         </div>
-                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3"> <a href="/api/customer/checkout"> <h5>Proceed To Checkout</h5></a></button>
+                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3"> <a href="/api/customer/checkout" class="text-light text-underline-mod">Proceed To Checkout</a></button>
                     </div>
                 </div>
             </div>
