@@ -82,6 +82,6 @@ router.get('/category/electronic', customer.getElectronic);
 
 router.get('/category/book', customer.getBook);
 
-router.get('/homepage?', customer.searchProduct);
+router.get('/homepage/search/', customer.searchProduct);
 /*=======================================================================================================================================*/
 module.exports = router;

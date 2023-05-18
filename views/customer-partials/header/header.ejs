@@ -82,16 +82,19 @@
 
             <!--search bar-->
             <div class="col-lg-4 col-6 text-left">
-                <form onsubmit="getPath(event)">
+                <!-- <form onclick="performSearch()" method="GET"> -->
                     <div class="input-group">
                         <input type="text" id="search" class="form-control" placeholder="Search for products" name="search">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
+                            <button class="input-group-append" onclick="performSearch()">
+                                <span class="input-group-text bg-transparent text-primary">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </button>
                     </div>
-                </form>
+                <!-- </form> -->
+                <!-- <input type="text" id="search" placeholder="Enter a value">
+                <button onclick="performSearch()">Search</button> -->
+
             </div>
 
             <!--Customer service phone number (can replace this for the user account placement)-->
@@ -195,11 +198,14 @@
 </header>
 
 <script>
-    function getPath() {
-    const value = document.getElementById('search').value;
-    const path = '/api/customer/search/' + encodeURIComponent(value); // construct the path based on your requirements
-    // Perform further actions with the path (e.g., redirect, make API request, etc.)
-    }
+    function performSearch() {
+  const searchValue = document.getElementById('search').value;
+  const url = '/api/customer/homepage/search?query=' + encodeURIComponent(searchValue);
+  window.location.href = url;
+
+}
+
+
 
 </script>
 </body>
