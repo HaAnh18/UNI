@@ -114,7 +114,6 @@ nav.close ~ .dashboard {
 
 .activity-data .data {
   display: flex;
-  margin: 0 15px;
 }
 .activity-data .data .data-list {
   width: 300px;
