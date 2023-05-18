@@ -181,7 +181,6 @@ exports.showDashboard = async (req, res) => {
     var customer = await Customer.findById(orders[i].customer);
     Object.assign(orders[i], {customerName: customer.name});
     // console.log(orders[i].customer);
-    console.log(orders[i].customerName);
     listOfOrders.push(orders[i]);
     if (orders[i].status == "Completed") {
       total += orders[i].total;

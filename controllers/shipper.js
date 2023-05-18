@@ -1,6 +1,8 @@
 const Vendor = require("../models/vendor");
 const Customer = require("../models/customer");
 const Shipper = require("../models/shipper");
+const Product = require("../models/product");
+const Order = require("../models/order");
 const ErrorResponse = require("../utils/errorResponse");
 const multer = require('multer');
 const fs = require('fs');
@@ -48,10 +50,7 @@ exports.signup = async (req, res, next) => {
     const usernameExistinVendor = await Vendor.findOne({username: data.username});
 
     if (shipperExist || usernameExistinCustomer || usernameExistinVendor) {
-      res.status(400).json({
-        success: false,
-        message: "Username already exists"
-      })
+      return res.render("shipper/signup_shipper", {message: "Username already exists"});
     }
   
     Shipper.create(data);
@@ -77,39 +76,30 @@ exports.signup = async (req, res, next) => {
 }
 
 exports.signin = async (req, res, next) => {
-  var info = {
-    username: req.body.username,
-    password: req.body.password
-  }
   // res.json(info.username);
   try {
     // const {username, password} = req.body;
-    
+    var info = {
+      username: req.body.username,
+      password: req.body.password
+    }
     if (!info.username || !info.password) {
-      return res.status(400).json({
-        success: false,
-        message: "Username and password are required"
-      })
+      return res.render("shipper/login_shipper", {message: "Username and password are required"});
       // return req.flash("wrong");
     }
 
     // CHECK USERNAME
     const shipper = await Shipper.findOne({username: info.username});
     if (!shipper) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid credentials"
-      })
+      return res.render("shipper/login_shipper", {message: "Invalid credentials"});
       // return next(new ErrorResponse(`Invalid credentials`, 400));
     };
 
     // VERIFY CUSTOMER'S PASSWORD
     const isMatched = await shipper.comparePassword(info.password);
     if (!isMatched) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid credentials"
-      });
+      return res.render("shipper/login_shipper", {message: "Invalid credentials"});
+
       // res.redirect('/signin');
       // return next(new ErrorResponse(`Invalid credentials`, 400));
     } 
@@ -200,17 +190,99 @@ exports.getSignup = (req,res) => {
   res.render("shipper/signup_shipper");
 };
 
-exports.getDashboard = async (req,res) => {
-  const shipper = await Shipper.findById(req.shipper);
-  res.render("shipper/shipper_dashboard", {shipper: shipper});
-};
+// exports.getDashboard = async (req,res) => {
+//   const shipper = await Shipper.findById(req.shipper);
+//   res.render("shipper/shipper_dashboard", {shipper: shipper});
+// };
 
 exports.getOrder = async (req,res) => {
   const shipper = await Shipper.findById(req.shipper);
-  res.render("shipper/order_detail", {shipper: shipper});
+  const order = await Order.findById(req.params.id);
+  for (var i = 0; i< order.products.length; i++) {
+    const productId = order.products[i].product;
+    var product = await Product.findById(order.products[i].product);
+    // console.log(product);
+    Object.assign(order.products[i], {productName: product.name });
+  }
+
+  // console.log(order);
+  res.render("shipper/order_detail", {shipper: shipper, order: order});
 };
 
 exports.getEditProfile = async (req,res) => {
   const shipper = await Shipper.findById(req.shipper);
   res.render("shipper/edit_profile", {shipper: shipper});
 };
+
+exports.getDashboard = async (req, res) => {
+  const shipper = await Shipper.findById(req.shipper);
+  const orders = await Order.find();
+  const listOfOrders = [];
+  // console.log(orders);
+  for (var i = 0; i< orders.length; i++) {
+    if (orders[i].distribution == shipper.distributionHub
+      && orders[i].status != "Pending") 
+    { 
+      var customer = await Customer.findById(orders[i].customer);
+      Object.assign(orders[i], {customerName: customer.name});
+      listOfOrders.push(orders[i]);
+    }
+  }
+  // console.log(listOfOrders[0].customerName);
+  
+  res.render("shipper/shipper_dashboard", {shipper: shipper, orders: listOfOrders});
+  
+
+  
+    // var customer = await Customer.findById(orders[i].customer);
+    // Object.assign(orders[i], {customerName: customer.name});
+    // // console.log(orders[i].customer);
+    // listOfOrders.push(orders[i]);
+
+  // console.log(listOfOrders);
+  // res.render("vendor/vendor", { vendor: vendor, orders: listOfOrders, total: total});
+};
+
+exports.deliveredOrder = async (req,res) => {
+  const shipper = await Shipper.findById(req.shipper);
+  const order = await Order.findById(req.params.id);
+ // Find the document and update it
+  Order.findOneAndUpdate(
+  { _id: order.id }, // Specify the filter criteria to find the document
+  { $set: {
+    status: 'Completed',    
+    shipper: shipper.username
+  } }, // Specify the update operation
+  { new: true } // Set the option to return the updated document
+)
+  .then(updatedDocument => {
+    // Handle the updated document
+    res.redirect('/api/shipper/dashboard');
+  })
+  .catch(error => {
+    // Handle any errors that occur
+    console.error(error);
+  });
+}
+
+exports.cancelledOrder = async (req,res) => {
+  const shipper = await Shipper.findById(req.shipper);
+  const order = await Order.findById(req.params.id);
+ // Find the document and update it
+  Order.findOneAndUpdate(
+  { _id: order.id }, // Specify the filter criteria to find the document
+  { $set: { 
+    status: 'Cancelled',
+    shipper: shipper.username
+   } }, // Specify the update operation
+  { new: true } // Set the option to return the updated document
+)
+  .then(updatedDocument => {
+    // Handle the updated document
+    res.redirect('/api/shipper/dashboard');
+  })
+  .catch(error => {
+    // Handle any errors that occur
+    console.error(error);
+  });
+}

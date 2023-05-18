@@ -465,8 +465,11 @@ body {
 #content main .table-data .order table tr td .status.completed {
 	background: green;
 }
-#content main .table-data .order table tr td .status.cancelled {
+#content main .table-data .order table tr td .status.actived {
 	background: var(--orange);
+}
+#content main .table-data .order table tr td .status.cancelled {
+	background: var(--magenta);
 }
 /* MAIN */
 /* CONTENT */

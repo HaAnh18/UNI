@@ -102,18 +102,16 @@ nav.close ~ .dashboard {
   align-items: center;
   width: 100%;
 }
-.activity .activity-data {
-  display: flex;
-}
 .activity-data .data {
   display: flex;
-
   margin: 0 15px;
 }
 .activity-data .data-title {
   font-size: 20px;
   font-weight: 500;
   color: var(--text-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .activity-data .data .data-list {
   width: 300px;
@@ -143,7 +141,7 @@ nav.close ~ .dashboard {
 .activity-data .data:nth-child(even) {
   background-color: var(--data-table);
 }
-.activity-data .data:nth-child(even) span {
+.activity-data .data:nth-child(even) .col {
   color: var(--text-clr);
 }
 

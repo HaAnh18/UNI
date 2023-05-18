@@ -83,5 +83,7 @@ router.get('/category/electronic', customer.getElectronic);
 router.get('/category/book', customer.getBook);
 
 router.get('/homepage/search/', customer.searchProduct);
+
+router.get('/products/:min-:max', customer.filterByPrice);
 /*=======================================================================================================================================*/
 module.exports = router;

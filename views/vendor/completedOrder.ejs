@@ -26,25 +26,25 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
         </div>
   
         <div class="activity-data row">
-          <div class="data">
-            <span class="data-list data-title">Order ID</span>
-            <span class="data-list data-title">Customer Name</span>
-            <span class="data-list data-title">Total Price</span>
-            <span class="data-list data-title">Status</span>
+          <div class="data row">
+            <div class="data-list data-title col">Order ID</div>
+            <div class="data-list data-title col">Customer Name</div>
+            <div class="data-list data-title col">Total Price</div>
+            <div class="data-list data-title badge col-sm-2">Status</div>
           </div>
 
-        
+
           <% orders.forEach(function(order){ %>
+
             <div class="data">
-              <span class="data-list">#<%= order.id %></span>
-              <span class="data-list"><%= order.customerName %></span>
-              <span class="data-list"><%= order.total %> AUD</span>
-              <span class="data-list badge text-bg-info">
-                <a href=""><%= order.status%></a>
-              </span>
+              <div class="data-list col">#<%= order.id %></div>
+              <div class="data-list col"><%= order.customerName %></div>
+              <div class="data-list col"><%= order.total %> AUD</div>
+              <div class="data-list col-sm-2 badge text-bg-info"><%= order.status %></div>
             </div>
 
           <% }); %>
+
 
         </div> 
       </div>

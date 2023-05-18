@@ -501,3 +501,19 @@ exports.searchProduct = async (req, res) => {
   res.render("customer/shop", {products: data, search: search});
 };
 
+exports.filterByPrice = async (req,res) => {
+  const minPrice = parseInt(req.params.min);
+  const maxPrice = parseInt(req.params.max);
+  Product.find()
+  .then((products) => {
+    var listOfProducts = [];
+    for (var i = 0; i<products.length; i++) {
+      if (products[i].price > minPrice && products[i].price < maxPrice) {
+        listOfProducts.push(products[i]);
+        
+      }
+    }
+    res.render("customer/shop", {products: listOfProducts});
+  })
+}
+
