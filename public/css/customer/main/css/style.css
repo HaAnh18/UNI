@@ -9792,6 +9792,10 @@ a.text-dark:hover, a.text-dark:focus {
   overflow: auto;
 }
 
+.img-box-product{
+  width: 200px;
+  height: 300px;
+}
 
 @keyframes action {
   0% {
@@ -9801,3 +9805,4 @@ a.text-dark:hover, a.text-dark:focus {
     transform: translateY(-15px);
   }
 }
+
