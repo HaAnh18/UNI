@@ -19,7 +19,7 @@
   /* linear background */
   --linear-box: linear-gradient(to right, #d4cacd, #bfcad6);
 
-  --primary-background: linear-gradient(to right, #e4a8b6, #9e5365);
+  --primary-background: linear-gradient(to left, #e4a8b6, #9e5365);
   --data-table: #d1a5a5;
   --card-background: linear-gradient(to right, #d1a5a5, #e4a8b6);
   --text-clr: #000;
@@ -63,10 +63,4 @@ body.dark {
 body.dark::-webkit-scrollbar-thumb:hover,
 body.dark .activity-data::-webkit-scrollbar-thumb:hover {
   background: #3a3b3c;
-}
-
-.btn-primary {
-  --bs-btn-bg: var(--data-table) !important;
-  background-color: var(--data-table) !important;
-  --bs-btn-border-color: none !important;
 }
