@@ -47,7 +47,7 @@ exports.signup = async (req, res, next) => {
 
     const vendorExist = await Vendor.findOne({username: data.username});
     const usernameExistInCustomer = await Customer.findOne({username: data.username});
-    const usernameExistInShipper = await shipper.findOne({username: data.username});
+    const usernameExistInShipper = await Shipper.findOne({username: data.username});
     const addressExist = await Vendor.findOne({address: data.address});
 
     if (vendorExist || usernameExistInCustomer || usernameExistInShipper) {
@@ -288,18 +288,16 @@ exports.productDetail = async (req, res) => {
 
 exports.editProfile = async (req,res) => {
   const vendor = await Vendor.findById(req.vendor);
-  const hashPassword = await bcrypt.hash(req.body.password,10);
   if (req.file == undefined) {
-     // Find the document and update it
-  Vendor.findOneAndUpdate(
-  { _id: vendor.id}, // Specify the filter criteria to find the document
-  { $set: { 
-    name: req.body.name,
-    address: req.body.address,
-    password: hashPassword
-  } }, // Specify the update operation
-  { new: true } // Set the option to return the updated document
-)
+    // Find the document and update it
+    Vendor.findOneAndUpdate(
+    { _id: vendor.id}, // Specify the filter criteria to find the document
+    { $set: { 
+      name: req.body.name,
+      address: req.body.address,
+    } }, // Specify the update operation
+    { new: true } // Set the option to return the updated document
+  )
   .then(updatedDocument => {
     // Handle the updated document
     res.redirect('/api/vendor/profile');
@@ -308,7 +306,7 @@ exports.editProfile = async (req,res) => {
   .catch(error => {
     // Handle any errors that occur
     console.error(error);
-  });
+  });    
   } else {
     //  Find the document and update it
   Vendor.findOneAndUpdate(
@@ -320,17 +318,13 @@ exports.editProfile = async (req,res) => {
       data: fs.readFileSync(path.join(__dirname + '/../uploads/' + req.file.filename)),
       contentType: 'image/png'
     },
-    password: hashPassword
   } }, // Specify the update operation
   { new: true } // Set the option to return the updated document
 )
   .then(updatedDocument => {
-    // Handle the updated document
     res.redirect('/api/vendor/profile');
-    // console.log(vendor);
   })
   .catch(error => {
-    // Handle any errors that occur
     console.error(error);
   });
   }

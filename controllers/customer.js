@@ -11,29 +11,33 @@ const Order = require("../models/order");
 const bcrypt = require("bcryptjs");
 const { popupfunction } = require("../public/js/popupfunction");
 
+// Create a multer disk storage configuration
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads')
+        cb(null, 'uploads') // Specify the destination folder for uploaded files
     },
     filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
+        cb(null, file.fieldname + '-' + Date.now()) // Generate a unique filename for the uploaded file
     }
 });
  
+// Create a multer instance with the configured storage
 var upload = multer({ storage: storage });
 
+// Export a function to handle file uploads
 exports.handleFileUpload = (req, res, next) => {
   upload.single('image')(req, res, (err) => {
     if (err) {
-      return next(err);
+      return next(err); // Pass any error to the next middleware
     }
-    next();
+    next(); // Proceed to the next middelware if the upload is successful
   });
 };
 
+// Export a function for customer to signup
 exports.signup = async (req, res, next) => {
-
   try {
+    // Prepare data for creating a new customer
     var data = {
       username: req.body.username,
       password: req.body.password,
@@ -46,20 +50,22 @@ exports.signup = async (req, res, next) => {
       cart: []
     };
 
+    // Check if the username already exists in any of the collections (Customer, Shipper, Vendor)
     const customerExist = await Customer.findOne({username: data.username});
     const usernameExistinShipper = await Shipper.findOne({username: data.username});
     const usernameExistinVendor = await Vendor.findOne({username: data.username});
 
+    // If the username had beed existed, display a message
     if (customerExist || usernameExistinShipper || usernameExistinVendor) {
       return res.render("customer/login", {message: "Username already exists"});
     }
-  
+
+    // Create a customer's document in mongodb
     Customer.create(data);
 
-    res.redirect('/api/customer/signin');
+    res.redirect('/api/customer/signin'); // Redirect user to the signin page
 
-     
-  } catch(error) {
+  } catch(error) { // If it catches bug, it will console the error
     console.log(error);
     res.status(400).json({
       success: false,
@@ -69,62 +75,68 @@ exports.signup = async (req, res, next) => {
   }
 }
 
+// Export a function for customer to sign in
 exports.signin = async (req, res, next) => {
-  var info = {
-    username: req.body.username,
-    password: req.body.password
-  }
   try {
-    
+    // Get the data from the sign in form
+    var info = {
+      username: req.body.username,
+      password: req.body.password
+    }
+
+    // Check if all fields are filled 
     if (!info.username || !info.password) {
       const message = "Please enter your username and password";
       return res.render("customer/login", {message: message})
     }
 
-    // CHECK USERNAME
+    // Check username is correct or not
     const customer = await Customer.findOne({username: info.username});
     if (!customer) {
       return res.render("customer/login", {message: "Invalid credentials"})
     };
 
-    // VERIFY CUSTOMER'S PASSWORD
+    // Verify customer;s password
     const isMatched = await customer.comparePassword(info.password);
     if (!isMatched) {
       return res.render("customer/login", {message: "Invalid credentials"})
     } 
     
-
+    // Generate a token for customer
     generateToken(customer, 200, res);
 
-  } catch (error) {
+  } catch (error) { // Console a error if it has bug
     console.log(error);
     next(new ErrorResponse(`Cannot log in, check your credentials`, 400));
   }
 }
 
-
+// Generate token function
 const generateToken = async (customer, statusCode, res) => {
-
+  // Generate a JSON Web Token (JWT) for the customer
   const token = await customer.jwtGenerateToken();
 
+  // Configure options for the token cookie
   const options = {
-    httpOnly: true,
-    expiresIn: new Date(Date.now() + process.env.EXPIRE_TOKEN)
+    httpOnly: true, // The cookie cannot be accessed by client-side JavaScript
+    expiresIn: new Date(Date.now() + process.env.EXPIRE_TOKEN) // Set the expiration date for the cookie
   };
 
+  // Set the status code of the response and add the token cookie
   res
   .status(statusCode)
   .cookie('token', token, options)
   .redirect('/api/customer/homepage');
 }
 
-// LOG OUT USER
+// Log out user
 exports.logout = (req, res, next) => {
   res.clearCookie('token');
-  res.status(200).json({
-    success: true,
-    message: "Logged out"
-  })
+  // res.status(200).json({
+  //   success: true,
+  //   message: "Logged out"
+  // })
+  res.render("customer/index")
 }
 
 // CUSTOMER PROFILE 

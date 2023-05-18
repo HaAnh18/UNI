@@ -223,7 +223,7 @@ exports.editProfile = async (req,res) => {
   Shipper.findOneAndUpdate(
   { _id: shipper.id}, // Specify the filter criteria to find the document
   { $set: { 
-    password: hashPassword
+    distributionHub: req.body.distributionHub
   } }, // Specify the update operation
   { new: true } // Set the option to return the updated document
 )
@@ -236,29 +236,50 @@ exports.editProfile = async (req,res) => {
     // Handle any errors that occur
     console.error(error);
   });
+  } else if (req.body.password == undefined) {
+    //  Find the document and update it
+      Shipper.findOneAndUpdate(
+      { _id: shipper.id}, // Specify the filter criteria to find the document
+      { $set: { 
+        photo: {
+          data: fs.readFileSync(path.join(__dirname + '/../uploads/' + req.file.filename)),
+          contentType: 'image/png'
+        },
+        distributionHub: req.body.distributionHub,
+      } }, // Specify the update operation
+      { new: true } // Set the option to return the updated document
+    )
+      .then(updatedDocument => {
+        // Handle the updated document
+        res.redirect('/api/shipper/editprofile');
+      })
+      .catch(error => {
+        // Handle any errors that occur
+        console.error(error);
+      });
   } else {
     //  Find the document and update it
-  Shipper.findOneAndUpdate(
-  { _id: shipper.id}, // Specify the filter criteria to find the document
-  { $set: { 
-    photo: {
-      data: fs.readFileSync(path.join(__dirname + '/../uploads/' + req.file.filename)),
-      contentType: 'image/png'
-    },
-    password: hashPassword
-  } }, // Specify the update operation
-  { new: true } // Set the option to return the updated document
-)
-  .then(updatedDocument => {
-    // Handle the updated document
-    res.redirect('/api/shipper/editprofile');
-    // console.log(vendor);
-  })
-  .catch(error => {
-    // Handle any errors that occur
-    console.error(error);
-  });
-  }
+    Shipper.findOneAndUpdate(
+    { _id: shipper.id}, // Specify the filter criteria to find the document
+    { $set: { 
+      photo: {
+        data: fs.readFileSync(path.join(__dirname + '/../uploads/' + req.file.filename)),
+        contentType: 'image/png'
+      },
+      password: hashPassword,
+    } }, // Specify the update operation
+    { new: true } // Set the option to return the updated document
+  )
+    .then(updatedDocument => {
+      // Handle the updated document
+      res.redirect('/api/shipper/editprofile');
+      // console.log(vendor);
+    })
+    .catch(error => {
+      // Handle any errors that occur
+      console.error(error);
+    });
+    }
 
 };
 
