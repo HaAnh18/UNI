@@ -43,8 +43,8 @@ function validateName(){
     var name = document.getElementById('contact-name').value;
     //condition 
     //if the slot is empty will display error message
-    if(name.length < 8 || name.length < 15){
-        nameError.innerHTML = 'must be between 8 - 15 characters';
+    if(name.length < 5 || name.length < 6){
+        nameError.innerHTML = 'please enter full name';
         return false;
     }
     nameError.innerHTML = '<i class="fa-solid fa-check"></i>';

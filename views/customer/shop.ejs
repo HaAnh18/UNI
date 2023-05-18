@@ -79,7 +79,7 @@
                     <div class="product-item bg-light mb-4">
                         <!--product's image & buttons with icons-->
                         <div class="product-img position-relative overflow-hidden">
-                            <img class="img w-100 img-box-product"  src="data:<%= product.photo.contentType %>;base64,<%= product.photo.data.toString('base64') %>" alt="">
+                            <img class="img w-100 img-box-product"  src="data:<%= product.photo.contentType %>;base64,<%= product.photo.data.toString('base64') %>" alt="produuct image">
                             <div class="product-action">
                                 <a class="btn btn-outline-dark btn-square" href="/api/customer/product/<%= product.id %>/addtocart">
                                     <i class="fa fa-shopping-cart"></i>
