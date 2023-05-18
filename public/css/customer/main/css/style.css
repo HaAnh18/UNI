@@ -4548,7 +4548,7 @@ input[type="button"].btn-block {
 }
 
 .breadcrumb-item {
-  display: flex;
+  display: inline;
 }
 
 .breadcrumb-item + .breadcrumb-item {
@@ -4559,7 +4559,7 @@ input[type="button"].btn-block {
   display: inline-block;
   padding-right: 0.5rem;
   color: #6c757d;
-  content: "/";
+  content: "/\00a0";
 }
 
 .breadcrumb-item + .breadcrumb-item:hover::before {
