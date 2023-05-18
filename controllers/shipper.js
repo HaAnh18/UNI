@@ -7,6 +7,7 @@ const ErrorResponse = require("../utils/errorResponse");
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require('bcryptjs');
 
  
 var storage = multer.diskStorage({
@@ -214,33 +215,68 @@ exports.getEditProfile = async (req,res) => {
   res.render("shipper/edit_profile", {shipper: shipper});
 };
 
+exports.editProfile = async (req,res) => {
+  const shipper = await Shipper.findById(req.shipper);
+  const hashPassword = await bcrypt.hash(req.body.password,10);
+  if (req.file == undefined) {
+     // Find the document and update it
+  Shipper.findOneAndUpdate(
+  { _id: shipper.id}, // Specify the filter criteria to find the document
+  { $set: { 
+    password: hashPassword
+  } }, // Specify the update operation
+  { new: true } // Set the option to return the updated document
+)
+  .then(updatedDocument => {
+    // Handle the updated document
+    res.redirect('/api/shipper/editprofile');
+    // console.log(vendor);
+  })
+  .catch(error => {
+    // Handle any errors that occur
+    console.error(error);
+  });
+  } else {
+    //  Find the document and update it
+  Shipper.findOneAndUpdate(
+  { _id: shipper.id}, // Specify the filter criteria to find the document
+  { $set: { 
+    photo: {
+      data: fs.readFileSync(path.join(__dirname + '/../uploads/' + req.file.filename)),
+      contentType: 'image/png'
+    },
+    password: hashPassword
+  } }, // Specify the update operation
+  { new: true } // Set the option to return the updated document
+)
+  .then(updatedDocument => {
+    // Handle the updated document
+    res.redirect('/api/shipper/editprofile');
+    // console.log(vendor);
+  })
+  .catch(error => {
+    // Handle any errors that occur
+    console.error(error);
+  });
+  }
+
+};
+
 exports.getDashboard = async (req, res) => {
   const shipper = await Shipper.findById(req.shipper);
   const orders = await Order.find();
   const listOfOrders = [];
-  // console.log(orders);
   for (var i = 0; i< orders.length; i++) {
     if (orders[i].distribution == shipper.distributionHub
       && orders[i].status != "Pending") 
-    { 
+    { if (orders[i].status == "Active" || orders[i].shipper == shipper.username) {
       var customer = await Customer.findById(orders[i].customer);
       Object.assign(orders[i], {customerName: customer.name});
       listOfOrders.push(orders[i]);
     }
+    }
   }
-  // console.log(listOfOrders[0].customerName);
-  
   res.render("shipper/shipper_dashboard", {shipper: shipper, orders: listOfOrders});
-  
-
-  
-    // var customer = await Customer.findById(orders[i].customer);
-    // Object.assign(orders[i], {customerName: customer.name});
-    // // console.log(orders[i].customer);
-    // listOfOrders.push(orders[i]);
-
-  // console.log(listOfOrders);
-  // res.render("vendor/vendor", { vendor: vendor, orders: listOfOrders, total: total});
 };
 
 exports.deliveredOrder = async (req,res) => {
