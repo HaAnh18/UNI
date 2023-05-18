@@ -481,3 +481,18 @@ exports.getBook = (req,res) => {
   })
 }
 
+exports.searchProduct = async (req, res) => {
+  const search = req.query.search;
+  console.log('work');
+  let data = await Product.find({
+    "$or": [
+      {name: {$regex: req.params.key}},
+      {category: {$regex: req.params.key}}
+    ]
+  })
+  // console.log(data);
+    // Use the 'key' variable for further processing
+  console.log(search);
+  // res.render("customer/shop", {products: data, search: search});
+};
+

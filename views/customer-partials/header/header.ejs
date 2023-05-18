@@ -22,6 +22,8 @@
         <!-- Customized Bootstrap Stylesheet -->
         <link href="/css/customer/main/css/style.css" rel="stylesheet">
     </head>
+<body>
+    
 
 <header>
     
@@ -80,9 +82,9 @@
 
             <!--search bar-->
             <div class="col-lg-4 col-6 text-left">
-                <form action="">
+                <form onsubmit="getPath(event)">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products" name="search-bar">
+                        <input type="text" id="search" class="form-control" placeholder="Search for products" name="search">
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
@@ -192,4 +194,13 @@
 
 </header>
 
+<script>
+    function getPath() {
+    const value = document.getElementById('search').value;
+    const path = '/api/customer/search/' + encodeURIComponent(value); // construct the path based on your requirements
+    // Perform further actions with the path (e.g., redirect, make API request, etc.)
+    }
+
+</script>
+</body>
 </html>
