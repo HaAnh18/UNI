@@ -19,10 +19,7 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
 body {
   min-height: 100vh;
 }
-.feather {
-  width: 16px;
-  height: 16px;
-}
+
 /* Main page */
 .dashboard {
   position: relative;
@@ -102,7 +99,7 @@ nav.close ~ .dashboard {
 .activity-data .data:nth-child(even) {
   background-color: var(--data-table);
 }
-.activity-data .data:nth-child(even) .col {
+.activity-data .data:nth-child(even) span {
   color: var(--text-clr);
 }
 .dash-content .activity .activity-data {
@@ -111,9 +108,12 @@ nav.close ~ .dashboard {
   align-items: center;
   width: 100%;
 }
-
+.activity .activity-data {
+  display: flex;
+}
 .activity-data .data {
   display: flex;
+  margin: 0 15px;
 }
 .activity-data .data .data-list {
   width: 300px;
@@ -122,8 +122,6 @@ nav.close ~ .dashboard {
   padding: 16px 24px;
   white-space: nowrap;
   color: var(--text-color);
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .activity-data .data-title {
   font-size: 20px !important;

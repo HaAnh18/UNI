@@ -102,8 +102,12 @@ nav.close ~ .dashboard {
   align-items: center;
   width: 100%;
 }
+.activity .activity-data {
+  display: flex;
+}
 .activity-data .data {
   display: flex;
+
   margin: 0 15px;
 }
 .activity-data .data-title {
@@ -118,14 +122,6 @@ nav.close ~ .dashboard {
   padding: 16px 24px;
   white-space: nowrap;
   color: var(--text-color);
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.activity-data .data a {
-  text-decoration: none;
-  justify-content: center;
-  align-items: center;
-  display: flex;
 }
 .activity-data .data .data-list a {
   text-decoration: none;
@@ -147,7 +143,7 @@ nav.close ~ .dashboard {
 .activity-data .data:nth-child(even) {
   background-color: var(--data-table);
 }
-.activity-data .data:nth-child(even) .col {
+.activity-data .data:nth-child(even) span {
   color: var(--text-clr);
 }
 
