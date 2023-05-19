@@ -221,6 +221,17 @@
 
 }
 
+/*full name*/
+.input-group #s-address-error {
+	position: absolute;
+	bottom: 12px;
+	right: 60px;
+	font-size: 14px;
+	color: red;
+
+
+}
+
 /*phone number*/
 /*.input-group #phone-error {
 	position: absolute;
@@ -231,6 +242,7 @@
 
 
 }*/
+
 
 /*tick icon for each slot*/
 /*username (login)*/
