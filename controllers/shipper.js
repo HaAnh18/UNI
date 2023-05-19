@@ -343,3 +343,27 @@ exports.cancelledOrder = async (req,res) => {
     console.error(error);
   });
 }
+
+exports.changePassword = async (req,res) => {
+  const shipper = await Shipper.findById(req.shipper);
+  const hashPassword = bcrypt.hash(req.body.new, 10);
+  const isMatched = await shipper.comparePassword(req.body.current);
+  if (isMatched) {
+    Shipper.findOneAndUpdate(
+      { _id: customer.id }, // Specify the filter criteria to find the document
+      { $set: { password: hashPassword } }, // Specify the update operation
+      { new: true } // Set the option to return the updated document
+    )
+      .then(updatedDocument => {
+        // Handle the updated document
+        res.redirect('/api/shipper/editprofile');
+      })
+      .catch(error => {
+        // Handle any errors that occur
+        console.error(error);
+      });
+  } else {
+    res.render('shipper/edit_profile', {message: "Wrong password", shipper: shipper})
+  }
+ 
+};

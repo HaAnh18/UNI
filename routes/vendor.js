@@ -71,4 +71,6 @@ router.get("/completedorder", isAuthenticated, vendor.completedOrder);
 
 router.get("/order/:id/changestatus", isAuthenticated, vendor.changeStatus);
 
+router.post('/changepassword', isAuthenticated, vendor.changePassword);
+
 module.exports = router;

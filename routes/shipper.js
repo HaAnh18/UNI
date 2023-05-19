@@ -42,5 +42,6 @@ router.get("/delivered/:id", isAuthenticated, shipper.deliveredOrder);
 
 router.get("/cancelled/:id", isAuthenticated, shipper.cancelledOrder);
 
+router.post('/changepassword', isAuthenticated, shipper.changePassword);
 
 module.exports = router;

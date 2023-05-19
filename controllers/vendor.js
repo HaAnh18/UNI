@@ -394,3 +394,26 @@ exports.changeStatus = async (req, res) => {
       console.error(error);
     });
 };
+
+exports.changePassword = async (req,res) => {
+  const vendor = await Vendor.findById(req.vendor);
+  const hashPassword = bcrypt.hash(req.body.new, 10);
+  const isMatched = await vendor.comparePassword(req.body.current);
+  if (isMatched) {
+    Vendor.findOneAndUpdate(
+      { _id: customer.id }, // Specify the filter criteria to find the document
+      { $set: { password: hashPassword } }, // Specify the update operation
+      { new: true } // Set the option to return the updated document
+    )
+      .then(updatedDocument => {
+        // Handle the updated document
+        res.redirect('/api/vendor/profile');
+      })
+      .catch(error => {
+        // Handle any errors that occur
+        console.error(error);
+      });
+  } else {
+    res.render('vendor/profile', {message: "Wrong password", vendor: vendor})
+  }
+};

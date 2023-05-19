@@ -56,7 +56,10 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
           <% orders.forEach(function(order){ %>
 
             <div class="data">
-              <div class="data-list col">#<%= order.id %></div>
+              <div class="data-list col">
+                <a href="/api/vendor/order/<%= order.id %>">
+                  #<%= order.id %></div>
+                </a>
               <div class="data-list name col"><%= order.customerName %></div>
               <div class="data-list price col"><%= order.total %> AUD</div>
               <% if (order.status == "Active") { %>

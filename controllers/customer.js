@@ -451,7 +451,7 @@ exports.changePassword = async (req,res) => {
         console.error(error);
       });
   } else {
-    res.render('customer/security', {message: "Wrong password"})
+    res.render('customer/security', {message: "Wrong password", customer: customer})
   }
  
 }
@@ -520,7 +520,7 @@ exports.filterByPrice = async (req,res) => {
   .then((products) => {
     var listOfProducts = [];
     for (var i = 0; i<products.length; i++) {
-      if (products[i].price > minPrice && products[i].price < maxPrice) {
+      if (products[i].price >= minPrice && products[i].price <= maxPrice) {
         listOfProducts.push(products[i]);
         
       }

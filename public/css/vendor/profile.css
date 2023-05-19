@@ -28,9 +28,10 @@ body {
   width: calc(100% - 250px);
   padding: 10px 14px;
   transition: var(--tran-05);
+  padding-top: 65px;
 }
 .container {
-  padding-top: 50px;
+  padding-top: 20px;
 }
 footer .container {
   padding-top: 0;
@@ -43,7 +44,7 @@ footer .container {
   background: var(--linear-box);
   border-radius: 24px 24px 24px 24px;
   padding: 48px 48px 48px 308px;
-  min-width: 640px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-self: flex-start;
@@ -54,22 +55,23 @@ footer .container {
   background: -webkit-linear-gradient(to right, #1cb5e0, #000046);
   background: var(--linear-box);
   border-radius: 24px 24px 24px 24px;
-  padding: 48px 48px 48px 308px;
-  min-width: 640px;
+  padding: 48px;
+  /* min-width: 640px; */
+  width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-self: flex-start;
   position: relative;
   margin-top: 16px;
 }
-.changePassword {
+.change-password {
   width: 240px;
   height: 60%;
-  position: absolute;
   left: 60px;
   font-size: 20px;
   font-weight: bold;
   color: var(--primary-color);
+  padding-bottom: 10px;
 }
 .text-content {
   display: flex;
@@ -159,6 +161,14 @@ footer .container {
     width: 100%;
   }
 }
+
+@media all and (max-width: 800px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 @media all and (max-width: 720px) {
   section.card {
     margin: 64px 0;

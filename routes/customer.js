@@ -31,8 +31,6 @@ router.get('/delete/:id', isAuthenticated, customer.deleteProduct);
 
 router.get('/cart', isAuthenticated, customer.showCart);
 
-
-
 router.get('/order', isAuthenticated, customer.createOrder);
 
 router.get('/checkout', isAuthenticated, customer.getCheckout);

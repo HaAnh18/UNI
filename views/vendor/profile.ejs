@@ -22,7 +22,7 @@ Acknowledgement: https://www.web-leb.com/code/25
             </div>
         </div> 
     
-        <div class="container">
+        <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
@@ -44,7 +44,7 @@ Acknowledgement: https://www.web-leb.com/code/25
                               <label for="inputAddress" class="form-label">Business address</label>
                               <input name="address" type="text" class="form-control" id="inputAddress" value="<%= vendor.address %>">
                             </div>
-                          <div class="profile-image-container visual">
+                          <div class="profile-image-container visual col-12">
                               <label for="upload-file"></label>
                               <img src="data:<%= vendor.photo.contentType %>;base64,<%= vendor.photo.data.toString('base64') %>" alt="Profile Image" id="profile-image">
                               
@@ -56,22 +56,33 @@ Acknowledgement: https://www.web-leb.com/code/25
                         </form>
                     </section> 
 
+                    
                       <!-- Change password -->
                     <section class="card-2">
-                      <div class="changePassword">Change Password</div>
-                      <form class="row g-3" method="POST" action="/api/vendor/editprofile" enctype="multipart/form-data">
-                        <div class="col-md-6">
-                          <label for="inputPassword4" class="form-label">Password</label>
-                          <input name="password" type="password" class="form-control" id="inputPassword4">
+                      <% if(typeof message != "undefined" && message) { %>
+
+                        <div class="container pt-3">
+                          <div class="alert alert-danger" role="alert">
+                              <div>	<%= message %></div>
+                          </div>
                         </div>
-                        <div class="col-md-6">
-                          <label for="newPassword4" class="form-label">New Password</label>
-                          <input name="password" type="password" class="form-control" id="newPassword4" value="">
-                        </div>
-                        <div class="col-12">
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                      </form>
+                        <%}%>
+                    
+                        <form class="container" action="/api/vendor/changepassword" method="POST">
+                          <div class="col-md-6">
+                            <div class="change-password">Change Password</div>
+                            <label for="inputPassword4" class="form-label">Password</label>
+                            <input name="current" type="password" class="form-control" id="inputPassword4">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="newPassword4" class="form-label">New Password</label>
+                            <input name="new" type="password" class="form-control" id="newPassword4">
+                          </div>
+
+                          <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>
                     </section>
                 </div>
             </div>
