@@ -9827,7 +9827,11 @@ a.text-dark:hover, a.text-dark:focus {
   box-shadow: none;
 }
 
-
+/*vendor bar image (prevent from strech)*/
+.vendor-bar-img{
+  width:100px; 
+  height:100px;
+}
 
 @keyframes action {
   0% {

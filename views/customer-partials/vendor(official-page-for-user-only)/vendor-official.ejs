@@ -27,14 +27,14 @@
     
     <!-- vendor card Start -->
     <div class="container-fluid ">
-    <div class="row align-items-center bg-light py-3 px-xl-5  d-lg-flex">
+    <div class="row align-items-center bg-light py-3 px-xl-5 d-lg-flex">
         <div class="col">
             <div class="bg-light ">
                 
                 <!--vendor's Description-->
                 <div class="row align-items-center bg-light py-2">
                     <div class="col-6 col-sm-4 col-md-4 d-flex align-items-center">
-                        <img src="data:<%= vendor.photo.contentType %>;base64,<%= vendor.photo.data.toString('base64') %>" alt="Vendor Image" class="rounded-circle me-2" width="100" height="100">
+                        <img src="data:<%= vendor.photo.contentType %>;base64,<%= vendor.photo.data.toString('base64') %>" alt="Vendor Image" class="rounded-circle me-2 vendor-bar-img" >
                         <div>
                             <h5 class="m-0"><%= vendor.name %></h5>
                             <p class="m-0 text-muted">Online</p>
