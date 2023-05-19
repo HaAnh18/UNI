@@ -6,7 +6,7 @@ exports.isAuthenticated = async (req, res, next) => {
   const {token} = req.cookies;
 
   if(!token) {
-    return next(new ErrorResponse("You must login", 401));
+    return res.render("vendor/login", {message: "You must login"});
   }
 
   try {
@@ -15,6 +15,6 @@ exports.isAuthenticated = async (req, res, next) => {
     next();
 
   } catch (error) {
-    return next(new ErrorResponse("You must login", 401));
+    return res.render("vendor/login", {message: "You must login"});
   }
 }

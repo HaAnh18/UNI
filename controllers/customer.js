@@ -9,7 +9,6 @@ const Vendor = require("../models/vendor");
 const Shipper = require("../models/shipper");
 const Order = require("../models/order");
 const bcrypt = require("bcryptjs");
-const { popupfunction } = require("../public/js/popupfunction");
 
 // Create a multer disk storage configuration
 var storage = multer.diskStorage({
@@ -136,7 +135,7 @@ exports.logout = (req, res, next) => {
   //   success: true,
   //   message: "Logged out"
   // })
-  res.render("customer/index")
+  res.redirect("/api/customer/homepage");
 }
 
 // CUSTOMER PROFILE 
