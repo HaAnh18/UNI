@@ -131,31 +131,30 @@ const generateToken = async (customer, statusCode, res) => {
 // Log out user
 exports.logout = (req, res, next) => {
   res.clearCookie('token');
-  // res.status(200).json({
-  //   success: true,
-  //   message: "Logged out"
-  // })
   res.redirect("/api/customer/homepage");
 }
 
-// CUSTOMER PROFILE 
+// Customer profile 
 exports.customerProfile = async (req, res, next) => {
   const user = await Customer.findById(req.user);
   res.render('customer/profile', { user: user.toObject({ getters: true }) });
 }
 
+// Display the product's information
 exports.productProfile = async (req, res, next) => {
   const product = await Product.findById(req.params.id);
   const vendor = await Vendor.findById(product.vendorId);
   res.render('customer/detail', {product: product, vendor: vendor});
 };
 
+// Display vendor's information 
 exports.productVendor = async (req, res, next) => {
   const product = await Product.find({vendorId: req.params.id});
   const vendor = await Vendor.findById(req.params.id);
   res.render("customer/vendor-page", {vendor: vendor, products: product});
 }
 
+// Add product to customer's cart
 exports.addToCart = async (req, res, next) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -163,9 +162,10 @@ exports.addToCart = async (req, res, next) => {
 
     // Check if product already exists in cart
     const existingCartItem = customer.cart.find(item => item.product.equals(req.params.id));
+    // If product had been in customer's cart, plus one 
     if (existingCartItem) {
       existingCartItem.quantity += 1;
-    } else {
+    } else { // Else add to customer's cart
       const newCartItem = { product: product, quantity: 1 };
       customer.cart.push(newCartItem);
     }
@@ -177,11 +177,16 @@ exports.addToCart = async (req, res, next) => {
   }
 };
 
+// Display all product in customer's cart
 exports.showCart = async (req,res,next) => {
   try {
     const products = [];
     var total = 0;
     const customer = await Customer.findById(req.user);
+    /** 
+     For every product in customer's cart, find the product's information and 
+    append it to a list and also count the total of all items in cart
+    **/
     for (var i = 0; i<customer.cart.length; i++) {
       var product = await Product.findById(customer.cart[i].product);
       Object.assign(product, {quantity: customer.cart[i].quantity});
@@ -194,11 +199,16 @@ exports.showCart = async (req,res,next) => {
   }
 }
 
+// Display all products that have in database
 exports.showProduct = async (req,res) => {
   const featureProducts = [];
   Product.find()
   .then(
     (products) => {
+      /* 
+        If the number of products in database are less than 8,
+        it would display all the product else it would display only 8 products
+      */
       if (products.length <= 8) {
         res.render('customer/index', {products: products});
       } else {
@@ -212,21 +222,25 @@ exports.showProduct = async (req,res) => {
   .catch((error) => {console.log(error.message)});
 };
 
+// Create order based on customer's cart
 exports.createOrder = async (req,res) => {
   try {
     const products = [];
     const customer = await Customer.findById(req.user);
+    // Using for loop to get the list of all products in customer's cart
     for (var i = 0; i< customer.cart.length; i++) {
       var product = await Product.findById(customer.cart[i].product);
       Object.assign(product, {quantity: customer.cart[i].quantity});
       products.push(product);
     };
 
+    // After add all products into an array, delete all products in customer's cart
     for (var a = 0; a < customer.cart.length; a++) {
       customer.cart.remove(customer.cart[a]);
     }
     customer.save();
 
+    // Function to split an array based on a key 
     let groupBy = (array, key) => {
       return array.reduce((result, obj) => {
          (result[obj[key]] = result[obj[key]] || []).push(obj);
@@ -234,9 +248,11 @@ exports.createOrder = async (req,res) => {
       }, {});
    };
 
-   var splitOrder = groupBy(products, "vendorId");
-   var numberOfVendor = Object.keys(splitOrder).length;
+  //  Split the product list based on vendor ID
+  var splitOrder = groupBy(products, "vendorId");
+  var numberOfVendor = Object.keys(splitOrder).length;
   
+  // Using for loop for each array that based on 
   for (var n = 0; n<numberOfVendor; n++) {
     var listOfItems = [];
     var eachTotal = 0;
