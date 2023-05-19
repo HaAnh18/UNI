@@ -49,33 +49,33 @@ function readURL(input) {
 
 
 // Username Validation
-// function checkUsername() {
-//   const usernamePattern = /^[a-zA-Z0-9]{8,15}$/;
-//   if (!usernamePattern.test(usernameInput.value)) {
-//     usernameField.classList.add("invalid");
-//   } else {
-//     usernameField.classList.remove("invalid");
-//   }
-// }
+function checkUsername() {
+  const usernamePattern = /^[a-zA-Z0-9]{8,15}$/;
+  if (!usernamePattern.test(usernameInput.value)) {
+    usernameField.classList.add("invalid");
+  } else {
+    usernameField.classList.remove("invalid");
+  }
+}
 // Password Validation
-// function createPass() {
-//   const passPattern =
-//     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
-//   if (!passPattern.test(passInput.value)) {
-//     passField.classList.add("invalid");
-//   } else {
-//     passField.classList.remove("invalid");
-//   }
-// }
+function createPass() {
+  const passPattern =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
+  if (!passPattern.test(passInput.value)) {
+    passField.classList.add("invalid");
+  } else {
+    passField.classList.remove("invalid");
+  }
+}
 
 // Form Submission
 form.addEventListener("submit", (e) => {
-  // e.preventDefault();
-  // checkUsername();
-  // createPass();
+  e.preventDefault();
+  checkUsername();
+  createPass();
 
-  // usernameInput.addEventListener("keyup", checkUsername);
-  // passInput.addEventListener("keyup", createPass);
+  usernameInput.addEventListener("keyup", checkUsername);
+  passInput.addEventListener("keyup", createPass);
 
   if (
     !usernameField.classList.contains("invalid") &&

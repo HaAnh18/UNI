@@ -6,7 +6,8 @@ Author: Vu Loc
 ID: S3891483
 Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css-javascript/
 -->
-
+<title>Signup</title>
+<!-- Include head file with scriptlet tag -->
 <%- include('../vendor-partials/head.ejs') %>
 <link rel="stylesheet" href="/css/vendor/signup.css"/>
 
@@ -18,24 +19,28 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                 <div class="form signup">
                     <span class="title">Registration</span>
 
+                    <!-- Vendor input profile picture -->
                         <div class="upload-img">
                             <div class="profile-image-container visual">
                                 <label for="upload-file"></label>
+                                <!-- Preview image -->
                                 <img src="/images/vendor/vendorLogin.png" alt="Profile Image" id="profile-image">
-                                
-                                <input name="image" id="upload-file" type="file" accept="jpeg, jpg, png" onchange="readURL(this);">
+                                <!-- Input image -->
+                                <input name="image" id="upload-file" required type="file" accept="jpeg, jpg, png" onchange="readURL(this);">
                             </div>
                         </div>
-
+                        <!-- User input username -->
                         <div class="field username-field">
                             <div class="input-field">
                                 <input name="username" class="username" type="text" placeholder="Enter username" required>
                                 <i class="uil uil-user"></i>
                             </div>
-                            <!-- <span class="error username-error">
+                            <!-- Error message username-->
+                            <span class="error username-error">
                                 <p class="error-text">Please enter a valid username</p>
-                              </span> -->
+                              </span>
                         </div>
+                        <!-- User input password -->
                         <div class="field create-password">
                             <div class="input-field">
                               <input
@@ -45,29 +50,33 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                                 name="password"
                                 required
                               />
+                              <!-- showhide button -->
                               <i class="bi bi-shield-lock"></i>
                               <i class="bi bi-eye-slash bi-eye-fill showHidePw"></i>
                               
                             </div>
-                            <!-- <span class="error password-error">
+                            <!-- Error message password -->
+                            <span class="error password-error">
                               <p class="error-text">
                                 Please enter a valid password</p>
-                            </span> -->
+                            </span>
                           </div>
                           
+                          <!-- User input business name with minimun length of 5 -->
                         <div class="input-field">
                             <input name="name" type="text" minlength="5" placeholder="Enter business name" required>
                             <i class="uil uil-house-user"></i>
                         </div>
+                        <!-- User input business address with minimun length of 5 -->
                         <div class="input-field">
                             <input name="address" type="text" minlength="5" placeholder="Enter business address" required>
                             <i class="uil uil-building"></i>
                         </div>
-
+                        <!-- Submit button -->
                         <div class="input-field button">
                             <button type="submit" class="text">Submit</button>
                         </div>
-                   
+                        <!-- Redirect to login page -->
                         <div class="login-signup">
                             <span class="text">Already a member?
                                 <a href="/api/vendor/signin" class="text login-link">Login Now</a>
