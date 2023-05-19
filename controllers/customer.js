@@ -431,11 +431,11 @@ exports.getCustomerProfile = async (req,res) => {
   res.render("customer/profile", {user: customer});
 };
 
-exports.getOrderStatus = async (req,res) => {
-  const customer = await Customer.findById(req.user);
-  const order = await Order.findById(req.params.id);
-  res.render("customer/order-status", {user: customer, order: order});
-}
+// exports.getOrderStatus = async (req,res) => {
+//   const customer = await Customer.findById(req.user);
+//   const order = await Order.findById(req.params.id);
+//   res.render("customer/order-status", {user: customer, order: order});
+// }
 
 //user order status
 exports.getCustomerOrderStatus = (req,res) => {
@@ -556,5 +556,17 @@ exports.deleteProductQuantity = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+};
+
+exports.getOrder = async (req,res) => {
+  const customer = await Customer.findById(req.user);
+  const order = await Order.findById(req.params.id);
+  for (var i = 0; i< order.products.length; i++) {
+    var product = await Product.findById(order.products[i].product);
+    Object.assign(order.products[i], {productName: product.name});
+    Object.assign(order.products[i], {productPrice: product.price});
+    Object.assign(order.products[i], {productPhoto: product.photo});
+  }
+  res.render("customer/order-status", {customer: customer, order: order});
 };
 

@@ -89,7 +89,7 @@ router.get('/faq', customer.getCustomerFaq);
 router.get('/shop', customer.getShop);
 
 //Order details
-router.get('/orderstatus/:id', isAuthenticated, customer.getOrderStatus);
+router.get('/orderstatus/:id', isAuthenticated, customer.getOrder);
 
 //Security
 router.get('/security', isAuthenticated, customer.getCustomerSecurity);
