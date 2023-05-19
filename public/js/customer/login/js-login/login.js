@@ -45,7 +45,7 @@ function validateName(){
     var name = document.getElementById('contact-name').value;
     //condition 
     //if the slot is empty will display error message
-    if(name.length < 5 || name.length < 6){
+    if(name.length < 5 && name.length < 6){
         nameError.innerHTML = 'please enter full name';
         return false;
     }
@@ -59,10 +59,12 @@ function validateAddress(){
     var address = document.getElementById('contact-s-address').value;
     //condition 
     //if the slot is empty will display error message
-    if(AddressError.length < 8 || address.length < 15){
+    if(address.length < 8 ) {
         AddressError.innerHTML = 'must be between 8 - 15 characters';
         return false;
-    }
+    } else if(address.length > 15) {
+        AddressError.innerHTML = 'must be between 8 - 15 characters';
+        return false;}
     AddressError.innerHTML = '<i class="fa-solid fa-check"></i>';
     return true;
 }
