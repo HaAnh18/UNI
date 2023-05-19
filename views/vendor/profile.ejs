@@ -6,23 +6,21 @@ Author: Vu Loc
 ID: S3891483
 Acknowledgement: https://www.web-leb.com/code/25 
 -->
+<title>Profile Details</title>
+<!-- Include head file with scriptlet tag -->
 <%- include('../vendor-partials/head.ejs') %>
 <link rel="stylesheet" href="/css/vendor/profile.css"/>
 <body class="vendorPage">
     <%- include('../vendor-partials/vendor-sidebar.ejs') %>
 
     <section class="section dashboard" id="events">
-        
+          <!-- Toggle sidebar close/open -->
         <div class="top">
             <i class="uil uil-bars sidebar-toggle"></i>
-        
-            <div class="search-box">
-                <i class="uil uil-search"></i>
-                <input type="text" placeholder="Search here...">
-            </div>
         </div> 
     
         <div class="container py-5">
+          <!-- Profile page -->
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
@@ -30,26 +28,33 @@ Acknowledgement: https://www.web-leb.com/code/25
                     </div>
                 </div>
                 <div class="container">
+                  <!-- Styled a card to display information -->
                     <section class="card">
                         <form class="row g-3" method="POST" action="/api/vendor/editprofile" enctype="multipart/form-data">
+                          <!-- Display value attribute included users current username -->
                             <div class="col-md-6">
                               <label for="inputUsername" class="form-label">Username</label>
                               <input disabled name="username" type="text" class="form-control" value="<%= vendor.username %>">
                             </div>
+                          
+                          <!-- Display value attribute included users current Business Name -->
                             <div class="col-12">
                               <label for="inputBusinessName" class="form-label">Business Name</label>
                               <input name="name" type="text" class="form-control" id="inputBusinessName" value="<%= vendor.name%>">
                             </div>
+                            <!-- Display value attribute included users current Business address -->
                             <div class="col-12">
                               <label for="inputAddress" class="form-label">Business address</label>
                               <input name="address" type="text" class="form-control" id="inputAddress" value="<%= vendor.address %>">
                             </div>
+                            <!-- Display value attribute included users current profile image -->
                           <div class="profile-image-container visual col-12">
                               <label for="upload-file"></label>
                               <img src="data:<%= vendor.photo.contentType %>;base64,<%= vendor.photo.data.toString('base64') %>" alt="Profile Image" id="profile-image">
-                              
+                              <!-- User input new profile image -->
                               <input name="image" type="file" id="upload-file" accept="jpeg, jpg, png" onchange="readURL(this);">
                           </div> 
+                          <!-- Submit new information -->
                           <div class="col-12">
                             <button type="submit" class="btn btn-primary">Submit</button>
                           </div>
@@ -59,6 +64,7 @@ Acknowledgement: https://www.web-leb.com/code/25
                     
                       <!-- Change password -->
                     <section class="card-2">
+                      <!-- Vallidation message -->
                       <% if(typeof message != "undefined" && message) { %>
 
                         <div class="container pt-3">
@@ -70,15 +76,17 @@ Acknowledgement: https://www.web-leb.com/code/25
                     
                         <form class="container" action="/api/vendor/changepassword" method="POST">
                           <div class="col-md-6">
+                            <!-- Change password section -->
                             <div class="change-password">Change Password</div>
                             <label for="inputPassword4" class="form-label">Password</label>
                             <input name="current" type="password" class="form-control" id="inputPassword4">
                           </div>
+                          <!-- New password -->
                           <div class="col-md-6">
                             <label for="newPassword4" class="form-label">New Password</label>
                             <input name="new" type="password" class="form-control" id="newPassword4">
                           </div>
-
+                          <!-- Submit new password -->
                           <div class="col-12">
                             <button type="submit" class="btn btn-primary">Submit</button>
                           </div>

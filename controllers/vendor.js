@@ -31,7 +31,7 @@ exports.handleFileUpload = (req, res, next) => {
 
 exports.signup = async (req, res, next) => {
   try {
-    // const customer = await Customer.create(req.body);
+    const customer = await Customer.create(req.body);
     var data = {
       username: req.body.username,
       password: req.body.password,

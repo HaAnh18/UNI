@@ -7,12 +7,14 @@ ID: S3891483
 Acknowledgement: [1] https://github.com/codingmarket07/Terms-and-Condition-Section-Tabs-In-HTML-CSS-and-Javascript.git
                  [2] https://zyro.com/tools/terms-and-conditions-generator
 -->
-
+<title>Term and Services</title>
 <%- include('../vendor-partials/head.ejs') %>
 <link rel="stylesheet" href="/css/vendor/termService.css" />
 
 <div class="wrapper flex_align_justify">
     <div class="tc_wrap">
+
+      <!-- Menu list -->
         <div class="tabs_list">
           <ul>
             <li data-tc="tab_item_1" class="active">Terms and Conditions</li>
@@ -25,6 +27,8 @@ Acknowledgement: [1] https://github.com/codingmarket07/Terms-and-Condition-Secti
             <li data-tc="tab_item_8">Disclaimer</li>
           </ul>
         </div>
+
+        <!-- Information for term and services -->
         <div class="tabs_content">
            <div class="tab_head">
              <h2>Terms and Conditions</h2>
@@ -80,11 +84,15 @@ Acknowledgement: [1] https://github.com/codingmarket07/Terms-and-Condition-Secti
               <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature. </p>  
             </div>
            </div>
+
+           <!-- Accept and Decline button -->
            <div class="tab_foot flex_align_justify">
+            <!-- If decline, user stay in term and service page -->
             <a href="#">
                 <button class="decline">Decline</button>
               </a>
-             <a href="/vendor">
+              <!-- If accepted direct to vendor dashboard page -->
+             <a href="/api/vendor/dashboard">
                 <button class="agree">Agree</button>
               </a>
            </div>

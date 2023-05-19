@@ -6,17 +6,20 @@ Author: Vu Loc
 ID: S3891483
 Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-javascript/ 
 -->
-
+<title>Dashboard</title>
 <%- include('../vendor-partials/head.ejs') %>
 <link rel="stylesheet" href="/css/vendor/main.css"/>
 <body class="vendorPage">
+  <!-- Scriptlet tag include sidebar -->
   <%- include('../vendor-partials/vendor-sidebar.ejs') %>
 
   <section class="dashboard">
+    <!-- Sidebar toggle open/close -->
     <div class="top">
       <i class="uil uil-bars sidebar-toggle"></i>
     </div> 
     
+    <!-- Title text -->
     <div class="dash-content">
       <div class="overview">
         <div class="title">
@@ -24,6 +27,7 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
           <span class="text">Dashboard</span>
         </div>
   
+        <!-- Informative boxes (Total income and Totale order) -->
         <div class="boxes">
           <div class="box box1">
             <i class="uil uil-dollar-alt"></i>
@@ -38,6 +42,7 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
         </div>
       </div>
   
+      <!-- Data table -->
       <div class="activity">
         <div class="title">
           <i class="uil uil-clock-three"></i>
@@ -46,6 +51,7 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
   
         <div class="activity-data row">
 
+          <!-- Title for each column -->
           <div class="data row">
             <div class="data-list data-title col">Order ID</div>
             <div class="data-list name data-title col">Customer Name</div>
@@ -55,13 +61,17 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
           
           <% orders.forEach(function(order){ %>
 
+            <!-- Order ID -->
             <div class="data">
               <div class="data-list col">
                 <a href="/api/vendor/order/<%= order.id %>">
                   #<%= order.id %></div>
                 </a>
+              <!-- Customer Name -->
               <div class="data-list name col"><%= order.customerName %></div>
+              <!-- Order total price -->
               <div class="data-list price col"><%= order.total %> AUD</div>
+              <!-- Button toggle status -->
               <% if (order.status == "Active") { %>
                 <!-- Code to be executed if condition1 is true -->
                 <div class="data-list col-sm-2 badge text-bg-success"><%= order.status %></div>
@@ -94,6 +104,7 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
 
 </body>
 
+<!-- Include footer with scriptlet tag -->
 <%- include('../vendor-partials/vendor-footer.ejs') %>
 
 </html>
