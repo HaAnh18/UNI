@@ -1,3 +1,16 @@
+<!---RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Hoang Tuan Minh
+ID: s3924716
+Acknowledgement: 
+Responsive login page created with Bootstrap 5 and HTML & CSS: https://www.youtube.com/watch?v=oF28ns9eVdc
+https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js
+https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
+ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
+netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js
+--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,10 +40,8 @@
                     </div>
                     <!----Form Start---->
                     <form method="POST" action="/api/shipper/signin">
-                        <!-- <div class="alert alert-danger" role="alert">
-                            A simple danger alert—check it out!
-                        </div>    -->
                         
+        
                         <% if(typeof message != "undefined" && message) { %>
                                 <div class="alert alert-danger alert-dismissible" role="alert">
                                        <div>	<%= message %></div>
@@ -41,9 +52,7 @@
                     <div class="input-group mb-3">
                         <input type="text" name= "username" class="form-control form-control-lg bg-light fs-6" placeholder="Username">
                     </div>
-                    <!-- <div class="alert alert-danger" role="alert">
-                        A simple danger alert—check it out!
-                    </div>    -->
+                  
                     <div class="input-group mb-3">
                         <input type="password" name= "password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
                     </div>
@@ -54,6 +63,7 @@
                         <small>Don't have an account?<a href="/api/shipper/signup">Sign Up</a></small>
                     </div>
                     </form>
+                    <!--------Form End--------->
                 </div>
             </div>
         </div>
