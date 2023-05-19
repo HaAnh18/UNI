@@ -417,3 +417,17 @@ exports.changePassword = async (req,res) => {
     res.render('vendor/profile', {message: "Wrong password", vendor: vendor})
   }
 };
+
+exports.getOrder = async (req,res) => {
+  const vendor = await Vendor.findById(req.vendor);
+  const order = await Order.findById(req.params.id);
+  for (var i = 0; i< order.products.length; i++) {
+    const productId = order.products[i].product;
+    var product = await Product.findById(order.products[i].product);
+    // console.log(product);
+    Object.assign(order.products[i], {productName: product.name });
+  }
+
+  // console.log(order);
+  res.render("vendor/order-details", {vendor: vendor, order: order});
+};
