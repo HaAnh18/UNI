@@ -6,31 +6,30 @@ Author: Vu Loc
 ID: S3891483
 Acknowledgement: https://www.web-leb.com/code/25 
 -->
+<title>Products Page</title>
+
+<!-- Include head file with scriptlet tag -->
 <%- include('../vendor-partials/head.ejs') %>
 <link rel="stylesheet" href="/css/vendor/products.css"/>
 <body class="vendorPage">
     <%- include('../vendor-partials/vendor-sidebar.ejs') %>
 
     <section class="section events dashboard" id="events">
-
+        <!-- Toggle sidebar close/open -->
         <div class="top">
             <i class="uil uil-bars sidebar-toggle"></i>
-        
-            <div class="search-box">
-                <i class="uil uil-search"></i>
-                <input type="text" placeholder="Search here...">
-            </div>
         </div> 
         
         <div class="container">
             <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="section-heading">
-                <h2>Products</h2>
+                <!-- Page title -->
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                    <h2>Products</h2>
+                    </div>
                 </div>
-            </div>
 
-            <% products.forEach(function(product){ %>
+                <% products.forEach(function(product){ %>
 
                 <div class="col-lg-12 col-md-6">
                     <div class="item">
@@ -62,7 +61,7 @@ Acknowledgement: https://www.web-leb.com/code/25
                     </div>
                 </div>
             
-            <% }); %>
+                <% }); %>
 
             </div>
             <div class="d-grid d-md-flex justify-content-md-end" style="margin-bottom: 24px">

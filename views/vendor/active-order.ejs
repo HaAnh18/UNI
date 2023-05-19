@@ -6,13 +6,17 @@ Author: Vu Loc
 ID: S3891483
 Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-javascript/ 
 -->
-
+<title>Active Order</title>
+<!-- Include head file with scriptlet tag -->
 <%- include('../vendor-partials/head.ejs') %>
 <link rel="stylesheet" href="/css/vendor/orders.css"/>
 <body class="vendorPage">
+  <!-- Include sidebar file with scriptlet tag -->
   <%- include('../vendor-partials/vendor-sidebar.ejs') %>
 
+  <!-- Active order page -->
   <section class="dashboard">
+    <!-- Toggle sidebar close/open -->
     <div class="top">
       <i class="uil uil-bars sidebar-toggle"></i>
     </div> 
@@ -20,6 +24,7 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
     <div class="dash-content">
   
       <div class="activity">
+        <!-- Page title and icon-->
         <div class="title">
         <i class="bi bi-rocket-takeoff"></i>
           <span class="text">Active Orders</span>

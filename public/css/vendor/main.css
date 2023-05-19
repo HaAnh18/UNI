@@ -141,9 +141,7 @@ nav.close ~ .dashboard {
 
 .activity-data .data a {
   text-decoration: none;
-  justify-content: center;
-  align-items: center;
-  display: flex;
+color: var(--text-clr);
 }
 
 /* Responsive styles */
@@ -155,9 +153,7 @@ nav.close ~ .dashboard {
   .activity-data .data .price {
     display: none !important;
   }
-  .activity-data .data {
-    width: 84vw !important;
-  }
+
 }
 @media (max-width: 780px) {
   .dash-content .boxes .box {
@@ -171,9 +167,7 @@ nav.close ~ .dashboard {
   .activity-data .data .price {
     display: none !important;
   }
-  .activity-data .data {
-    width: 84vw !important;
-  }
+
 }
 
 @media (max-width: 560px) {
@@ -186,9 +180,7 @@ nav.close ~ .dashboard {
   .activity-data .data .price {
     display: none !important;
   }
-  .activity-data .data {
-    width: 84vw !important;
-  }
+
 }
 
 @media (max-width: 900px) {
