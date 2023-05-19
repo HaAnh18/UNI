@@ -77,10 +77,7 @@ form.addEventListener("submit", (e) => {
   usernameInput.addEventListener("keyup", checkUsername);
   passInput.addEventListener("keyup", createPass);
 
-  if (
-    !usernameField.classList.contains("invalid") &&
-    !passField.classList.contains("invalid")
-  ) {
+  if (!usernameField.classList.contains("invalid") && !passField.classList.contains("invalid")) {
     location.href = form.getAttribute("action");
   }
 });
