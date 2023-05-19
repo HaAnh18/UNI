@@ -9815,6 +9815,19 @@ a.text-dark:hover, a.text-dark:focus {
   transition: .5s
 }
 
+.button-plus-minus-color{
+  color: #ffffff;
+}
+
+.span-remove-border{
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+
+
 @keyframes action {
   0% {
     transform: translateY(0);
