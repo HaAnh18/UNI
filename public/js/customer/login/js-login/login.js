@@ -34,6 +34,8 @@ var lPasswordError = document.getElementById('l-password-error');
 var sPasswordError = document.getElementById('s-password-error');
 //signup address
 var AddressError = document.getElementById('s-address-error');
+//signup address
+var submitError = document.getElementById('s-submit-error');
 
 /*validator*/
 
@@ -116,9 +118,11 @@ function validateSPassword(){
     return true;
 }
 
+/*submit validate*/
+
 /*Signup Form validator*/
 function validateSForm(){
-    if(!validateName() || !validateSUsername() || !validateSPassword()){
+    if(!validateSUsername() || !validateSPassword()  || !validateName() || !validateAddress()){
         submitError.style.display = 'block';
         submitError.innerHTML = "Please fill in all of the empty box";
         setTimeout(function(){submitError.style.display = 'none';}, 3000);

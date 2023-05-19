@@ -52,7 +52,7 @@ https://www.youtube.com/watch?v=Qv5vdKLKpQk
 						<label for="upload-file"></label>
 							<img src="/img/user/login/icon.png" alt="Profile Image" id="profile-image">
 											
-						<input name="image" id="upload-file" type="file" accept="jpeg, jpg, png" onchange="readURL(this);" >
+						<input name="image" id="upload-file" type="file" accept="jpeg, jpg, png" onchange="readURL(this);" required>
 					</div>
 				
 
@@ -112,6 +112,8 @@ https://www.youtube.com/watch?v=Qv5vdKLKpQk
 
 					  <div class="mb-4 fx-animate-3">
 						  <button class="btn btn-lg btn-outline-warning" type="submit" onclick="return validateSForm()">Sign up</button>
+						  <!--error message-->
+						  <span id="s-submit-error"></span>
 					  </div>
 					  <div class="mb-4 fx-animate-5 text-viva">
 						   Already have an account?<a class="text-viva-use" href="#">Log in</a>
