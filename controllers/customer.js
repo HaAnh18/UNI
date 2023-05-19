@@ -201,7 +201,8 @@ exports.showCart = async (req,res,next) => {
 
 // Display all products that have in database
 exports.showProduct = async (req,res) => {
-  const featureProducts = [];
+  var featureProducts = [];
+  console.log("connect");
   Product.find()
   .then(
     (products) => {
@@ -209,12 +210,15 @@ exports.showProduct = async (req,res) => {
         If the number of products in database are less than 8,
         it would display all the product else it would display only 8 products
       */
-      if (products.length <= 8) {
+      if (products.length < 8) {
         res.render('customer/index', {products: products});
-      } else {
-        for (var i = 0; i< products.lenght; i++) {
+      } 
+      else {
+        for (var i = 0; i < 8; i++) {
           featureProducts.push(products[i])
+          // console.log(products[i]);
         };
+        console.log(featureProducts.length);
         res.render('customer/index', {products: featureProducts});
       }
     }
