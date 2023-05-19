@@ -3,14 +3,14 @@ const jwt = require('jsonwebtoken');
 const ErrorResponse = require("../utils/errorResponse");
 
 exports.isAuthenticated = async (req, res, next) => {
-  const {token} = req.cookies;
 
-  if(!token) {
-    return res.render("customer/login", {message: "You must login"});
-
-  }
 
   try {
+    const {token} = req.cookies;
+
+    if(!token) {
+      return res.render("customer/login", {message: "You must login"});
+    }
     const decode = jwt.verify(token, process.env.JWT_SECRET);
     req.user = await Customer.findById(decode.id);
     next();

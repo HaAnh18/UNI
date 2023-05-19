@@ -34,13 +34,13 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                                 <!-- Preview image -->
                                 <img src="/images/vendor/vendorLogin.png" alt="Profile Image" id="profile-image">
                                 <!-- Input image -->
-                                <input name="image" id="upload-file" type="file" accept="jpeg, jpg, png" onchange="readURL(this);">
+                                <input name="image" id="upload-file" type="file" accept="jpeg, jpg, png" onchange="readURL(this);" required>
                             </div>
                         </div>
                         <!-- User input username -->
                         <div class="field username-field">
                             <div class="input-field">
-                                <input name="username" class="username" type="text" placeholder="Enter username" required>
+                                <input name="username" class="username" type="text" placeholder="Enter username" onkeyup="checkUsername()" required>
                                 <i class="uil uil-user"></i>
                             </div>
                             <!-- Error message username-->
@@ -56,6 +56,7 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                                 placeholder="Create password"
                                 class="password"
                                 name="password"
+                                onkeyup="checkPass()"
                                 required
                               />
                               <!-- showhide button -->
@@ -82,7 +83,7 @@ Acknowledgement: https://www.codingnepalweb.com/login-registration-form-html-css
                         </div>
                         <!-- Submit button -->
                         <div class="input-field button">
-                            <button type="submit" class="text">Submit</button>
+                            <button type="submit" class="submitBtn deny text">Submit</button>
                         </div>
                         <!-- Redirect to login page -->
                         <div class="login-signup">

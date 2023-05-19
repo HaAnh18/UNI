@@ -11,6 +11,7 @@ const usernameField = form.querySelector(".username-field");
 const usernameInput = usernameField.querySelector(".username");
 const passField = form.querySelector(".create-password");
 const passInput = passField.querySelector(".password");
+const button = form.querySelector(".submitBtn");
 
 // Hide and show password
 const eyeIcons = document.querySelectorAll(".showHidePw");
@@ -47,37 +48,44 @@ function readURL(input) {
   }
 }
 
-
 // Username Validation
 function checkUsername() {
   const usernamePattern = /^[a-zA-Z0-9]{8,15}$/;
   if (!usernamePattern.test(usernameInput.value)) {
     usernameField.classList.add("invalid");
+    passField.classList.remove("valid");
   } else {
     usernameField.classList.remove("invalid");
+    usernameField.classList.add("valid");
+  }
+  if (
+    usernameField.classList.contains("valid") &&
+    passField.classList.contains("valid")
+  ) {
+  button.classList.remove("deny");
+  } else {
+  button.classList.add("deny");
   }
 }
+
 // Password Validation
-function createPass() {
-  const passPattern =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
+function checkPass() {
+  const passPattern =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
   if (!passPattern.test(passInput.value)) {
     passField.classList.add("invalid");
+    passField.classList.remove("valid");
   } else {
     passField.classList.remove("invalid");
+    passField.classList.add("valid")
+  }
+  if (
+    usernameField.classList.contains("valid") &&
+    passField.classList.contains("valid")
+  ) {
+  button.classList.remove("deny");
+  } else {
+  button.classList.add("deny");
   }
 }
 
-// Form Submission
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  checkUsername();
-  createPass();
 
-  usernameInput.addEventListener("keyup", checkUsername);
-  passInput.addEventListener("keyup", createPass);
-
-  if (!usernameField.classList.contains("invalid") && !passField.classList.contains("invalid")) {
-    location.href = form.getAttribute("action");
-  }
-});

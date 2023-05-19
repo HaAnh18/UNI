@@ -100,11 +100,11 @@ netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js
               <div class="row mt-3">
                 <div class="dropdown mb-3">
                   <label for="hubs">Choose a distribution Hub:</label>
-                  <select id="hubs" name="hubs">
+                  <select id="hubs"  name="distributionHub">
                     <option value="<%= shipper.distributionHub %>">
                       Distribution <%= shipper.distributionHub %>
                     </option>
-                    <option value="hubB">Distribution hubA</option>
+                    <option value="hubA">Distribution hubA</option>
                     <option value="hubB">Distribution hubB</option>
                     <option value="hubC">Distribution hubC</option>
                     <option value="hubD">Distribution hubD</option>
@@ -178,8 +178,9 @@ netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js
     <!--------Form End--------->
   </body>
   <!--------Footer Start--------->
-  <%- include('../shipper-partials/footer.ejs') %>
-  <!--------Footer End--------->
+  <footer>
+  </footer>
+    <!--------Footer End--------->
   <script src="/js/shipper/dashboard/img-upload.js"></script>
   <script src="/js/shipper/dashboard/js_dashboard.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
