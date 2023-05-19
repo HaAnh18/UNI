@@ -188,9 +188,9 @@ https://www.youtube.com/watch?v=Qv5vdKLKpQk
 /*error message*/
 
 /*submit (login)*/
-.input-group #s-submit-error {
+#s-submit-error {
 	position: absolute;
-	bottom: 20px;
+	bottom: 230px;
 	right: 60px;
 	font-size: 14px;
 	color: red;
