@@ -31,7 +31,6 @@ exports.handleFileUpload = (req, res, next) => {
 
 exports.signup = async (req, res, next) => {
   try {
-    const customer = await Customer.create(req.body);
     var data = {
       username: req.body.username,
       password: req.body.password,
@@ -51,16 +50,16 @@ exports.signup = async (req, res, next) => {
     const addressExist = await Vendor.findOne({address: data.address});
 
     if (vendorExist || usernameExistInCustomer || usernameExistInShipper) {
-      return res.render("vendor/login", { message: "Username already exists" });
+      return res.render("vendor/signup", { message: "Username already exists" });
     }
 
     if (addressExist) {
-      return res.render("vendor/login", { message: "Address already exists" });
+      return res.render("vendor/signup", { message: "Address already exists" });
     }
 
     Vendor.create(data);
 
-    res.redirect("/api/vendor/signin");
+    res.render("vendor/login");
   } catch (error) {
     console.log(error);
     res.status(400).json({

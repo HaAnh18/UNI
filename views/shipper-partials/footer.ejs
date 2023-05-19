@@ -1,12 +1,142 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer</title>
-</head>
-<body>
-    <footer>&copy; Copyright 2023 HTML.am</footer>
-</body>
-</html>
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Vu Loc
+ID: S3891483
+Acknowledgement: https://devsne.vn/template/website
+-->
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/shipper/footer.css" />
+
+<footer class="bg-dark" id="tempaltemo_footer">
+  <div class="container">
+    <div class="row">
+      <!-- Group information -->
+      <div class="col-md-4 pt-5">
+        <h2 class="h2 text-success border-bottom pb-3 border-light logo">
+          Tom's Prodigies V2
+        </h2>
+        <ul class="list-unstyled text-light footer-link-list">
+          <li>
+            <i class="fas fa-map-marker-alt fa-fw"></i>
+            702 Đ. Nguyễn Văn Linh, Tân Hưng, Quận 7, Thành phố Hồ Chí Minh
+            700000
+          </li>
+          <li>
+            <i class="fa fa-phone fa-fw"></i>
+            <a class="text-decoration-none" href="#">PhoneNumer</a>
+          </li>
+          <li>
+            <i class="fa fa-envelope fa-fw"></i>
+            <a class="text-decoration-none" href="#">RMIT@edu.vn</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Direct to different order pages -->
+      <div class="col-md-4 pt-5">
+        <h2 class="h2 text-light border-bottom pb-3 border-light">Orders</h2>
+        <ul class="list-unstyled text-light footer-link-list">
+          <li><a class="text-decoration-none" href="/api/vendor/pendingorder">Pending Orders</a></li>
+          <li><a class="text-decoration-none" href="/api/vendor/activeorder">Active Orders</a></li>
+          <li><a class="text-decoration-none" href="/api/vendor/completedorder">Completed Orders</a></li>
+          <li><a class="text-decoration-none" href="/api/vendor/cancelledorder">Cancelled Orders</a></li>
+        </ul>
+      </div>
+
+      <!-- Support services -->
+      <div class="col-md-4 pt-5">
+        <h2 class="h2 text-light border-bottom pb-3 border-light">
+          Further Info
+        </h2>
+        <ul class="list-unstyled text-light footer-link-list">
+          <li><a class="text-decoration-none" href="#">Support</a></li>
+          <li><a class="text-decoration-none" href="#">Help Center</a></li>
+          <li><a class="text-decoration-none" href="#">Privacy</a></li>
+          <li>
+            <a class="text-decoration-none" href="/vendor/termService"
+              >Terms of Service</a
+            >
+          </li>
+          <li><a class="text-decoration-none" href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Icons from fontawsome -->
+    <div class="row text-light mb-4">
+      <div class="col-12 mb-3">
+        <div class="w-100 my-3 border-top border-light"></div>
+      </div>
+      <div class="col-auto me-auto">
+        <ul class="list-inline text-left footer-icons">
+
+          <!-- Facebook icon styled circle -->
+          <li
+            class="list-inline-item border border-light rounded-circle text-center"
+          >
+            <a
+              rel="nofollow"
+              class="text-light text-decoration-none"
+              target="_blank"
+              href="#"
+              ><i class="fab fa-facebook-f fa-lg fa-fw"></i
+            ></a>
+          </li>
+
+          <!-- Instagram icon styled circle -->
+          <li
+            class="list-inline-item border border-light rounded-circle text-center"
+          >
+            <a class="text-light text-decoration-none" target="_blank" href="#"
+              ><i class="fab fa-instagram fa-lg fa-fw"></i
+            ></a>
+          </li>
+
+          <!-- Twitter icon styled circle -->
+          <li
+            class="list-inline-item border border-light rounded-circle text-center"
+          >
+            <a class="text-light text-decoration-none" target="_blank" href="#"
+              ><i class="fab fa-twitter fa-lg fa-fw"></i
+            ></a>
+          </li>
+          <!-- Linkedin icon styled circle -->
+          <li
+            class="list-inline-item border border-light rounded-circle text-center"
+          >
+            <a class="text-light text-decoration-none" target="_blank" href="#"
+              ><i class="fab fa-linkedin fa-lg fa-fw"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Input email to subcribe -->
+      <div class="col-auto">
+        <label class="sr-only" for="subscribeEmail">Email address</label>
+        <div class="input-group mb-2">
+          <input
+            type="email"
+            class="form-control"
+            id="subscribeEmail"
+            placeholder="Email address"
+          />
+          <div class="input-group-text btn-success text-dark">Subscribe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="w-100 bg-black py-3">
+    <div class="container">
+      <div class="row pt-2">
+        <div class="col-12">
+          <p class="text-left text-light">Copyright &copy; 2023 InsaneGroup</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
