@@ -9806,7 +9806,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 /*set size for user profile image*/
 .img-box-profile{
-  width: 200px;
+  width: 245px;
+  height: 245px;
 }
 
 /*text animate color use as header(change color when hover)*/
