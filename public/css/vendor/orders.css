@@ -144,7 +144,12 @@ nav.close ~ .dashboard {
 .activity-data .data:nth-child(even) .col {
   color: var(--text-clr);
 }
-
+.activity-data .data a {
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
 /* Responsive styles */
 
 @media (max-width: 780px) {

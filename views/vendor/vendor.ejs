@@ -48,8 +48,8 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
 
           <div class="data row">
             <div class="data-list data-title col">Order ID</div>
-            <div class="data-list data-title col">Customer Name</div>
-            <div class="data-list data-title col">Total Price</div>
+            <div class="data-list name data-title col">Customer Name</div>
+            <div class="data-list price data-title col">Total Price</div>
             <div class="data-list data-title badge col-sm-2">Status</div>
           </div>
           
@@ -57,8 +57,8 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
 
             <div class="data">
               <div class="data-list col">#<%= order.id %></div>
-              <div class="data-list col"><%= order.customerName %></div>
-              <div class="data-list col"><%= order.total %> AUD</div>
+              <div class="data-list name col"><%= order.customerName %></div>
+              <div class="data-list price col"><%= order.total %> AUD</div>
               <% if (order.status == "Active") { %>
                 <!-- Code to be executed if condition1 is true -->
                 <div class="data-list col-sm-2 badge text-bg-success"><%= order.status %></div>

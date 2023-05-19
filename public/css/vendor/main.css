@@ -133,25 +133,61 @@ nav.close ~ .dashboard {
   justify-content: center;
   margin: 6px 0px;
 }
+.activity-data .data .badge {
+  width: 115px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
+.activity-data .data a {
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
 
 /* Responsive styles */
+@media (max-width: 1000px) {
 
+  .activity-data .data .name {
+    display: none !important;
+  }
+  .activity-data .data .price {
+    display: none !important;
+  }
+  .activity-data .data {
+    width: 84vw !important;
+  }
+}
 @media (max-width: 780px) {
   .dash-content .boxes .box {
     width: calc(100% / 2 - 15px);
     margin-top: 15px;
   }
 
-  .activity-data .data .badge {
-    width: 115px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .activity-data .data .name {
+    display: none !important;
+  }
+  .activity-data .data .price {
+    display: none !important;
+  }
+  .activity-data .data {
+    width: 84vw !important;
   }
 }
+
 @media (max-width: 560px) {
   .dash-content .boxes .box {
     width: 100%;
+  }
+  .activity-data .data .name {
+    display: none !important;
+  }
+  .activity-data .data .price {
+    display: none !important;
+  }
+  .activity-data .data {
+    width: 84vw !important;
   }
 }
 
