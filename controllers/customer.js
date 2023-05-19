@@ -216,9 +216,7 @@ exports.showProduct = async (req,res) => {
       else {
         for (var i = 0; i < 8; i++) {
           featureProducts.push(products[i])
-          // console.log(products[i]);
         };
-        console.log(featureProducts.length);
         res.render('customer/index', {products: featureProducts});
       }
     }

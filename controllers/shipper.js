@@ -217,7 +217,6 @@ exports.getEditProfile = async (req,res) => {
 
 exports.editProfile = async (req,res) => {
   const shipper = await Shipper.findById(req.shipper);
-  const hashPassword = await bcrypt.hash(req.body.password,10);
   if (req.file == undefined) {
      // Find the document and update it
   Shipper.findOneAndUpdate(
@@ -236,7 +235,7 @@ exports.editProfile = async (req,res) => {
     // Handle any errors that occur
     console.error(error);
   });
-  } else if (req.body.password == undefined) {
+  } else {
     //  Find the document and update it
       Shipper.findOneAndUpdate(
       { _id: shipper.id}, // Specify the filter criteria to find the document
@@ -245,8 +244,8 @@ exports.editProfile = async (req,res) => {
           data: fs.readFileSync(path.join(__dirname + '/../uploads/' + req.file.filename)),
           contentType: 'image/png'
         },
-        distributionHub: req.body.distributionHub,
-      } }, // Specify the update operation
+        distributionHub: req.body.distributionHub
+     } }, // Specify the update operation
       { new: true } // Set the option to return the updated document
     )
       .then(updatedDocument => {
@@ -257,30 +256,7 @@ exports.editProfile = async (req,res) => {
         // Handle any errors that occur
         console.error(error);
       });
-  } else {
-    //  Find the document and update it
-    Shipper.findOneAndUpdate(
-    { _id: shipper.id}, // Specify the filter criteria to find the document
-    { $set: { 
-      photo: {
-        data: fs.readFileSync(path.join(__dirname + '/../uploads/' + req.file.filename)),
-        contentType: 'image/png'
-      },
-      password: hashPassword,
-    } }, // Specify the update operation
-    { new: true } // Set the option to return the updated document
-  )
-    .then(updatedDocument => {
-      // Handle the updated document
-      res.redirect('/api/shipper/editprofile');
-      // console.log(vendor);
-    })
-    .catch(error => {
-      // Handle any errors that occur
-      console.error(error);
-    });
-    }
-
+  }
 };
 
 exports.getDashboard = async (req, res) => {
