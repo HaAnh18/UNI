@@ -1,3 +1,25 @@
+<!--------------------------------------------------------------------------------------------------------------------------------------------------
+RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Nguyen Gia Bao
+ID: s3938143
+Acknowledgement: 
+//how to make user profile dropdown
+https://www.youtube.com/watch?v=ybXulmeilFM
+https://codepen.io/cristinaconacel/pen/XymvvO
+//how to make a profile page
+https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details
+//login and signup error message
+https://stackoverflow.com/questions/71409981/how-to-hide-error-message-once-the-user-starts-writing-in-the-input-field
+//how to create faqs page
+https://www.bootdey.com/snippets/view/paq-page
+//how to create order status
+https://mdbootstrap.com/docs/standard/extended/order-details/#
+//login and sign up page
+https://www.youtube.com/watch?v=Qv5vdKLKpQk
+---------------------------------------------------------------------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -101,7 +123,7 @@
       <section id="clients" class="clients">
         <div class="container" data-aos="zoom-out">
           
-          <!--clients-->
+          <!--clients slider-->
           <div class="clients-slider swiper">
             <div class="swiper-wrapper align-items-center">
               <div class="swiper-slide"><img src="/img/user/about-us/clients/client-1.png" class="img-fluid" alt="client 1 logo"></div>
@@ -393,171 +415,6 @@
         </div>
       </section>
       <!-- End Testimonials Section -->
-  
-      <!-- ======= Portfolio Section ======= -->
-      <!-- <section id="portfolio" class="portfolio sections-bg">
-        <div class="container" data-aos="fade-up">
-  
-          <div class="section-header">
-            <h2>Portfolio</h2>
-            <p>Quam sed id excepturi ccusantium dolorem ut quis dolores nisi llum nostrum enim velit qui ut et autem uia reprehenderit sunt deleniti</p>
-          </div>
-  
-          <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order" data-aos="fade-up" data-aos-delay="100">
-  
-            <div>
-              <ul class="portfolio-flters">
-                <li data-filter="*" class="filter-active">All</li>
-                <li data-filter=".filter-app">App</li>
-                <li data-filter=".filter-product">Product</li>
-                <li data-filter=".filter-branding">Branding</li>
-                <li data-filter=".filter-books">Books</li>
-              </ul> -->
-              <!-- End Portfolio Filters -->
-            <!-- </div>
-  
-            <div class="row gy-4 portfolio-container">
-  
-              <div class="col-xl-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                  <a href="/img/user/about-us/portfolio/app-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="/img/user/about-us/portfolio/app-1.jpg" class="img-fluid" alt=""></a>
-                  <div class="portfolio-info">
-                    <h4><a href="#" title="More Details">App 1</a></h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  </div>
-                </div>
-              </div> -->
-              <!-- End Portfolio Item -->
-  
-              <!-- <div class="col-xl-4 col-md-6 portfolio-item filter-product">
-                <div class="portfolio-wrap">
-                  <a href="/img/user/about-us/portfolio/product-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="/img/user/about-us/portfolio/product-1.jpg" class="img-fluid" alt=""></a>
-                  <div class="portfolio-info">
-                    <h4><a href="#" title="More Details">Product 1</a></h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  </div>
-                </div>
-              </div> -->
-              <!-- End Portfolio Item -->
-  
-              <!-- <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
-                <div class="portfolio-wrap">
-                  <a href="/img/user/about-us/portfolio/branding-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="/img/user/about-us/portfolio/branding-1.jpg" class="img-fluid" alt=""></a>
-                  <div class="portfolio-info">
-                    <h4><a href="#" title="More Details">Branding 1</a></h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  </div>
-                </div>
-              </div> -->
-              <!-- End Portfolio Item -->
-  
-              <!-- <div class="col-xl-4 col-md-6 portfolio-item filter-books">
-                <div class="portfolio-wrap">
-                  <a href="/img/user/about-us/portfolio/books-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="/img/user/about-us/portfolio/books-1.jpg" class="img-fluid" alt=""></a>
-                  <div class="portfolio-info">
-                    <h4><a href="#" title="More Details">Books 1</a></h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  </div>
-                </div>
-              </div> -->
-              <!-- End Portfolio Item -->
-  
-              <!-- <div class="col-xl-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                  <a href="/img/user/about-us/portfolio/app-2.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="/img/user/about-us/portfolio/app-2.jpg" class="img-fluid" alt=""></a>
-                  <div class="portfolio-info">
-                    <h4><a href="#" title="More Details">App 2</a></h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  </div>
-                </div>
-              </div> -->
-              <!-- End Portfolio Item -->
-  
-              <!-- <div class="col-xl-4 col-md-6 portfolio-item filter-product">
-                <div class="portfolio-wrap">
-                  <a href="/img/user/about-us/portfolio/product-2.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="/img/user/about-us/portfolio/product-2.jpg" class="img-fluid" alt=""></a>
-                  <div class="portfolio-info">
-                    <h4><a href="#" title="More Details">Product 2</a></h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  </div>
-                </div>
-              </div> -->
-              <!-- End Portfolio Item -->
-  
-              <!-- <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
-                <div class="portfolio-wrap">
-                  <a href="/img/user/about-us/portfolio/branding-2.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="/img/user/about-us/portfolio/branding-2.jpg" class="img-fluid" alt=""></a>
-                  <div class="portfolio-info">
-                    <h4><a href="#" title="More Details">Branding 2</a></h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  </div>
-                </div>
-              </div> -->
-              <!-- End Portfolio Item -->
-  
-              <!-- <div class="col-xl-4 col-md-6 portfolio-item filter-books">
-                <div class="portfolio-wrap">
-                  <a href="/img/user/about-us/portfolio/books-2.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="/img/user/about-us/portfolio/books-2.jpg" class="img-fluid" alt=""></a>
-                  <div class="portfolio-info">
-                    <h4><a href="#" title="More Details">Books 2</a></h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  </div>
-                </div>
-              </div> -->
-              <!-- End Portfolio Item -->
-  
-              <!-- <div class="col-xl-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                  <a href="/img/user/about-us/portfolio/app-3.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="/img/user/about-us/portfolio/app-3.jpg" class="img-fluid" alt=""></a>
-                  <div class="portfolio-info">
-                    <h4><a href="#" title="More Details">App 3</a></h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  </div>
-                </div>
-              </div> -->
-              <!-- End Portfolio Item -->
-<!--   
-              <div class="col-xl-4 col-md-6 portfolio-item filter-product">
-                <div class="portfolio-wrap">
-                  <a href="/img/user/about-us/portfolio/product-3.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="/img/user/about-us/portfolio/product-3.jpg" class="img-fluid" alt=""></a>
-                  <div class="portfolio-info">
-                    <h4><a href="#" title="More Details">Product 3</a></h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  </div>
-                </div>
-              </div> -->
-              <!-- End Portfolio Item -->
-<!--   
-              <div class="col-xl-4 col-md-6 portfolio-item filter-branding">
-                <div class="portfolio-wrap">
-                  <a href="/img/user/about-us/portfolio/branding-3.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="/img/user/about-us/portfolio/branding-3.jpg" class="img-fluid" alt=""></a>
-                  <div class="portfolio-info">
-                    <h4><a href="#" title="More Details">Branding 3</a></h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  </div>
-                </div>
-              </div> -->
-              <!-- End Portfolio Item -->
-  
-              <!-- <div class="col-xl-4 col-md-6 portfolio-item filter-books">
-                <div class="portfolio-wrap">
-                  <a href="/img/user/about-us/portfolio/books-3.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="/img/user/about-us/portfolio/books-3.jpg" class="img-fluid" alt=""></a>
-                  <div class="portfolio-info">
-                    <h4><a href="#" title="More Details">Books 3</a></h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  </div>
-                </div>
-              </div> -->
-              <!-- End Portfolio Item -->
-  
-            <!-- </div> -->
-            <!-- End Portfolio Container -->
-  
-          <!-- </div>
-  
-        </div>
-      </section> -->
-      <!-- End Portfolio Section -->
   
       <!-- ======= Our Team Section ======= -->
       <section id="team" class="team">
