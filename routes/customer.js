@@ -25,6 +25,8 @@ router.get('/vendor/:id', customer.productVendor);
 
 router.get('/product/:id/addtocart', isAuthenticated, customer.addToCart);
 
+router.get('/product/:id/deleteproductquantity', isAuthenticated, customer.deleteProductQuantity);
+
 router.get('/delete/:id', isAuthenticated, customer.deleteProduct);
 
 router.get('/cart', isAuthenticated, customer.showCart);

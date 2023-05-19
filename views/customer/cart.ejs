@@ -77,17 +77,19 @@
                                         <!--decrease quantities-->
                                         <div class="input-group-btn">
                                             <button class="btn btn-sm btn-primary btn-minus" >
-                                                <a href="">
+                                                <a href="/api/customer/product/<%= product.id %>/deleteproductquantity">
                                                     <i class="fa fa-minus"></i>
                                                 </a>
                                             </button>
                                         </div>
                                         <!--shown number-->
-                                        <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="<%= product.quantity %>" name="product-quantity">
+                                        <input type="text" disabled class="form-control form-control-sm bg-secondary border-0 text-center" value="<%= product.quantity %>" name="product-quantity">
                                         <!--increase quantities-->
                                         <div class="input-group-btn">
                                             <button class="btn btn-sm btn-primary btn-plus">
-                                                <i class="fa fa-plus"></i>
+                                                <a href="/api/customer/product/<%= product.id %>/addtocart">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
                                             </button>
                                         </div>
                                     </div>

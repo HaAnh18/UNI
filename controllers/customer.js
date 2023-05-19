@@ -262,7 +262,7 @@ exports.createOrder = async (req,res) => {
     
     Order.create(orderInfo);
   }
-  res.redirect("/api/customer/homepage");
+  res.redirect("/api/customer/orderhistory");
   } catch (error) {
     console.log(error.message);
   }
@@ -528,4 +528,18 @@ exports.filterByPrice = async (req,res) => {
     res.render("customer/shop", {products: listOfProducts});
   })
 }
+
+exports.deleteProductQuantity = async (req, res, next) => {
+  try {
+    const customer = await Customer.findById(req.user);
+
+    const existingCartItem = customer.cart.find(item => item.product.equals(req.params.id));
+    existingCartItem.quantity -= 1;
+    
+    await customer.save();
+    res.redirect("/api/customer/cart");
+  } catch (error) {
+    next(error);
+  }
+};
 
