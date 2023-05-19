@@ -9792,10 +9792,41 @@ a.text-dark:hover, a.text-dark:focus {
   overflow: auto;
 }
 
+/*set size for product img*/
 .img-box-product{
   width: 200px;
   height: 300px;
 }
+
+/*set size for vendor profile image*/
+.img-box-vendor{
+  width: 100px; 
+  height: 100px;
+}
+
+/*set size for user profile image*/
+.img-box-profile{
+  width: 200px;
+}
+
+/*text animate color use as header(change color when hover)*/
+.h4:hover{
+  color: #FFFFFF;
+  transition: .5s
+}
+
+.button-plus-minus-color{
+  color: #ffffff;
+}
+
+.span-remove-border{
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+
 
 @keyframes action {
   0% {

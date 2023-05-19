@@ -279,9 +279,6 @@ body.dark .switch:before {
     left: 250px;
     width: calc(100% - 250px);
   }
-  .activity .activity-data {
-    overflow-x: scroll;
-  }
   .dashboard {
     min-height: 10vh;
   }

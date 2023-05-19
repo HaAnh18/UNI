@@ -63,7 +63,7 @@
                     <div class="card-header">Profile Picture</div>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-2 profile-picture" width="200px" src="data:<%= user.photo.contentType %>;base64,<%= user.photo.data.toString('base64') %>" alt="" id="profile-image">
+                        <img class="img-account-profile rounded-circle mb-2 profile-picture img-box-profile"  src="data:<%= user.photo.contentType %>;base64,<%= user.photo.data.toString('base64') %>" alt="user profile image" id="profile-image">
 
                         <input name="image" id="upload-file" type="file" accept="jpeg, jpg, png" onchange="readURL(this);">
                     </div>
