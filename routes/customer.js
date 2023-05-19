@@ -70,7 +70,7 @@ router.get('/shop', customer.getShop);
 router.get('/orderstatus/:id', isAuthenticated, customer.getOrderStatus);
 
 //Security
-router.get('/security', customer.getCustomerSecurity);
+router.get('/security', isAuthenticated, customer.getCustomerSecurity);
 
 //Change password
 router.post('/changepassword', isAuthenticated, customer.changePassword);
