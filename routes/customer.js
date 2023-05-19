@@ -25,11 +25,11 @@ router.get('/vendor/:id', customer.productVendor);
 
 router.get('/product/:id/addtocart', isAuthenticated, customer.addToCart);
 
+router.get('/product/:id/deleteproductquantity', isAuthenticated, customer.deleteProductQuantity);
+
 router.get('/delete/:id', isAuthenticated, customer.deleteProduct);
 
 router.get('/cart', isAuthenticated, customer.showCart);
-
-
 
 router.get('/order', isAuthenticated, customer.createOrder);
 
@@ -70,7 +70,7 @@ router.get('/shop', customer.getShop);
 router.get('/orderstatus/:id', isAuthenticated, customer.getOrderStatus);
 
 //Security
-router.get('/security', customer.getCustomerSecurity);
+router.get('/security', isAuthenticated, customer.getCustomerSecurity);
 
 //Change password
 router.post('/changepassword', isAuthenticated, customer.changePassword);
@@ -83,5 +83,7 @@ router.get('/category/electronic', customer.getElectronic);
 router.get('/category/book', customer.getBook);
 
 router.get('/homepage/search/', customer.searchProduct);
+
+router.get('/products/:min-:max', customer.filterByPrice);
 /*=======================================================================================================================================*/
 module.exports = router;

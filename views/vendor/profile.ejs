@@ -7,7 +7,7 @@ ID: S3891483
 Acknowledgement: https://www.web-leb.com/code/25 
 -->
 <%- include('../vendor-partials/head.ejs') %>
-<link rel="stylesheet" href="/css/vendor/addProduct.css"/>
+<link rel="stylesheet" href="/css/vendor/profile.css"/>
 <body class="vendorPage">
     <%- include('../vendor-partials/vendor-sidebar.ejs') %>
 
@@ -22,7 +22,7 @@ Acknowledgement: https://www.web-leb.com/code/25
             </div>
         </div> 
     
-        <div class="container">
+        <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
@@ -36,10 +36,6 @@ Acknowledgement: https://www.web-leb.com/code/25
                               <label for="inputUsername" class="form-label">Username</label>
                               <input disabled name="username" type="text" class="form-control" value="<%= vendor.username %>">
                             </div>
-                            <div class="col-md-6">
-                              <label for="inputPassword4" class="form-label">Password</label>
-                              <input name="password" type="password" class="form-control" id="inputPassword4" value="<%= vendor.password%>">
-                            </div>
                             <div class="col-12">
                               <label for="inputBusinessName" class="form-label">Business Name</label>
                               <input name="name" type="text" class="form-control" id="inputBusinessName" value="<%= vendor.name%>">
@@ -48,9 +44,7 @@ Acknowledgement: https://www.web-leb.com/code/25
                               <label for="inputAddress" class="form-label">Business address</label>
                               <input name="address" type="text" class="form-control" id="inputAddress" value="<%= vendor.address %>">
                             </div>
-                      
-                         
-                          <div class="profile-image-container visual">
+                          <div class="profile-image-container visual col-12">
                               <label for="upload-file"></label>
                               <img src="data:<%= vendor.photo.contentType %>;base64,<%= vendor.photo.data.toString('base64') %>" alt="Profile Image" id="profile-image">
                               
@@ -61,6 +55,35 @@ Acknowledgement: https://www.web-leb.com/code/25
                           </div>
                         </form>
                     </section> 
+
+                    
+                      <!-- Change password -->
+                    <section class="card-2">
+                      <% if(typeof message != "undefined" && message) { %>
+
+                        <div class="container pt-3">
+                          <div class="alert alert-danger" role="alert">
+                              <div>	<%= message %></div>
+                          </div>
+                        </div>
+                        <%}%>
+                    
+                        <form class="container" action="/api/vendor/changepassword" method="POST">
+                          <div class="col-md-6">
+                            <div class="change-password">Change Password</div>
+                            <label for="inputPassword4" class="form-label">Password</label>
+                            <input name="current" type="password" class="form-control" id="inputPassword4">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="newPassword4" class="form-label">New Password</label>
+                            <input name="new" type="password" class="form-control" id="newPassword4">
+                          </div>
+
+                          <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>
+                    </section>
                 </div>
             </div>
         </div>

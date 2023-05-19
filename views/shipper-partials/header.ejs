@@ -12,13 +12,13 @@
     </head>
     <body>
         <!-- SIDEBAR -->
-	<section id="sidebar">
+	<section id="sidebar" class="hide">
 		<a href="/api/shipper/dashboard" class="brand">
 			<i class='bx bxs-universal-access'></i>
 			<span class="text titleSidebar">Union Shipping</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
+			<li>
 				<a href="/api/shipper/dashboard">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -48,21 +48,17 @@
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
+			<!-- Hide sidebar button -->
 			<i class='bx bx-menu' ></i>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
+
+			<!-- Profile pic -->
 			<a href="#" class="profile">
 				<img src="data:<%= shipper.photo.contentType %>;base64,<%= shipper.photo.data.toString('base64') %>">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
-    </body>
+    
     <script src="/js/shipper/dashboard/js_dashboard.js"></script>
+	</body>
     </html>
     

@@ -7,10 +7,9 @@ allSideMenu.forEach(item=> {
 		allSideMenu.forEach(i=> {
 			i.parentElement.classList.remove('active');
 		})
-		li.classList.add('active');
+		li.classList.toggle('active');
 	})
 });
-
 
 
 
@@ -21,12 +20,6 @@ const sidebar = document.getElementById('sidebar');
 menuBar.addEventListener('click', function () {
 	sidebar.classList.toggle('hide');
 })
-
-
-
-
-
-
 
 const searchButton = document.querySelector('#content nav form .form-input button');
 const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');

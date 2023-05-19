@@ -8,7 +8,6 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="/css/shipper/dashboard_shipper/dashboard.css">
-    <!-- <link rel="stylesheet" href="/css/bootstrap.min.css" /> -->
 
 	<title>ShipperHub</title>
 </head>
@@ -30,74 +29,55 @@
 				<div class="order">
 					<div class="head">
 						<h3>Recent Orders</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
 					</div>
 					<table>
 						<thead>
 							<tr>
-								<th>Orders</th>
-								<th>Date Order</th>
+								<th>Order ID</th>
+								<th>Customer Name</th>
+                <th>Total Price</th>
 								<th>Status</th>
-                <th>Distribution Hub</th>
+								<th>Distribution Hub</th>
 							</tr>
 						</thead>
 						<tbody>
+
+
+						<% orders.forEach(function(order){ %>
 							<tr>
 								<td>
-									<img src="images/shipper/Doraemon_character.png">
-									<a href="/api/shipper/order">John Doe</a>
+									<a href="/api/shipper/order/<%= order.id %>"><%= order.id %></a>
 								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-                                <td>Distribution Hub A</td>
+								<td><%= order.customerName %></td>
+								<td><%= order.total %></td>
+								<% if (order.status == "Active") { %>
+									<!-- Code to be executed if condition1 is true -->
+									<td>
+										<span class="status actived"><%= order.status %></span>
+									</td>								
+						
+								<% } else if (order.status == "Cancelled") { %>
+									<td>
+										<span class="status cancelled"><%= order.status %></span>
+									</td>								
+					
+								<% } else { %>
+									<td>
+										<span class="status completed"><%= order.status %></span>
+									</td>									
+								
+									<% } %>
+								
+                <td><%= order.distribution %></td>
 							</tr>
-							<tr>
-								<td>
-									<img src="/images/shipper/Doraemon_character.png">
-									<a href="/api/shipper/order">John Doe</a>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status cancelled">Cancelled</span></td>
-                                <td>Distribution Hub A</td>
-                                
-							</tr>
-							<tr>
-								<td>
-									<img src="/images/shipper/Doraemon_character.png">
-									<a href="/api/shipper/order">John Doe</a>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-                                <td>Distribution Hub A</td>
-							</tr>
-							<tr>
-								<td>
-									<img src="/images/shipper/Doraemon_character.png">
-									<a href="/api/shipper/order">John Doe</a>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status cancelled">Cancelled</span></td>
-                                <td>Distribution Hub A</td>
-							</tr>
-							<tr>
-								<td>
-									<img src="/images/shipper/Doraemon_character.png">
-									<a href="/api/shipper/order">John Doe</a>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-                                <td>Distribution Hub A</td>
-							</tr>
+
+						<% }); %>
+							
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</main>
-
-		<footer>
-			<%- include('../shipper-partials/footer.ejs') %>
-		</footer>
 
 		<!-- MAIN -->
 	</section>

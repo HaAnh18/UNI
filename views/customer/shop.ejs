@@ -50,17 +50,20 @@
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <form action="">
-                        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by price</span></h5>
-                        <div class="">
-                            <label class="">Min Price</label>
-                            <input type="text" name="minPrice">
-                            <label class=""> </label>
-                            <label class="">Max Price</label>
-                            <input type="text" name="maxPrice">
+                    <form id="priceFilterForm" action="">
+                        <h5 class="section-title position-relative text-uppercase mb-3">
+                            <span class="bg-secondary pr-3">Filter by price</span>
+                        </h5>
+                        <div class="minMax">
+                            <label for="minPrice" class="">Min Price</label>
+                            <input type="number" id="minPrice" name="minPrice">
+                            <label for="maxPrice" class="">Max Price</label>
+                            <input type="number" id="maxPrice" name="maxPrice">
                             <button class="btn btn-primary">Search</button>
                         </div>
                     </form>
+
+                    
                 </nav>
             </div>
         </div>
@@ -125,6 +128,21 @@
 
     <!-- Template Javascript -->
     <script src="/js/customer/main/js/main.js"></script>
+    <script>
+        document.getElementById('priceFilterForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get input values
+        var minPrice = parseFloat(document.getElementById('minPrice').value);
+        var maxPrice = parseFloat(document.getElementById('maxPrice').value);
+
+        // Construct the URL path with the input values
+        var url = '/api/customer/products/' + encodeURIComponent(minPrice) + '-' + encodeURIComponent(maxPrice);
+
+        // Redirect to the generated URL
+        window.location.href = url;
+        });
+    </script>
 </body>
 
 </html>

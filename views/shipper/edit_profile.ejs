@@ -1,78 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/shipper/edit/edit_profile.css">
-    <link href="/css/shipper/dashboard_shipper/img-upload.css" rel="stylesheet">
-    
-</head>
-        <%- include('../shipper-partials/header.ejs') %>
-<body>
-<form action="/api/shipper/editprofile" method="POST" enctype="multipart/form-data" >
-    <div class="container rounded bg-white mt-5">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/css/shipper/edit/edit_profile.css" />
+    <link
+      href="/css/shipper/dashboard_shipper/img-upload.css"
+      rel="stylesheet"
+    />
+  </head>
+  <%- include('../shipper-partials/header.ejs') %>
+  <body>
+    <form
+      action="/api/shipper/editprofile"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div class="container rounded bg-white mt-5">
         <div class="row">
-            <div class=" col-md-4 d-flex flex-column align-items-center p-3 py-5">
-                <div class="upload-img">
-                    <div class="profile-image-container visual">
-                        <label for="upload-file"></label>
-                        <img src="data:<%= shipper.photo.contentType %>;base64,<%= shipper.photo.data.toString('base64') %>" class="img-fluid" alt="Profile Image" id="profile-image">
-                        <input name="image" id="upload-file" type="file" accept="jpeg, jpg, png" onchange="readURL(this);">
-                    </div>
-                </div> 
+          <div class="col-md-4 d-flex flex-column align-items-center p-3 py-5">
+            <div class="upload-img">
+              <div class="profile-image-container visual">
+                <label for="upload-file"></label>
+                <img
+                  src="data:<%= shipper.photo.contentType %>;base64,<%= shipper.photo.data.toString('base64') %>"
+                  class="img-fluid"
+                  alt="Profile Image"
+                  id="profile-image"
+                />
+                <input
+                  name="image"
+                  id="upload-file"
+                  type="file"
+                  accept="jpeg, jpg, png"
+                  onchange="readURL(this);"
+                />
+              </div>
             </div>
-            <div class="col-md-8">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
-                            <h6><a href="/api/shipper/dashboard">Back to home</a></h6>
-                        </div>
-                        <h6 class="text-right">Edit Profile</h6>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">
-                            <input name="username" disabled type="text" class="form-control" placeholder="Username" value="<%= shipper.username %>">
-                        </div>
-                    </div>
-                  
-                    <div class="row mt-3">
-                        <div class="col-md-6">
-                            <input name="password" type="password" class="form-control" placeholder="Password" value="<%= shipper.password %>"></div>
-                    </div>
-
-                    <div class="row mt-3">
-                        <div class="dropdown mb-3">
-                            <label for="hubs">Choose a distribution Hub:</label>
-                            <select id="hubs" name="hubs">
-                              <option value="<%= shipper.distributionHub %>">Distribution <%= shipper.distributionHub %></option>
-                              <option value="hubB">Distribution hubA</option>
-                              <option value="hubB">Distribution hubB</option>
-                              <option value="hubC">Distribution hubC</option>
-                              <option value="hubD">Distribution hubD</option>
-                            </select>
-                        </div>
-                    </div>
-                 
-                    <div class="mt-5 text-right">
-                        <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
-                    </div>
+          </div>
+          <div class="col-md-8">
+            <div class="p-3 py-5">
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <div class="d-flex flex-row align-items-center back">
+                  <i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                  <h6><a href="/api/shipper/dashboard">Back to home</a></h6>
                 </div>
+                <h6 class="text-right">Edit Profile</h6>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-6">
+                  <input
+                    name="username"
+                    disabled
+                    type="text"
+                    class="form-control"
+                    placeholder="Username"
+                    value="<%= shipper.username %>"
+                  />
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="dropdown mb-3">
+                  <label for="hubs">Choose a distribution Hub:</label>
+                  <select id="hubs" name="hubs">
+                    <option value="<%= shipper.distributionHub %>">
+                      Distribution <%= shipper.distributionHub %>
+                    </option>
+                    <option value="hubB">Distribution hubA</option>
+                    <option value="hubB">Distribution hubB</option>
+                    <option value="hubC">Distribution hubC</option>
+                    <option value="hubD">Distribution hubD</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mt-5 text-right">
+                <button class="btn btn-primary profile-button" type="submit">
+                  Save Profile
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <form action="/api/shipper/changepassword" method="POST" class="pb-5">
+      <div class="container rounded bg-white mt-5">
+        <% if(typeof message != "undefined" && message) { %>
+
+          <div class="container mt-5 message-alert">
+            <div class="alert alert-danger" role="alert">
+                <div>	<%= message %></div>
+            </div>
+          </div>
+          <%}%>
+
+        <div class="container pt-3">
+            <div class="p-3 py-6 pt-4">
+              <div
+                class="d-flex justify-content-between align-items-center mb-3">
+                <div class="d-flex flex-row align-items-center back">
+                  <h6>Current Password</h6>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <input
+                    name="current"
+                    type="password"
+                    class="form-control"
+                    placeholder="Current Password"
+                  />
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-3 pt-3">
+                <div class="d-flex flex-row align-items-center back">
+                  <h6>New Password</h6>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <input
+                    name="new"
+                    type="password"
+                    class="form-control"
+                    placeholder="New Password"
+                  />
+                </div>
+              </div>
+              <div class="mt-5 text-right">
+                <button class="btn btn-primary profile-button" type="submit">
+                  Save Password
+                </button>
+              </div>
             </div>
         </div>
-    </div>
-</form>
-</body>
-    <script src="/js/shipper/dashboard/img-upload.js"></script>
-    <script src="/js/shipper/dashboard/js_dashboard.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="/js/shipper/edit/edit_profile.js"></script>
-    <script src="/js/shipper/signup/bootstrap.bundle.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> 
+      </div>
+    </form>
+  </body>
+  <script src="/js/shipper/dashboard/img-upload.js"></script>
+  <script src="/js/shipper/dashboard/js_dashboard.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="/js/shipper/edit/edit_profile.js"></script>
+  <script src="/js/shipper/signup/bootstrap.bundle.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </html>

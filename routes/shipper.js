@@ -32,9 +32,16 @@ router.get('/logout', logout);
 //frontend
 router.get("/dashboard", isAuthenticated, shipper.getDashboard);
 
-
-router.get("/order", isAuthenticated, shipper.getOrder);
+router.get("/order/:id", isAuthenticated, shipper.getOrder);
 
 router.get("/editprofile", isAuthenticated, shipper.getEditProfile);
+
+router.post('/editprofile', isAuthenticated, shipper.handleFileUpload, shipper.editProfile);
+
+router.get("/delivered/:id", isAuthenticated, shipper.deliveredOrder);
+
+router.get("/cancelled/:id", isAuthenticated, shipper.cancelledOrder);
+
+router.post('/changepassword', isAuthenticated, shipper.changePassword);
 
 module.exports = router;

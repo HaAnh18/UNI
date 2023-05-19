@@ -31,6 +31,10 @@ body {
     color: #5E1325;
     cursor: pointer;
   }
+
+  .message-alert {
+    padding-top: 18px;
+  }
 #file{
     display: none;
 }

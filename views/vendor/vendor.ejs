@@ -46,33 +46,36 @@ Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-j
   
         <div class="activity-data row">
 
-          <div class="data">
-            <span class="data-list data-title">Order ID</span>
-            <span class="data-list data-title">Customer Name</span>
-            <span class="data-list data-title">Total Price</span>
-            <span class="data-list data-title">Status</span>
+          <div class="data row">
+            <div class="data-list data-title col">Order ID</div>
+            <div class="data-list name data-title col">Customer Name</div>
+            <div class="data-list price data-title col">Total Price</div>
+            <div class="data-list data-title badge col-sm-2">Status</div>
           </div>
           
           <% orders.forEach(function(order){ %>
 
             <div class="data">
-              <span class="data-list">#<%= order.id %></span>
-              <span class="data-list"><%= order.customerName %></span>
-              <span class="data-list"><%= order.total %> AUD</span>
+              <div class="data-list col">
+                <a href="/api/vendor/order/<%= order.id %>">
+                  #<%= order.id %></div>
+                </a>
+              <div class="data-list name col"><%= order.customerName %></div>
+              <div class="data-list price col"><%= order.total %> AUD</div>
               <% if (order.status == "Active") { %>
                 <!-- Code to be executed if condition1 is true -->
-                <span class="data-list badge text-bg-success"><%= order.status %></span>
+                <div class="data-list col-sm-2 badge text-bg-success"><%= order.status %></div>
               <% } else if (order.status == "Pending") { %>
                 <!-- Code to be executed if condition1 is false and condition2 is true -->
                 <a href="/api/vendor/order/<%=order.id %>/changestatus">
-                  <span class="data-list badge text-bg-warning"><%= order.status %></span>
+                  <div class="data-list col-sm-2 badge text-bg-warning"><%= order.status %></div>
                 </a>
               <% } else if (order.status == "Cancelled") { %>
                   <!-- Code to be executed if condition1 is false and condition2 is true -->
-                  <span class="data-list badge text-bg-danger"><%= order.status %></span>
+                  <div class="data-list col-sm-2 badge text-bg-danger"><%= order.status %></div>
               <% } else { %>
                 <!-- Code to be executed if both condition1 and condition2 are false -->
-                <span class="data-list badge text-bg-info"><%= order.status %></span>
+                <div class="data-list col-sm-2 badge text-bg-info"><%= order.status %></div>
               <% } %>
               
             </div>
