@@ -6,20 +6,22 @@ Author: Vu Loc
 ID: S3891483
 Acknowledgement: https://www.codingnepalweb.com/admin-dashboard-panel-html-css-javascript/ 
 -->
-
+<title>Cancelled Orders</title>
+<!-- Include head file with scriptlet tag -->
 <%- include('../vendor-partials/head.ejs') %>
 <link rel="stylesheet" href="/css/vendor/orders.css"/>
 <body class="vendorPage">
   <%- include('../vendor-partials/vendor-sidebar.ejs') %>
 
   <section class="dashboard">
+    <!-- Toggle sidebar close/open -->
     <div class="top">
       <i class="uil uil-bars sidebar-toggle"></i>
     </div> 
     
     <div class="dash-content">
-  
       <div class="activity">
+        <!-- Page title and icon-->
         <div class="title">
         <i class="bi bi-x-circle"></i>
           <span class="text">Cancelled Orders</span>

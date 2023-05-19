@@ -1,9 +1,31 @@
+<!--------------------------------------------------------------------------------------------------------------------------------------------------
+RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Nguyen Gia Bao
+ID: s3938143
+Acknowledgement: 
+//how to make user profile dropdown
+https://www.youtube.com/watch?v=ybXulmeilFM
+https://codepen.io/cristinaconacel/pen/XymvvO
+//how to make a profile page
+https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details
+//login and signup error message
+https://stackoverflow.com/questions/71409981/how-to-hide-error-message-once-the-user-starts-writing-in-the-input-field
+//how to create faqs page
+https://www.bootdey.com/snippets/view/paq-page
+//how to create order status
+https://mdbootstrap.com/docs/standard/extended/order-details/#
+//login and sign up page
+https://www.youtube.com/watch?v=Qv5vdKLKpQk
+---------------------------------------------------------------------------------------------------------------------------------------------------->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login - UNI Store</title>
+    <title>Signup</title>
   
   	<link rel="stylesheet" type="text/css" href="/css/customer/login/css-login/bootstrap.min.css">
   	<link rel="stylesheet" type="text/css" href="/css/customer/login/css-login/bootstrap-icons.css">
@@ -21,36 +43,27 @@
 	<!--Header-->
     <main class="text-white">
     	<h1 class="h2 text-center pt-3 pb-2 text-viva"> UNI Store</h1>
+		<form class="js-login-form pt-4 p-4" method="POST" action="/api/customer/signup" enctype="multipart/form-data">
   		<div class="content row mx-auto" >
 			<div class="img-container p-0 col-md-6 bg-warning" >
 				
-				
+				<!--customer profile image-->
 					<div class="profile-image-container visual">
 						<label for="upload-file"></label>
-							<img src="https://unsplash.com/photos/ZA31Flg81RE" alt="Profile Image" id="profile-image">
+							<img src="/img/user/login/icon.png" alt="Profile Image" id="profile-image">
 											
-						<input name="image" id="upload-file" type="file" accept="jpeg, jpg, png" onchange="readURL(this);" >
+						<input name="image" id="upload-file" type="file" accept="jpeg, jpg, png" onchange="readURL(this);" required>
 					</div>
 				
 
 			</div>
   			<div class="form-container col-md-6 " >
-                <!--extra button to switch between signin & signup-->
-  				<!--<div onclick="show_login()" class="login-button button-selected">Login</div>
-  				<div onclick="show_signup()" class="signup-button">Signup</div>-->
 
   				<div class="">
   					<h2 class="fx-animate-1 text-viva">Signup</h2>
 						<h5 class="fx-animate-3 text-viva">Please enter your details</h5>
-					<!--Login section-->
-					<form class="js-login-form pt-4 p-4" method="POST" action="/api/customer/signup" enctype="multipart/form-data">
-  						
 						
-									
-													
-								<input name="image" id="upload-file" type="file" accept="jpeg, jpg, png" onchange="readURL(this);" >
-							
-
+					<div>
 					  <!--Username-->
 					  <div class="input-group mb-4 fx-animate-1" >
 						<input type="text" class="form-control p-2" placeholder="Username" id="contact-s-username" name="username" onkeyup="validateSUsername()" required>
@@ -85,11 +98,13 @@
 
 					  <div class="mb-4 fx-animate-3">
 						  <button class="btn btn-lg btn-outline-warning" type="submit" onclick="return validateSForm()">Sign up</button>
+						  <!--error message-->
+						  <span id="s-submit-error"></span>
 					  </div>
 					  <div class="mb-4 fx-animate-5 text-viva">
 						   Already have an account? <a class="text-viva-use" href="/api/customer/signin">Sign in</a>
 					  </div>
-
+					
 					  <!--take me back button-->
 					  <hr>
 					  <div>
@@ -99,7 +114,7 @@
 						  </div>
 
 					  </div>
-
+					</div>
 					</form>
   					
   				</div>

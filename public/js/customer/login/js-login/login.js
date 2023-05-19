@@ -34,6 +34,8 @@ var lPasswordError = document.getElementById('l-password-error');
 var sPasswordError = document.getElementById('s-password-error');
 //signup address
 var AddressError = document.getElementById('s-address-error');
+//signup address
+var submitError = document.getElementById('s-submit-error');
 
 /*validator*/
 
@@ -43,7 +45,7 @@ function validateName(){
     var name = document.getElementById('contact-name').value;
     //condition 
     //if the slot is empty will display error message
-    if(name.length < 5 || name.length < 6){
+    if(name.length < 5 && name.length < 6){
         nameError.innerHTML = 'please enter full name';
         return false;
     }
@@ -57,10 +59,12 @@ function validateAddress(){
     var address = document.getElementById('contact-s-address').value;
     //condition 
     //if the slot is empty will display error message
-    if(AddressError.length < 8 || address.length < 15){
+    if(address.length < 8 ) {
         AddressError.innerHTML = 'must be between 8 - 15 characters';
         return false;
-    }
+    } else if(address.length > 15) {
+        AddressError.innerHTML = 'must be between 8 - 15 characters';
+        return false;}
     AddressError.innerHTML = '<i class="fa-solid fa-check"></i>';
     return true;
 }
@@ -116,9 +120,11 @@ function validateSPassword(){
     return true;
 }
 
+/*submit validate*/
+
 /*Signup Form validator*/
 function validateSForm(){
-    if(!validateName() || !validateSUsername() || !validateSPassword()){
+    if(!validateSUsername() || !validateSPassword()  || !validateName() || !validateAddress()){
         submitError.style.display = 'block';
         submitError.innerHTML = "Please fill in all of the empty box";
         setTimeout(function(){submitError.style.display = 'none';}, 3000);
