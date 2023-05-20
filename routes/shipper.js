@@ -1,28 +1,36 @@
+// RMIT University Vietnam
+// Course: COSC2430 Web Programming
+// Semester: 2023A
+// Assessment: Assignment 2
+// Author: Tom's Prodigies V2
+// ID: 
+// Nguyen Tran Ha Anh: s3938490
+// Dang Kim Quang Minh: s3938024
+// Nguyen Gia Bao: s3938143
+// Hoang Tuan Minh: s3924716
+// Vu Loc: s3891483
+// Acknowledgement: 
+
 const express = require('express');
 const router = express.Router();
-const {signup, signin, logout, getMe, handleFileUpload, shipperProfile} = require("../controllers/shipper");
 const {isAuthenticated} = require('../middlewares/auth-shipper');
 const shipper = require('../controllers/shipper');
 
-// router.get('/signup', (req,res)=>{
-//   res.render("signup-shipper");
-// })
-
 router.get("/signup", shipper.getSignup);
 
-router.post('/signup', handleFileUpload, shipper.signup);
+router.post('/signup', shipper.handleFileUpload, shipper.signup);
 
 router.get("/signin", shipper.getSignin);
 
 router.post('/signin', shipper.signin);
 
-router.get('/logout', logout);
+router.get('/logout', shipper.logout);
 
 // router.get('/signin', (req,res) => {
 //   res.render('login-shipper');
 // })
 
- router.get('/getme', isAuthenticated, shipperProfile);
+ router.get('/getme', isAuthenticated, shipper.shipperProfile);
 
 // router.get('/customer',verifyToken, getMe);
 // router.get('/customer', verifyToken, getMe);
