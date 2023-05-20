@@ -6,10 +6,12 @@ Presentation video:
 
 Git Hub repo: https://github.com/HaAnh18/UNI
 
+
+To begin and get all the necessary packages use command: npm install
+
 Start the website by opening an integrated terminal and run the command: npm start
 
-
-/ After you run the index.js file to get started please run this URL:
+After you run the index.js file to get started please run this URL:
 http://localhost:3000/api/customer/homepage
 
 
