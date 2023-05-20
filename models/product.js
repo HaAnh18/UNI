@@ -13,6 +13,7 @@
 
 const mongoose = require('mongoose');
 
+// Create schema for product
 const productSchema = new mongoose.Schema({
   category: {
       type: String,

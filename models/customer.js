@@ -15,6 +15,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+// Create a schema for customer
 const customerSchema = new mongoose.Schema({
   username: {
     type: String, 
@@ -71,8 +72,6 @@ customerSchema.pre('save', async function(next){
   await bcrypt.hash(this.password,10)
   .then(hash => this.password = hash)
   .catch(err => console.error(err.message));
-
-  // this.password = await bcrypt.hash(this.password, 10);
 });
 
 // VERIFY PASSWORD

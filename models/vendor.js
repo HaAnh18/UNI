@@ -15,6 +15,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+// Create a schema for vendor
 const vendorSchema = new mongoose.Schema({
   username: {
     type: String, 

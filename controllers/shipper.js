@@ -23,31 +23,35 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 
  
+// Create a multer disk storage configuration
 var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
+  destination: (req, file, cb) => {
+      cb(null, 'uploads') // Specify the destination folder for uploaded files
+  },
+  filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now()) // Generate a unique filename for the uploaded file
+  }
 });
  
+// Create a multer instance with the configured storage
 var upload = multer({ storage: storage });
 
+// Export a function to handle file uploads
 exports.handleFileUpload = (req, res, next) => {
   upload.single('image')(req, res, (err) => {
     if (err) {
-      return next(err);
+      return next(err); // Pass any error to the next middleware
     }
-    next();
+    next(); // Proceed to the next middelware if the upload is successful
   });
 };
 
+// Export a function for customer to signup
 exports.signup = async (req, res, next) => {
 
 
   try {
-    // const customer = await Customer.create(req.body);
+        // Prepare data for creating a new customer
     var data = {
       username: req.body.username,
       password: req.body.password,
@@ -59,6 +63,7 @@ exports.signup = async (req, res, next) => {
     };
 
 
+    // Check if username has existed or not
     const shipperExist = await Shipper.findOne({username: data.username});
     const usernameExistinCustomer = await Customer.findOne({username: data.username});
     const usernameExistinVendor = await Vendor.findOne({username: data.username});
@@ -67,17 +72,10 @@ exports.signup = async (req, res, next) => {
       return res.render("shipper/signup_shipper", {message: "Username already exists"});
     }
   
+    // Create an account for shipper
     Shipper.create(data);
 
-    // console.log(data);
-    // res.status(201).json({
-    //   success: true,
-    //   data
-    // })
-
     res.redirect('/api/shipper/signin');
-
-    // generateToken(vendor, 200, res);
      
   } catch(error) {
     console.log(error);
@@ -89,40 +87,32 @@ exports.signup = async (req, res, next) => {
   }
 }
 
+// Exports a signin function 
 exports.signin = async (req, res, next) => {
-  // res.json(info.username);
   try {
-    // const {username, password} = req.body;
+    // Prepare data 
     var info = {
       username: req.body.username,
       password: req.body.password
     }
+    // Check if username or password are filled
     if (!info.username || !info.password) {
       return res.render("shipper/login_shipper", {message: "Username and password are required"});
-      // return req.flash("wrong");
     }
 
     // CHECK USERNAME
     const shipper = await Shipper.findOne({username: info.username});
     if (!shipper) {
       return res.render("shipper/login_shipper", {message: "Invalid credentials"});
-      // return next(new ErrorResponse(`Invalid credentials`, 400));
     };
 
-    // VERIFY CUSTOMER'S PASSWORD
+    // VERIFY SHIPPER'S PASSWORD
     const isMatched = await shipper.comparePassword(info.password);
     if (!isMatched) {
       return res.render("shipper/login_shipper", {message: "Invalid credentials"});
-
-      // res.redirect('/signin');
-      // return next(new ErrorResponse(`Invalid credentials`, 400));
     } 
     
-
-    // console.log(req.user);
     generateToken(shipper, 200, res);
-    // res.json(req.cookie)
-    // res.redirect('/profile');
 
   } catch (error) {
     console.log(error);
@@ -130,7 +120,7 @@ exports.signin = async (req, res, next) => {
   }
 }
 
-
+// Generate the token for shipper 
 const generateToken = async (shipper, statusCode, res) => {
 
   const token = await shipper.jwtGenerateToken();
@@ -143,91 +133,49 @@ const generateToken = async (shipper, statusCode, res) => {
   res
   .status(statusCode)
   .cookie('token', token, options)
-  // .json({success: true, token})
   .redirect('/api/shipper/dashboard');
-  // console.log(({success: true, token}))
 }
 
 // LOG OUT USER
 exports.logout = (req, res, next) => {
   res.clearCookie('token');
-  res.status(200).json({
-    success: true,
-    message: "Logged out"
-  })
+  res.redirect('/api/shipper/signin');
 }
-
-// exports.getMe = async (req, res, next) => {
-
-//   try {
-//     const customer = await Customer.findById(req.user.id);
-//     res.status(200).json({
-//       success: true,
-//       customer
-//     })
-     
-//   } catch(error) {
-//     next(error);
-//   }
-// }
-
-// exports.getMe = asyncHandler(async (req, res, next) => {
-// 	const customer = await Customer.findById(req.user.id);
-
-// 	res.status(200).json({
-// 		success: true,
-// 		data: customer,
-// 	});
-// });
-
-// exports.getMe = async (req, res, next) => {
-//   const vendor = await Vendor.findById(req.userId);
-//   console.log(vendor);
-// }
 
 // CUSTOMER PROFILE 
 exports.shipperProfile = async (req, res, next) => {
   const shipper = await Shipper.findById(req.shipper);
-  // res.status(200).json({
-  //   success: true,
-  //   vendor
-  // })
   res.render('profile-shipper', { shipper: shipper.toObject({ getters: true }) });
 }
 
-//frontend
+// Display a signin page
 exports.getSignin = (req,res) => {
   res.render("shipper/login_shipper");
 };
 
+// Display a signup page
 exports.getSignup = (req,res) => {
   res.render("shipper/signup_shipper");
 };
 
-// exports.getDashboard = async (req,res) => {
-//   const shipper = await Shipper.findById(req.shipper);
-//   res.render("shipper/shipper_dashboard", {shipper: shipper});
-// };
-
+// Display an order detail
 exports.getOrder = async (req,res) => {
   const shipper = await Shipper.findById(req.shipper);
   const order = await Order.findById(req.params.id);
   for (var i = 0; i< order.products.length; i++) {
-    const productId = order.products[i].product;
     var product = await Product.findById(order.products[i].product);
-    // console.log(product);
     Object.assign(order.products[i], {productName: product.name });
   }
-
-  // console.log(order);
   res.render("shipper/order_detail", {shipper: shipper, order: order});
 };
 
+// Display shipper's profile
 exports.getEditProfile = async (req,res) => {
   const shipper = await Shipper.findById(req.shipper);
   res.render("shipper/edit_profile", {shipper: shipper});
 };
 
+// Edit shipper's profile
 exports.editProfile = async (req,res) => {
   const shipper = await Shipper.findById(req.shipper);
   if (req.file == undefined) {
@@ -272,6 +220,7 @@ exports.editProfile = async (req,res) => {
   }
 };
 
+// Display approximate order 
 exports.getDashboard = async (req, res) => {
   const shipper = await Shipper.findById(req.shipper);
   const orders = await Order.find();
@@ -289,6 +238,7 @@ exports.getDashboard = async (req, res) => {
   res.render("shipper/shipper_dashboard", {shipper: shipper, orders: listOfOrders});
 };
 
+// Change order status to completed
 exports.deliveredOrder = async (req,res) => {
   const shipper = await Shipper.findById(req.shipper);
   const order = await Order.findById(req.params.id);
@@ -311,6 +261,7 @@ exports.deliveredOrder = async (req,res) => {
   });
 }
 
+// Change order status to cancelled
 exports.cancelledOrder = async (req,res) => {
   const shipper = await Shipper.findById(req.shipper);
   const order = await Order.findById(req.params.id);
@@ -333,6 +284,7 @@ exports.cancelledOrder = async (req,res) => {
   });
 }
 
+// Change shipper's password
 exports.changePassword = async (req,res) => {
   const shipper = await Shipper.findById(req.shipper);
   const hashPassword = bcrypt.hash(req.body.new, 10);
@@ -354,5 +306,4 @@ exports.changePassword = async (req,res) => {
   } else {
     res.render('shipper/edit_profile', {message: "Wrong password", shipper: shipper})
   }
- 
 };

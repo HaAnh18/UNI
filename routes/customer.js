@@ -28,60 +28,71 @@ https://www.youtube.com/watch?v=Qv5vdKLKpQk
 ----------------------------------------------------------------------------------------------------------------------------------------------------*/
 const express = require('express');
 const router = express.Router();
-const {signup, signin, logout, getMe, handleFileUpload, showCart, customerProfile, addToCart, productProfile, productVendor} = require("../controllers/customer");
 const {isAuthenticated} = require('../middlewares/auth');
-const {showProduct} = require('../controllers/vendor')
 const customer = require("../controllers/customer");
 
+// Rote to get signup
 router.get('/signup', customer.getSignup);
 
+// Route to post signup
 router.post('/signup', customer.handleFileUpload, customer.signup);
 
+// Route to get signin
 router.get('/signin', customer.getSignin);
 
+// Route to post signin
 router.post('/signin', customer.signin);
 
+// Route to logout
 router.get('/logout', customer.logout);
 
-router.get('/getme', isAuthenticated, customer.customerProfile);
+// router.get('/getme', isAuthenticated, customer.customerProfile);
 
+// Route to get homepgae
 router.get('/homepage', customer.showProduct);
 
-router.get('/product/:id', productProfile);
+// Route to get product's information
+router.get('/product/:id', customer.productProfile);
 
+// Route to get vendor's information
 router.get('/vendor/:id', customer.productVendor);
 
+// Route to add product to customer's cart
 router.get('/product/:id/addtocart', isAuthenticated, customer.addToCart);
 
+// Route to delete quantity in customer's cart
 router.get('/product/:id/deleteproductquantity', isAuthenticated, customer.deleteProductQuantity);
 
+// Route to delete product in customer's cart
 router.get('/delete/:id', isAuthenticated, customer.deleteProduct);
 
+// Rout to get the customer's cart
 router.get('/cart', isAuthenticated, customer.showCart);
 
+// Route to create order for customer
 router.get('/order', isAuthenticated, customer.createOrder);
 
+// Route to checkout customer's order
 router.get('/checkout', isAuthenticated, customer.getCheckout);
 
+// Route to create order for customer
 router.get('/createorder', isAuthenticated, customer.createOrder);
 
+// Rout to get the contact page
 router.get('/contact', customer.getContact);
 
-// router.get('/product', customer.getProduct);
-
-
-// router.get('/profile', customer.customerProfile);
-
+// Rout to get order history
 router.get('/orderhistory', isAuthenticated, customer.getOrderHistory);
 
+// Rout to edit customer's profile
 router.post('/editprofile', isAuthenticated, customer.handleFileUpload, customer.editProfile)
 
+// Route to get change password page
 router.get('/changepassword', isAuthenticated, customer.getChangePassword);
 
+// Route to get customer's profile
 router.get('/profile', isAuthenticated, customer.getCustomerProfile);
 
-
-/*=========================================================Customer Route================================================================*/
 //about us
 router.get('/about', customer.getCustomerAboutUs);
 
@@ -100,18 +111,22 @@ router.get('/orderstatus/:id', isAuthenticated, customer.getOrder);
 //Security
 router.get('/security', isAuthenticated, customer.getCustomerSecurity);
 
-//Change password
+// Change password
 router.post('/changepassword', isAuthenticated, customer.changePassword);
 
 //Categories
 router.get('/category/clothing', customer.getClothing);
 
+// Route to get electronic product
 router.get('/category/electronic', customer.getElectronic);
 
+// Route to get book product
 router.get('/category/book', customer.getBook);
 
+// Rout to get search product
 router.get('/homepage/search/', customer.searchProduct);
 
+// Route to filter product by price
 router.get('/products/:min-:max', customer.filterByPrice);
-/*=======================================================================================================================================*/
+
 module.exports = router;

@@ -68,9 +68,6 @@ app.use("/api/vendor", vendorRoute);
 app.use("/api/shipper", shipperRoute);
 
 
-// ERROR MIDDLEWARE
-// app.use(errorHandler);
-
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {

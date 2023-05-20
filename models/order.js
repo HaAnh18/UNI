@@ -13,6 +13,7 @@
 
 const mongoose = require('mongoose');
 
+// Create a schema for order
 const orderSchema = new mongoose.Schema({
   customer: {
     type: mongoose.Schema.Types.ObjectId, 

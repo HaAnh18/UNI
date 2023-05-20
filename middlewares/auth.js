@@ -15,16 +15,17 @@ const Customer = require('../models/customer');
 const jwt = require('jsonwebtoken');
 const ErrorResponse = require("../utils/errorResponse");
 
+// Exports a check authenticated function
 exports.isAuthenticated = async (req, res, next) => {
-
-
   try {
     const {token} = req.cookies;
 
+        // If the token is not existed render to login page with message
     if(!token) {
       return res.render("customer/login", {message: "You must login"});
     }
     const decode = jwt.verify(token, process.env.JWT_SECRET);
+        // Decode the token to get the customer id 
     req.user = await Customer.findById(decode.id);
     next();
 

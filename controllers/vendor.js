@@ -22,28 +22,33 @@ const Shipper = require("../models/shipper");
 const Order = require("../models/order");
 const bcrypt = require("bcryptjs");
 
+// Create a multer disk storage configuration
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads");
+    cb(null, "uploads");  // Specify the destination folder for uploaded files
   },
   filename: (req, file, cb) => {
-    cb(null, file.fieldname + "-" + Date.now());
+    cb(null, file.fieldname + "-" + Date.now());  // Generate a unique filename for the uploaded file
   },
 });
 
+// Create a multer instance with the configured storage
 var upload = multer({ storage: storage });
 
+// Export a function to handle file uploads
 exports.handleFileUpload = (req, res, next) => {
   upload.single("image")(req, res, (err) => {
     if (err) {
-      return next(err);
+      return next(err); // Pass any error to the next middleware
     }
-    next();
+    next(); // Proceed to the next middelware if the upload is successful
   });
 };
 
+// Export the signup function
 exports.signup = async (req, res, next) => {
   try {
+    // Prepare data
     var data = {
       username: req.body.username,
       password: req.body.password,
@@ -57,6 +62,7 @@ exports.signup = async (req, res, next) => {
       address: req.body.address,
     };
 
+    // Check if username and address has existed or not
     const vendorExist = await Vendor.findOne({username: data.username});
     const usernameExistInCustomer = await Customer.findOne({username: data.username});
     const usernameExistInShipper = await Shipper.findOne({username: data.username});
@@ -83,8 +89,10 @@ exports.signup = async (req, res, next) => {
   }
 };
 
+// Exports a signin function
 exports.signin = async (req, res, next) => {
   try {
+    // Prepare data
     var info = {
       username: req.body.username,
       password: req.body.password,
@@ -100,29 +108,22 @@ exports.signin = async (req, res, next) => {
     const vendor = await Vendor.findOne({ username: info.username });
     if (!vendor) {
       return res.render("vendor/login", { message: "Invalid credentials" });
-
-      // return next(new ErrorResponse(`Invalid credentials`, 400));
     }
 
     // VERIFY CUSTOMER'S PASSWORD
     const isMatched = await vendor.comparePassword(info.password);
     if (!isMatched) {
       return res.render("vendor/login", { message: "Invalid credentials" });
-
-      // res.redirect('/signin');
-      // return next(new ErrorResponse(`Invalid credentials`, 400));
     }
 
-    // console.log(req.user);
     generateToken(vendor, 200, res);
-    // res.json(req.cookie)
-    // res.redirect('/profile');
   } catch (error) {
     console.log(error);
     next(new ErrorResponse(`Cannot log in, check your credentials`, 400));
   }
 };
 
+// Generate the token for vendor
 const generateToken = async (vendor, statusCode, res) => {
   const token = await vendor.jwtGenerateToken();
 
@@ -134,9 +135,7 @@ const generateToken = async (vendor, statusCode, res) => {
   res
     .status(statusCode)
     .cookie("token", token, options)
-    // .json({success: true, token})
     .redirect("/api/vendor/dashboard");
-  // console.log(({success: true, token}))
 };
 
 // LOG OUT USER
@@ -145,6 +144,7 @@ exports.logout = (req, res, next) => {
   res.render("vendor/login");
 };
 
+// Add product function
 exports.addProduct = async (req, res, next) => {
   try {
     var productInfo = {
@@ -168,23 +168,20 @@ exports.addProduct = async (req, res, next) => {
   }
 };
 
-//frontend
+//Show overview information in dashboard
 exports.showDashboard = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
   const orders = await Order.find({ vendor: vendor.id });
   const listOfOrders = [];
   var total = 0;
-  // console.log(orders);
   for (var i = 0; i < orders.length; i++) {
     var customer = await Customer.findById(orders[i].customer);
     Object.assign(orders[i], { customerName: customer.name });
-    // console.log(orders[i].customer);
     listOfOrders.push(orders[i]);
     if (orders[i].status == "Completed") {
       total += orders[i].total;
     }
   }
-  // console.log(listOfOrders);
   res.render("vendor/vendor", {
     vendor: vendor,
     orders: listOfOrders,
@@ -192,55 +189,60 @@ exports.showDashboard = async (req, res) => {
   });
 };
 
+// Show all products that vendor has
 exports.showProduct = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
   const products = await Product.find({ vendorId: vendor.id });
   res.render("vendor/products", { vendor: vendor, products: products });
 };
 
+// Display login page
 exports.getLogin = async (req, res) => {
   res.render("vendor/login");
 };
 
+// Display a signup page
 exports.getSignup = async (req, res) => {
   res.render("vendor/signup");
 };
 
+// Display add product page
 exports.getAddProduct = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
   res.render("vendor/add-product", { vendor: vendor });
 };
 
+// Display vendor's profile
 exports.vendorProfile = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
   res.render("vendor/profile", { vendor: vendor });
 };
 
+// Display term service
 exports.termService = async (req, res) => {
   res.render("vendor/termService");
 };
 
+// Display pending order
 exports.pendingOrder = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
   const orders = await Order.find({ vendor: req.vendor });
   const listOfOrders = [];
-  // console.log(orders);
   for (var i = 0; i < orders.length; i++) {
     if (orders[i].status == "Pending") {
       var customer = await Customer.findById(orders[i].customer);
       Object.assign(orders[i], { customerName: customer.name });
       listOfOrders.push(orders[i]);
-      // console.log(orders[i].customerName);
     }
   }
   res.render("vendor/pendingorder", { vendor: vendor, orders: listOfOrders });
 };
 
+// Display active order
 exports.activeOrder = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
   const orders = await Order.find({ vendor: req.vendor });
   const listOfOrders = [];
-  // console.log(orders);
   for (var i = 0; i < orders.length; i++){
     if (orders[i].status == "Active") {
       var customer = await Customer.findById(orders[i].customer);
@@ -248,15 +250,14 @@ exports.activeOrder = async (req, res) => {
       listOfOrders.push(orders[i]);
     }
   }
-  // console.log(listOfOrders)
   res.render("vendor/active-order", { vendor: vendor, orders: listOfOrders });
 };
 
+// Display completed order
 exports.completedOrder = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
   const orders = await Order.find({ vendor: req.vendor });
   const listOfOrders = [];
-  // console.log(orders);
   for (var i = 0; i < orders.length; i++) {
     if (orders[i].status == "Completed") {
       var customer = await Customer.findById(orders[i].customer);
@@ -267,11 +268,11 @@ exports.completedOrder = async (req, res) => {
   res.render("vendor/completedorder", { vendor: vendor, orders: listOfOrders });
 };
 
+// Display cancelled order
 exports.cancelledOrder = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
   const orders = await Order.find({ vendor: req.vendor });
   const listOfOrders = [];
-  // console.log(orders);
   for (var i = 0; i < orders.length; i++) {
     if (orders[i].status == "Cancelled") {
       var customer = await Customer.findById(orders[i].customer);
@@ -281,12 +282,15 @@ exports.cancelledOrder = async (req, res) => {
   }
   res.render("vendor/cancelledorder", { vendor: vendor, orders: listOfOrders });
 };
+
+// Display product detail
 exports.productDetail = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
   const product = await Product.findById(req.params.id);
   res.render("vendor/productDetail", { vendor: vendor, product: product });
 };
 
+// Edit vendor's profile
 exports.editProfile = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
   if (req.file == undefined) {
@@ -331,6 +335,7 @@ exports.editProfile = async (req, res) => {
   }
 };
 
+// Update product's information
 exports.editProduct = async (req, res) => {
   const vendor = await Vendor.findById(req.vendor);
   const product = await Product.findById(req.params.id);
@@ -389,6 +394,7 @@ exports.editProduct = async (req, res) => {
   }
 };
 
+// Change order status from pending to active
 exports.changeStatus = async (req, res) => {
   const order = await Order.findById(req.params.id);
   // Find the document and update it
@@ -407,6 +413,7 @@ exports.changeStatus = async (req, res) => {
     });
 };
 
+// Change vendor's password and check if user input correct password
 exports.changePassword = async (req,res) => {
   const vendor = await Vendor.findById(req.vendor);
   const hashPassword = bcrypt.hash(req.body.new, 10);
@@ -430,16 +437,13 @@ exports.changePassword = async (req,res) => {
   }
 };
 
+// Display order detail
 exports.getOrder = async (req,res) => {
   const vendor = await Vendor.findById(req.vendor);
   const order = await Order.findById(req.params.id);
   for (var i = 0; i< order.products.length; i++) {
-    const productId = order.products[i].product;
     var product = await Product.findById(order.products[i].product);
-    // console.log(product);
     Object.assign(order.products[i], {productName: product.name });
   }
-
-  // console.log(order);
   res.render("vendor/order-details", {vendor: vendor, order: order});
 };

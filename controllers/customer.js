@@ -266,7 +266,7 @@ exports.createOrder = async (req,res) => {
   var splitOrder = groupBy(products, "vendorId");
   var numberOfVendor = Object.keys(splitOrder).length;
   
-  // Using for loop for each array that based on 
+  // Using for loop for each array that based on vendor id
   for (var n = 0; n<numberOfVendor; n++) {
     var listOfItems = [];
     var eachTotal = 0;
@@ -278,8 +278,9 @@ exports.createOrder = async (req,res) => {
       eachTotal += Object.values(splitOrder)[n][m].price * items.quantity;
       listOfItems.push(items);
     }
- 
+
     var distributionHub = ['hubA', 'hubB', 'hubC', 'hubD'];
+    // Create new order with random distribution hub
     var orderInfo = {
           customer: customer.id,
           vendor: Object.keys(splitOrder)[n],
@@ -297,8 +298,10 @@ exports.createOrder = async (req,res) => {
   }
 }
 
+// Delete product in customer's cart
 exports.deleteProduct = async (req,res) => {
   try {    
+    // Fint the product in cart based on req.params.id
     const customer = await Customer.findById(req.user);
     for (var i = 0; i<customer.cart.length; i++) {
       if (customer.cart[i].product == req.params.id) {
@@ -312,12 +315,15 @@ exports.deleteProduct = async (req,res) => {
   }
 }
 
+// Display all the products in customer's cart and divide it if there are products from 
+// more than two vendors
 exports.getCheckout = async (req,res) => {
   try {
     const products = [];
     const listOfOrder = [];
     var total = 0;
     const customer = await Customer.findById(req.user);
+    // Using for loop to get the list of all products in customer's cart
     for (var i = 0; i< customer.cart.length; i++) {
       var product = await Product.findById(customer.cart[i].product);
       Object.assign(product, {quantity: customer.cart[i].quantity});
@@ -325,6 +331,7 @@ exports.getCheckout = async (req,res) => {
       total += product.quantity * product.price;
     };
 
+    // Function to split an array based on a key 
     let groupBy = (array, key) => {
       return array.reduce((result, obj) => {
          (result[obj[key]] = result[obj[key]] || []).push(obj);
@@ -332,9 +339,11 @@ exports.getCheckout = async (req,res) => {
       }, {});
    };
 
+    //  Split the product list based on vendor ID
    var splitOrder = groupBy(products, "vendorId");
    var numberOfVendor = Object.keys(splitOrder).length;
   
+  // Using for loop for each array that based on vendor id
   for (var n = 0; n<numberOfVendor; n++) {
     var listOfItems = [];
     var vendor = await Vendor.findById(Object.keys(splitOrder)[n]);
@@ -345,6 +354,7 @@ exports.getCheckout = async (req,res) => {
         price: Object.values(splitOrder)[n][m].price,
         quantity: Object.values(splitOrder)[n][m].quantity
       };
+      // Add all products from that vendor in to a list
       listOfItems.push(items);
     }
     listOfOrder.push(listOfItems);
@@ -356,6 +366,7 @@ exports.getCheckout = async (req,res) => {
   }
 };
 
+// Edit profile for customer
 exports.editProfile = async (req,res) => {
   const customer = await Customer.findById(req.user);
  // Find the document and update it
@@ -377,45 +388,45 @@ exports.editProfile = async (req,res) => {
   });
 };
 
+// Display a contact page
 exports.getContact = (req,res) => {
   res.render("customer/contact");
 };
 
 exports.getProduct = (req,res) => {
-  res.render("customer/detail");
+  res.render("customer/detail"); // Render the "detail" view for the customer's product
 };
 
 exports.getSignin = (req,res) => {
-  res.render("customer/login");
+  res.render("customer/login"); // Render the "login" view for the customer's sign-in
 };
 
 exports.getSignup = (req,res) => {
-  res.render("customer/signup");
+  res.render("customer/signup"); // Render the "signup" view for the customer's sign-up
 };
 
 exports.getShop = (req,res) => {
   Product.find()
   .then(
     (products) => {
-        res.render('customer/shop', {products: products});
+        res.render('customer/shop', {products: products});  // Render the "shop" view and pass the retrieved products data
     }
   )
-  .catch((error) => {console.log(error.message)});
+  .catch((error) => {console.log(error.message)}); // Log any errors that occurred during the Product retrieval
 };
 
 
 exports.getOrderHistory = async (req,res) => {
-  const customer = await Customer.findById(req.user);
-  const order = await Order.find({customer: customer.id});
-  res.render("customer/order", {customer: customer, orders: order});
+  const customer = await Customer.findById(req.user); // Retrieve the customer based on the provided user ID
+  const order = await Order.find({customer: customer.id}); // Find the orders associated with the customer
+  res.render("customer/order", {customer: customer, orders: order}); // Render the "order" view and pass the retrieved customer and order data
 };
 
 exports.getChangePassword = async (req,res) => {
-  const customer = await Customer.findById(req.user);
-  res.render("customer/security", {customer: customer});
+  const customer = await Customer.findById(req.user); // Retrieve the customer based on the provided user ID
+  res.render("customer/security", {customer: customer}); // Render the security page
 };
 
-/*====================================================Customer route======================================================*/
 //about us
 exports.getCustomerAboutUs = (req,res) => {
   res.render("customer/about");
@@ -445,12 +456,6 @@ exports.getCustomerProfile = async (req,res) => {
   res.render("customer/profile", {user: customer});
 };
 
-// exports.getOrderStatus = async (req,res) => {
-//   const customer = await Customer.findById(req.user);
-//   const order = await Order.findById(req.params.id);
-//   res.render("customer/order-status", {user: customer, order: order});
-// }
-
 //user order status
 exports.getCustomerOrderStatus = (req,res) => {
   res.render("customer/order-status");
@@ -461,6 +466,7 @@ exports.getCustomerSecurity = (req,res) => {
   res.render("customer/security");
 };
 
+// Change password or customer
 exports.changePassword = async (req,res) => {
   const customer = await Customer.findById(req.user);
   const hashPassword = bcrypt.hash(req.body.new, 10);
@@ -485,11 +491,13 @@ exports.changePassword = async (req,res) => {
  
 }
 
+// Filter the product by category
 exports.getClothing = (req,res) => {
   Product.find()
   .then((products) => {
     var clothing = [];
     for (var i = 0; i< products.length; i++) {
+      // Check if the product's category fit with the category
       if (products[i].category == "Clothing") {
         clothing.push(products[i]);
       }
@@ -499,11 +507,13 @@ exports.getClothing = (req,res) => {
   })
 }
 
+// Filter the product by category
 exports.getElectronic = (req,res) => {
   Product.find()
   .then((products) => {
     var electronic = [];
     for (var i = 0; i< products.length; i++) {
+      // Check if the product's category fit with the category
       if (products[i].category == "Electronic") {
         electronic.push(products[i]);
       }
@@ -513,11 +523,13 @@ exports.getElectronic = (req,res) => {
   })
 }
 
+// Filter the product by category
 exports.getBook = (req,res) => {
   Product.find()
   .then((products) => {
     var book = [];
     for (var i = 0; i< products.length; i++) {
+      // Check if the product's category fit with the category
       if (products[i].category == "Book") {
         book.push(products[i]);
       }
@@ -527,6 +539,7 @@ exports.getBook = (req,res) => {
   })
 }
 
+// Search product based on name and category
 exports.searchProduct = async (req, res) => {
   const search = req.query.query;
   console.log(search);
@@ -536,12 +549,11 @@ exports.searchProduct = async (req, res) => {
       {category: {$regex: search}}
     ]
   })
-  // console.log(data);
-    // Use the 'key' variable for further processing
-  console.log(search);
+  // Use the 'key' variable for further processing
   res.render("customer/shop", {products: data, search: search});
 };
 
+// Filter product by min and max price
 exports.filterByPrice = async (req,res) => {
   const minPrice = parseInt(req.params.min);
   const maxPrice = parseInt(req.params.max);
@@ -549,6 +561,7 @@ exports.filterByPrice = async (req,res) => {
   .then((products) => {
     var listOfProducts = [];
     for (var i = 0; i<products.length; i++) {
+      // Check if the product's price in the min-max range
       if (products[i].price >= minPrice && products[i].price <= maxPrice) {
         listOfProducts.push(products[i]);
         
@@ -558,6 +571,7 @@ exports.filterByPrice = async (req,res) => {
   })
 }
 
+// Delete the product quantity in customer's cart
 exports.deleteProductQuantity = async (req, res, next) => {
   try {
     const customer = await Customer.findById(req.user);
@@ -572,6 +586,7 @@ exports.deleteProductQuantity = async (req, res, next) => {
   }
 };
 
+// Display the order detail 
 exports.getOrder = async (req,res) => {
   const customer = await Customer.findById(req.user);
   const order = await Order.findById(req.params.id);

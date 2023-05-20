@@ -16,40 +16,42 @@ const router = express.Router();
 const {isAuthenticated} = require('../middlewares/auth-shipper');
 const shipper = require('../controllers/shipper');
 
+// Route to get signup
 router.get("/signup", shipper.getSignup);
 
+// Route to post signup
 router.post('/signup', shipper.handleFileUpload, shipper.signup);
 
+// Route to get signin
 router.get("/signin", shipper.getSignin);
 
+// Route to post signin
 router.post('/signin', shipper.signin);
 
+// Route to logout
 router.get('/logout', shipper.logout);
 
-// router.get('/signin', (req,res) => {
-//   res.render('login-shipper');
-// })
+// router.get('/getme', isAuthenticated, shipper.shipperProfile);
 
- router.get('/getme', isAuthenticated, shipper.shipperProfile);
-
-// router.get('/customer',verifyToken, getMe);
-// router.get('/customer', verifyToken, getMe);
-// Example usage:
-// router.get('/customer', verifyToken, getMe);
-
-//frontend
+// Route to get dashboard
 router.get("/dashboard", isAuthenticated, shipper.getDashboard);
 
+// Route to get order detail
 router.get("/order/:id", isAuthenticated, shipper.getOrder);
 
+// Route to get profile
 router.get("/editprofile", isAuthenticated, shipper.getEditProfile);
 
+// Rout to edit profile
 router.post('/editprofile', isAuthenticated, shipper.handleFileUpload, shipper.editProfile);
 
+// Route to change order status to completed
 router.get("/delivered/:id", isAuthenticated, shipper.deliveredOrder);
 
+// Route to change order status to cancelled
 router.get("/cancelled/:id", isAuthenticated, shipper.cancelledOrder);
 
+// Route to change password
 router.post('/changepassword', isAuthenticated, shipper.changePassword);
 
 module.exports = router;

@@ -15,15 +15,18 @@ const Vendor = require('../models/vendor');
 const jwt = require('jsonwebtoken');
 const ErrorResponse = require("../utils/errorResponse");
 
+// Exports a check authenticated function
 exports.isAuthenticated = async (req, res, next) => {
   const {token} = req.cookies;
 
+    // If the token is not existed render to login page with message
   if(!token) {
     return res.render("vendor/login", {message: "You must login"});
   }
 
   try {
     const decode = jwt.verify(token, process.env.JWT_SECRET);
+        // Decode the token to get the vendor id 
     req.vendor = await Vendor.findById(decode.id);
     next();
 
