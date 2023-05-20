@@ -1,9 +1,21 @@
 /*
- * jQuery Easing v1.4.1 - http://gsgd.co.uk/sandbox/jquery/easing/
- * Open source under the BSD License.
- * Copyright © 2008 George McGinley Smith
- * All rights reserved.
- * https://raw.github.com/gdsmith/jquery-easing/master/LICENSE
+// RMIT University Vietnam
+// Course: COSC2430 Web Programming
+// Semester: 2023A
+// Assessment: Assignment 2
+// Author: Tom's Prodigies V2
+// ID: 
+// Nguyen Tran Ha Anh: s3938490
+// Dang Kim Quang Minh: s3938024
+// Nguyen Gia Bao: s3938143
+// Hoang Tuan Minh: s3924716
+// Vu Loc: s3891483
+// Acknowledgement: 
+// jQuery Easing v1.4.1 - http://gsgd.co.uk/sandbox/jquery/easing/
+// Open source under the BSD License.
+// Copyright © 2008 George McGinley Smith
+// All rights reserved.
+// https://raw.github.com/gdsmith/jquery-easing/master/LICENSE
 */
 
 (function (factory) {
