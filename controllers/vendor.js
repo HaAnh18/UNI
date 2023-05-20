@@ -241,7 +241,7 @@ exports.activeOrder = async (req, res) => {
   const orders = await Order.find({ vendor: req.vendor });
   const listOfOrders = [];
   // console.log(orders);
-  for (var i = 0; i < orders.length; i++) {
+  for (var i = 0; i < orders.length; i++){
     if (orders[i].status == "Active") {
       var customer = await Customer.findById(orders[i].customer);
       Object.assign(orders[i], { customerName: customer.name });
@@ -258,7 +258,7 @@ exports.completedOrder = async (req, res) => {
   const listOfOrders = [];
   // console.log(orders);
   for (var i = 0; i < orders.length; i++) {
-    if (orders[i].status == "Cancelled") {
+    if (orders[i].status == "Completed") {
       var customer = await Customer.findById(orders[i].customer);
       Object.assign(orders[i], { customerName: customer.name });
       listOfOrders.push(orders[i]);
