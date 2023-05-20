@@ -15,28 +15,20 @@ Test accounts
 
 Customer:
 
-username: MingKa159 
-password: Minh@1234
+username: MingKa159 / password: Minh@1234
 
-username: Giabao123
-password: Giabao@123
+username: Giabao123 / password: Giabao@123
 
 Vendor:
 
-username: VuLocTim
-password: Vuloc@123
+username: VuLocTim / password: Vuloc@123
 
-username: LVWear123
-password: Vuloc@123
+username: LVWear123 / password: Vuloc@123
 
 Shipper:
 
-Hub: Hub C
-username: LinhShipper
-password: Minh@1234
+Hub: Hub C / username: LinhShipper / password: Minh@1234
 
-Hub: Hub D
-username: MinhShipper
-password: Minh@1234
+Hub: Hub D / username: MinhShipper / password: Minh@1234
 
 ...
