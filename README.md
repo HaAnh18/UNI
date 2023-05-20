@@ -15,7 +15,8 @@ Test accounts
 
 Customer:
 
-username: MingKa159 password: Minh@1234
+username: MingKa159 
+password: Minh@1234
 
 username: Giabao123
 password: Giabao@123
