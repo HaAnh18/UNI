@@ -478,7 +478,7 @@ exports.getClothing = (req,res) => {
   .then((products) => {
     var clothing = [];
     for (var i = 0; i< products.length; i++) {
-      if (products[i].category == "clothing") {
+      if (products[i].category == "Clothing") {
         clothing.push(products[i]);
       }
     };
@@ -492,7 +492,7 @@ exports.getElectronic = (req,res) => {
   .then((products) => {
     var electronic = [];
     for (var i = 0; i< products.length; i++) {
-      if (products[i].category == "electronic") {
+      if (products[i].category == "Electronic") {
         electronic.push(products[i]);
       }
     };
@@ -506,7 +506,7 @@ exports.getBook = (req,res) => {
   .then((products) => {
     var book = [];
     for (var i = 0; i< products.length; i++) {
-      if (products[i].category == "book") {
+      if (products[i].category == "Book") {
         book.push(products[i]);
       }
     };
