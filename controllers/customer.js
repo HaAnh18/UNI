@@ -13,7 +13,7 @@
 // https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
 
 const Customer = require("../models/customer");
-const ErrorResponse = require("../utils/errorResponse");
+// const ErrorResponse = require("../utils/errorResponse");
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');

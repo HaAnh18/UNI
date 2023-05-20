@@ -13,7 +13,7 @@
 
 const Shipper = require('../models/shipper');
 const jwt = require('jsonwebtoken');
-const ErrorResponse = require("../utils/errorResponse");
+// const ErrorResponse = require("../utils/errorResponse");
 
 // Exports a check authenticated function
 exports.isAuthenticated = async (req, res, next) => {
