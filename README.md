@@ -2,7 +2,7 @@
 
 
 
-Presentation video: 
+Presentation video: https://www.youtube.com/watch?v=QSJqLlmFENo
 
 Git Hub repo: https://github.com/HaAnh18/UNI
 
