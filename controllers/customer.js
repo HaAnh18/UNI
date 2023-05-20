@@ -10,6 +10,7 @@
 // Hoang Tuan Minh: s3924716
 // Vu Loc: s3891483
 // Acknowledgement: 
+// https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
 
 const Customer = require("../models/customer");
 const ErrorResponse = require("../utils/errorResponse");
